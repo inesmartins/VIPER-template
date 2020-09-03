@@ -11,6 +11,7 @@ import Foundation
 protocol CountryListPresenterDelegate {
     func loadCountryList(inView view: CountryListViewControllerDelegate)
     func didSelectCountry(_ country: Country)
+    func didSelectStore(_ store: Store)
     func didClickSaveCountry()
     func didClickLoadSavedCountry()
 }
@@ -20,6 +21,7 @@ final class CountryListPresenter: CountryListPresenterDelegate {
     private var interactor: CountryListInteractorDelegate?
     private var view: CountryListViewControllerDelegate? = nil
     private var selectedCountry: Country? = nil
+    private var selectedStore = Store.allCases[0]
 
     init(_ interactor: CountryListInteractorDelegate) {
         self.interactor = interactor
@@ -35,17 +37,21 @@ final class CountryListPresenter: CountryListPresenterDelegate {
     func didSelectCountry(_ country: Country) {
         self.selectedCountry = country
     }
+
+    func didSelectStore(_ store: Store) {
+        self.selectedStore = store
+    }
     
     func didClickSaveCountry() {
         if let selectedCountry = self.selectedCountry {
-            self.interactor?.storeCountry(selectedCountry, onCompletion: { success in
+            self.interactor?.storeCountry(on: self.selectedStore, selectedCountry, onCompletion: { success in
                 self.view?.showSaveResult(success)
             })
         }
     }
 
     func didClickLoadSavedCountry() {
-        self.interactor?.loadStoredCountry(onCompletion: { country in
+        self.interactor?.loadStoredCountry(from: self.selectedStore, onCompletion: { country in
             if let country = country {
                 self.view?.showSavedCountry(country)
             }

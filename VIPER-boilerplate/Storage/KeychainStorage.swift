@@ -11,10 +11,6 @@ import Security
 
 class KeyChainStorage: LocalStorage {
     
-    enum AppKey: String {
-        case selectedCountry = "SelectedCountry"
-    }
-    
     private class SecKey {
         static let itemClass = kSecClass as String
         static let genericPasswordClass = kSecClassGenericPassword as String
@@ -26,9 +22,9 @@ class KeyChainStorage: LocalStorage {
         static let matchOne = kSecMatchLimitOne
     }
 
-    func store<T: Codable>(object: T, withKey key: String, encrypted: Bool = true) -> Bool {
+    func store<T>(object: T, withKey key: String, encrypted: Bool = true) -> Bool {
 
-        let data = Data.init(from: object)
+        let data = Data(from: object)
         let query = [
             SecKey.itemClass: SecKey.genericPasswordClass,
             SecKey.itemAccountName: key,
@@ -45,7 +41,7 @@ class KeyChainStorage: LocalStorage {
         return true
     }
     
-    func load<T: Codable>(key: String) -> T? {
+    func load<T>(key: String) -> T? {
 
         let query = [
             SecKey.itemClass: SecKey.genericPasswordClass,

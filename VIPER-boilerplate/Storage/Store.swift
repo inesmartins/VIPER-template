@@ -8,11 +8,13 @@
 
 import Foundation
 
-enum Store {
+enum Store: String, CaseIterable {
+
     case NSUserDefaults
     case Keychain
     case TextFile
     case CoreData
     case Realm
     case SQLite
+
 }

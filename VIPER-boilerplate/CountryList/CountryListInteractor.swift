@@ -10,8 +10,8 @@ import Foundation
 
 protocol CountryListInteractorDelegate: AnyObject {
     func loadCountryList()  -> [Country]?
-    func storeCountry(_ country: Country, onCompletion: @escaping ((_ result: Bool) -> Void))
-    func loadStoredCountry(onCompletion: @escaping ((_ country: Country?) -> Void))
+    func storeCountry(on: Store, _ country: Country, onCompletion: @escaping ((_ result: Bool) -> Void))
+    func loadStoredCountry(from: Store, onCompletion: @escaping ((_ country: Country?) -> Void))
 }
 
 final class CountryListInteractor: CountryListInteractorDelegate {
@@ -30,15 +30,36 @@ final class CountryListInteractor: CountryListInteractorDelegate {
         return nil
     }
 
-    func storeCountry(_ country: Country, onCompletion: @escaping ((Bool) -> Void)) {
+    func storeCountry(on store: Store, _ country: Country, onCompletion: @escaping ((Bool) -> Void)) {
         DispatchQueue.global(qos: .background).async {
-            onCompletion(KeyChainStorage().store(object: country, withKey: KeyChainStorage.AppKey.selectedCountry.rawValue, encrypted: true))
+            switch store {
+            case .NSUserDefaults:
+                onCompletion(KeyChainStorage().store(
+                    object: country,
+                    withKey: AppKey.selectedCountry.rawValue,
+                    encrypted: true))
+            case .Keychain:
+                onCompletion(KeyChainStorage().store(
+                    object: country,
+                    withKey: AppKey.selectedCountry.rawValue,
+                    encrypted: true))
+            case .CoreData:
+                fatalError("Not implemented")
+            case .Realm:
+                fatalError("Not implemented")
+            case .TextFile:
+                fatalError("Not implemented")
+            case .SQLite:
+                fatalError("Not implemented")
+            }
         }
     }
 
-    func loadStoredCountry(onCompletion: @escaping ((_ country: Country?) -> Void)) {
+    func loadStoredCountry(from: Store, onCompletion: @escaping ((_ country: Country?) -> Void)) {
         DispatchQueue.global(qos: .background).async {
-            onCompletion(KeyChainStorage().load(key: KeyChainStorage.AppKey.selectedCountry.rawValue))
+            onCompletion(
+                KeyChainStorage().load(
+                    key: AppKey.selectedCountry.rawValue))
         }
     }
 

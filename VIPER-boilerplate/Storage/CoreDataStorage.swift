@@ -10,8 +10,8 @@ import Foundation
 
 final class CoreDataStorage: LocalStorage {
 
-    func store<T: Codable>(object: T, withKey key: String, encrypted: Bool) -> Bool {
-        return false
+    func store<T>(object: T, withKey key: String, encrypted: Bool) -> Bool {
+        fatalError("Not implemented")
     }
 
     func load<T: Codable>(key: String) -> T? {
