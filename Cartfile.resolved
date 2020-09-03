@@ -1,2 +1,1 @@
-github "Alamofire/Alamofire" "5.0.0.beta.1"
-github "Alamofire/AlamofireImage" "3.6.0"
+github "AFNetworking/AFNetworking" "4.0.1"

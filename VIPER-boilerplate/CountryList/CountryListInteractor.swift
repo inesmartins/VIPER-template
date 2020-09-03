@@ -9,24 +9,36 @@
 import Foundation
 
 protocol CountryListInteractorDelegate: AnyObject {
-    func loadCountryList(onCompletion: @escaping ((_ countries: [Country]?) -> Void))
+    func loadCountryList()  -> [Country]?
+    func storeCountry(_ country: Country, onCompletion: @escaping ((_ result: Bool) -> Void))
+    func loadStoredCountry(onCompletion: @escaping ((_ country: Country?) -> Void))
 }
 
 final class CountryListInteractor: CountryListInteractorDelegate {
-
-    func loadCountryList(onCompletion: @escaping ((_ countries: [Country]?) -> Void)) {
-        DispatchQueue.global(qos: .background).async {
-            if let filepath = Bundle.main.path(forResource: "CountryList", ofType: "json") {
-                do {
-                    if let data = try String(contentsOfFile: filepath).data(using: .utf8) {
-                        let decodedData = try JSONDecoder().decode([Country].self, from: data)
-                        onCompletion(decodedData)
-                    }
-                } catch {
-                    onCompletion(nil)
+    
+    func loadCountryList()  -> [Country]? {
+        if let filepath = Bundle.main.path(forResource: "CountryList", ofType: "json") {
+            do {
+                if let data = try String(contentsOfFile: filepath).data(using: .utf8) {
+                    let decodedData = try JSONDecoder().decode([Country].self, from: data)
+                    return decodedData
                 }
+            } catch {
+                return nil
             }
-            onCompletion(nil)
+        }
+        return nil
+    }
+
+    func storeCountry(_ country: Country, onCompletion: @escaping ((Bool) -> Void)) {
+        DispatchQueue.global(qos: .background).async {
+            onCompletion(KeyChainStorage().store(object: country, withKey: KeyChainStorage.AppKey.selectedCountry.rawValue, encrypted: true))
+        }
+    }
+
+    func loadStoredCountry(onCompletion: @escaping ((_ country: Country?) -> Void)) {
+        DispatchQueue.global(qos: .background).async {
+            onCompletion(KeyChainStorage().load(key: KeyChainStorage.AppKey.selectedCountry.rawValue))
         }
     }
 

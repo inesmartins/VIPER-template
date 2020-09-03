@@ -1,0 +1,10 @@
+{
+  "commitish" : "4.0.1",
+  "iOS" : [
+    {
+      "name" : "AFNetworking",
+      "hash" : "fb7da7abdbaa5b923bdfb0c47fdcd1423bf8d8b0891eab6a0a1d1e664cb5adf2",
+      "linking" : "dynamic"
+    }
+  ]
+}

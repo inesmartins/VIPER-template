@@ -11,6 +11,12 @@
 		4D01B931250036F500197F7D /* CountryList.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D01B930250036F500197F7D /* CountryList.json */; };
 		4D01B9332500398500197F7D /* ApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9322500398500197F7D /* ApplicationRouter.swift */; };
 		4D01B93625003AAD00197F7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D01B93425003AAD00197F7D /* Main.storyboard */; };
+		4D01B93A2500F67B00197F7D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9392500F67B00197F7D /* Store.swift */; };
+		4D01B93D2500F8F300197F7D /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B93C2500F8F300197F7D /* LocalStorage.swift */; };
+		4D01B93F2500F91E00197F7D /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */; };
+		4D01B9412500FB4E00197F7D /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9402500FB4E00197F7D /* KeychainStorage.swift */; };
+		4D01B9452500FF6800197F7D /* NSUserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */; };
+		4D01B94825011ED600197F7D /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B94725011ED600197F7D /* DataExtensions.swift */; };
 		4DCA1EBB25002C3700067E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBA25002C3700067E94 /* AppDelegate.swift */; };
 		4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */; };
 		4DCA1EC525002C3700067E94 /* VIPER_boilerplate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EC325002C3700067E94 /* VIPER_boilerplate.xcdatamodeld */; };
@@ -45,6 +51,12 @@
 		4D01B930250036F500197F7D /* CountryList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryList.json; sourceTree = "<group>"; };
 		4D01B9322500398500197F7D /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouter.swift; sourceTree = "<group>"; };
 		4D01B93525003AAD00197F7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4D01B9392500F67B00197F7D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		4D01B93C2500F8F300197F7D /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		4D01B9402500FB4E00197F7D /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
+		4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsStorage.swift; sourceTree = "<group>"; };
+		4D01B94725011ED600197F7D /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		4DCA1EB725002C3700067E94 /* VIPER-boilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VIPER-boilerplate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCA1EBA25002C3700067E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +101,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D01B93B2500F8D000197F7D /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				4D01B9392500F67B00197F7D /* Store.swift */,
+				4D01B93C2500F8F300197F7D /* LocalStorage.swift */,
+				4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */,
+				4D01B9402500FB4E00197F7D /* KeychainStorage.swift */,
+				4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		4D01B94625011EC800197F7D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4D01B94725011ED600197F7D /* DataExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4DCA1EAE25002C3700067E94 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +148,8 @@
 				4DCA1EBA25002C3700067E94 /* AppDelegate.swift */,
 				4D01B9322500398500197F7D /* ApplicationRouter.swift */,
 				4DCA1EF6250031EA00067E94 /* CountryList */,
+				4D01B93B2500F8D000197F7D /* Storage */,
+				4D01B94625011EC800197F7D /* Extensions */,
 				4DCA1EC625002C3A00067E94 /* Assets.xcassets */,
 				4DCA1EC825002C3A00067E94 /* LaunchScreen.storyboard */,
 				4D01B93425003AAD00197F7D /* Main.storyboard */,
@@ -297,11 +331,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D01B92F2500348D00197F7D /* Country.swift in Sources */,
+				4D01B93D2500F8F300197F7D /* LocalStorage.swift in Sources */,
 				4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */,
 				4DCA1EBB25002C3700067E94 /* AppDelegate.swift in Sources */,
 				4DCA1EF52500313D00067E94 /* CountryListInteractor.swift in Sources */,
+				4D01B9412500FB4E00197F7D /* KeychainStorage.swift in Sources */,
 				4DCA1EF82500325100067E94 /* CountryListRouter.swift in Sources */,
+				4D01B9452500FF6800197F7D /* NSUserDefaultsStorage.swift in Sources */,
+				4D01B93A2500F67B00197F7D /* Store.swift in Sources */,
+				4D01B93F2500F91E00197F7D /* CoreDataStorage.swift in Sources */,
 				4DCA1EC525002C3700067E94 /* VIPER_boilerplate.xcdatamodeld in Sources */,
+				4D01B94825011ED600197F7D /* DataExtensions.swift in Sources */,
 				4DCA1EF32500312800067E94 /* CountryListPresenter.swift in Sources */,
 				4D01B9332500398500197F7D /* ApplicationRouter.swift in Sources */,
 			);
