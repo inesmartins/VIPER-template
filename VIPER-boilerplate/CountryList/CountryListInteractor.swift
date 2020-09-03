@@ -34,7 +34,7 @@ final class CountryListInteractor: CountryListInteractorDelegate {
         DispatchQueue.global(qos: .background).async {
             switch store {
             case .NSUserDefaults:
-                onCompletion(KeyChainStorage().store(
+                onCompletion(NSUserDefaultsStorage().store(
                     object: country,
                     withKey: AppKey.selectedCountry.rawValue,
                     encrypted: true))
@@ -55,11 +55,22 @@ final class CountryListInteractor: CountryListInteractorDelegate {
         }
     }
 
-    func loadStoredCountry(from: Store, onCompletion: @escaping ((_ country: Country?) -> Void)) {
+    func loadStoredCountry(from store: Store, onCompletion: @escaping ((_ country: Country?) -> Void)) {
         DispatchQueue.global(qos: .background).async {
-            onCompletion(
-                KeyChainStorage().load(
-                    key: AppKey.selectedCountry.rawValue))
+            switch store {
+            case .NSUserDefaults:
+                return onCompletion(NSUserDefaultsStorage().load(key: AppKey.selectedCountry.rawValue))
+            case .Keychain:
+                return onCompletion(KeyChainStorage().load(key: AppKey.selectedCountry.rawValue))
+            case .CoreData:
+                fatalError("Not implemented")
+            case .Realm:
+                fatalError("Not implemented")
+            case .TextFile:
+                fatalError("Not implemented")
+            case .SQLite:
+                fatalError("Not implemented")
+            }
         }
     }
 

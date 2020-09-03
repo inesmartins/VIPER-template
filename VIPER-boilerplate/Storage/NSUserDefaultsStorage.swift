@@ -13,7 +13,7 @@ final class NSUserDefaultsStorage: LocalStorage {
     let defaults = UserDefaults.standard
 
     func store<T>(object: T, withKey key: String, encrypted: Bool) -> Bool {
-        self.defaults.set(object, forKey: key)
+        self.defaults.set(Data(from: object), forKey: key)
         return true
     }
 
