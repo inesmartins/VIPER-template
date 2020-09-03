@@ -24,10 +24,10 @@ class CountryListViewController: UIViewController {
     // MARK: - UI components
 
     private let tableCellId = "tableCell"
-    private let countriesTable = UITableView(frame: .zero)
-    private let storeSelector = UIPickerView(frame: .zero)
-    private let saveCountryButton = UIButton(frame: .zero)
-    private let getSavedCountryButton = UIButton(frame: .zero)
+    private lazy var countriesTable = UITableView(frame: .zero)
+    private lazy var storeSelector = UIPickerView(frame: .zero)
+    private lazy var saveCountryButton = UIButton(frame: .zero)
+    private lazy var getSavedCountryButton = UIButton(frame: .zero)
     
     // MARK: - UIViewController Lifecycle
 
