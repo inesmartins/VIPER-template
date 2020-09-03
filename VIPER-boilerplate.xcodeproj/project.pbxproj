@@ -109,9 +109,9 @@
 				4D01B94B2501863D00197F7D /* AppKey.swift */,
 				4D01B9392500F67B00197F7D /* Store.swift */,
 				4D01B93C2500F8F300197F7D /* LocalStorage.swift */,
-				4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */,
-				4D01B9402500FB4E00197F7D /* KeychainStorage.swift */,
 				4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */,
+				4D01B9402500FB4E00197F7D /* KeychainStorage.swift */,
+				4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";

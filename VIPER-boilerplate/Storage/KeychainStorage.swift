@@ -22,7 +22,7 @@ class KeyChainStorage: LocalStorage {
         static let matchOne = kSecMatchLimitOne
     }
 
-    func store<T>(object: T, withKey key: String, encrypted: Bool = true) -> Bool {
+    func store<T>(object: T, withKey key: String) -> Bool {
 
         let data = Data(from: object)
         let query = [

@@ -23,7 +23,7 @@ final class CoreDataStorage: LocalStorage {
     lazy var context = self.persistentContainer.viewContext
     lazy var countryEntity = NSEntityDescription.entity(forEntityName: "Country", in: self.context)
 
-    func store<T>(object: T, withKey key: String, encrypted: Bool) -> Bool {
+    func store<T>(object: T, withKey key: String) -> Bool {
         guard let countryEntity = self.countryEntity else { return false }
         let newCountry = NSManagedObject(entity: countryEntity, insertInto: context)
         // TODO: set values

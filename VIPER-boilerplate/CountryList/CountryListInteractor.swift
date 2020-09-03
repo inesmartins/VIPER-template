@@ -31,44 +31,40 @@ final class CountryListInteractor: CountryListInteractorDelegate {
     }
 
     func storeCountry(on store: Store, _ country: Country, onCompletion: @escaping ((Bool) -> Void)) {
+        let key = AppKey.selectedCountry.rawValue
         DispatchQueue.global(qos: .background).async {
             switch store {
             case .NSUserDefaults:
-                onCompletion(NSUserDefaultsStorage().store(
-                    object: country,
-                    withKey: AppKey.selectedCountry.rawValue,
-                    encrypted: true))
+                onCompletion(NSUserDefaultsStorage().store(object: country, withKey: key))
             case .Keychain:
-                onCompletion(KeyChainStorage().store(
-                    object: country,
-                    withKey: AppKey.selectedCountry.rawValue,
-                    encrypted: true))
+                onCompletion(KeyChainStorage().store(object: country, withKey: key))
             case .CoreData:
-                fatalError("Not implemented")
-            case .Realm:
-                fatalError("Not implemented")
+                onCompletion(CoreDataStorage().store(object: country, withKey: key))
             case .TextFile:
                 fatalError("Not implemented")
             case .SQLite:
+                fatalError("Not implemented")
+            case .Realm:
                 fatalError("Not implemented")
             }
         }
     }
 
     func loadStoredCountry(from store: Store, onCompletion: @escaping ((_ country: Country?) -> Void)) {
+        let key = AppKey.selectedCountry.rawValue
         DispatchQueue.global(qos: .background).async {
             switch store {
             case .NSUserDefaults:
-                return onCompletion(NSUserDefaultsStorage().load(key: AppKey.selectedCountry.rawValue))
+                return onCompletion(NSUserDefaultsStorage().load(key: key))
             case .Keychain:
-                return onCompletion(KeyChainStorage().load(key: AppKey.selectedCountry.rawValue))
+                return onCompletion(KeyChainStorage().load(key: key))
             case .CoreData:
-                fatalError("Not implemented")
-            case .Realm:
-                fatalError("Not implemented")
+                return onCompletion(CoreDataStorage().load(key: key))
             case .TextFile:
                 fatalError("Not implemented")
             case .SQLite:
+                fatalError("Not implemented")
+            case .Realm:
                 fatalError("Not implemented")
             }
         }
