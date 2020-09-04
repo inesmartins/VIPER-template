@@ -11,8 +11,8 @@ import Foundation
 class Country: Codable {
 
     enum CodingKeys: String, CodingKey {
-        case name = "name"
-        case code = "code"
+        case name
+        case code
     }
 
     let name: String
@@ -44,4 +44,3 @@ class Country: Codable {
     }
 
 }
-

@@ -13,7 +13,7 @@ final class CoreDataStorage: LocalStorage {
 
     let container = NSPersistentContainer(name: "CoreDataDemo")
     lazy var persistentContainer: NSPersistentContainer = {
-        self.container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        self.container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }

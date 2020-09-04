@@ -10,7 +10,7 @@ import Foundation
 import Security
 
 class KeyChainStorage: LocalStorage {
-    
+
     private class SecKey {
         static let itemClass = kSecClass as String
         static let genericPasswordClass = kSecClassGenericPassword as String
@@ -30,17 +30,17 @@ class KeyChainStorage: LocalStorage {
             SecKey.itemAccountName: key,
             SecKey.itemData: data
         ] as CFDictionary
-        
+
         // removes previous entry
         let deleteStatus = SecItemDelete(query)
         guard deleteStatus == noErr else { return false }
-        
+
         // adds new entry
         let addStatus = SecItemAdd(query, nil)
         guard addStatus == errSecSuccess else { return false }
         return true
     }
-    
+
     func load<T>(key: String) -> T? {
 
         let query = [
@@ -50,7 +50,7 @@ class KeyChainStorage: LocalStorage {
             SecKey.matchLimit: SecKey.matchOne
         ] as CFDictionary
 
-        var dataTypeRef: AnyObject? = nil
+        var dataTypeRef: AnyObject?
         let loadStatus: OSStatus = SecItemCopyMatching(query, &dataTypeRef)
         guard loadStatus == errSecSuccess else { return nil }
         guard let data = dataTypeRef as? Data else { return nil }

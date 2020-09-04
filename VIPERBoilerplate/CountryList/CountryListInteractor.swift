@@ -9,14 +9,14 @@
 import Foundation
 
 protocol CountryListInteractorDelegate: AnyObject {
-    func loadCountryList()  -> [Country]?
-    func storeCountry(on: Store, _ country: Country, onCompletion: @escaping ((_ result: Bool) -> Void))
+    func loadCountryList() -> [Country]?
+    func storeCountry(onStore: Store, _ country: Country, onCompletion: @escaping ((_ result: Bool) -> Void))
     func loadStoredCountry(from: Store, onCompletion: @escaping ((_ country: Country?) -> Void))
 }
 
 final class CountryListInteractor: CountryListInteractorDelegate {
-    
-    func loadCountryList()  -> [Country]? {
+
+    func loadCountryList() -> [Country]? {
         if let filepath = Bundle.main.path(forResource: "CountryList", ofType: "json") {
             do {
                 if let data = try String(contentsOfFile: filepath).data(using: .utf8) {
@@ -30,7 +30,7 @@ final class CountryListInteractor: CountryListInteractorDelegate {
         return nil
     }
 
-    func storeCountry(on store: Store, _ country: Country, onCompletion: @escaping ((Bool) -> Void)) {
+    func storeCountry(onStore store: Store, _ country: Country, onCompletion: @escaping ((Bool) -> Void)) {
         let key = AppKey.selectedCountry.rawValue
         DispatchQueue.global(qos: .background).async {
             switch store {

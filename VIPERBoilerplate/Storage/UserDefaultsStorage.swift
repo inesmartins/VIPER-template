@@ -16,15 +16,15 @@ final class NSUserDefaultsStorage: LocalStorage {
         self.defaults.set(data, forKey: key)
         return true
     }
-    
+
     func store(string: String, withKey key: String, encrypted: Bool) -> Bool {
         self.defaults.set(string, forKey: key)
         return true
     }
-    
+
     func store(object: AnyObject, withKey key: String, encrypted: Bool) -> Bool {
         self.defaults.set(object, forKey: key)
         return true
     }
-    
+
 }

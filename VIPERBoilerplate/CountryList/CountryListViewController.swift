@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol CountryListViewControllerDelegate {
+protocol CountryListViewControllerDelegate: AnyObject {
     func updateCountryList(_ countries: [Country])
     func showSaveResult(_ result: Bool)
     func showSavedCountry(_ country: Country)
 }
 
 class CountryListViewController: UIViewController {
-    
+
     // MARK: - UIViewController Properties
 
     private var presenter: CountryListPresenterDelegate?
-    private var countries = Array<Country>()
+    private var countries = [Country]()
 
     // MARK: - UI components
 
@@ -28,32 +28,32 @@ class CountryListViewController: UIViewController {
     private lazy var storeSelector = UIPickerView(frame: .zero)
     private lazy var saveCountryButton = UIButton(frame: .zero)
     private lazy var getSavedCountryButton = UIButton(frame: .zero)
-    
+
     // MARK: - UIViewController Lifecycle
 
     init(_ presenter: CountryListPresenterDelegate) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter?.loadCountryList(inView: self)
         self.setupView()
     }
-    
+
     // MARK: - Setup UI Components
-    
+
     private func setupView() {
         self.addSubviews()
         self.setupUIComponents()
         self.addConstraints()
     }
-    
+
     private func setupUIComponents() {
 
         // countriesTable UITableView
@@ -70,23 +70,27 @@ class CountryListViewController: UIViewController {
 
         // saveCountryButton UIButton
         self.saveCountryButton.translatesAutoresizingMaskIntoConstraints = false
-        self.saveCountryButton.addTarget(self, action: #selector(self.handleSaveCountryButtonClick), for: .touchUpInside)
+        self.saveCountryButton.addTarget(
+            self,
+            action: #selector(self.handleSaveCountryButtonClick), for: .touchUpInside)
         self.saveCountryButton.backgroundColor = .green
         self.saveCountryButton.setTitle("Save Country", for: .normal)
         self.saveCountryButton.setTitleColor(.black, for: .normal)
 
         // getSavedCountryButton UIButton
         self.getSavedCountryButton.translatesAutoresizingMaskIntoConstraints = false
-        self.getSavedCountryButton.addTarget(self, action: #selector(self.handleGetSavedCountryButtonClick), for: .touchUpInside)
+        self.getSavedCountryButton.addTarget(self,
+                                             action: #selector(self.handleGetSavedCountryButtonClick),
+                                             for: .touchUpInside)
         self.getSavedCountryButton.backgroundColor = .gray
         self.getSavedCountryButton.setTitle("Get Saved Country", for: .normal)
         self.getSavedCountryButton.setTitleColor(.black, for: .normal)
     }
-    
+
     @objc func handleSaveCountryButtonClick() {
         self.presenter?.didClickSaveCountry()
     }
-    
+
     @objc func handleGetSavedCountryButtonClick() {
         self.presenter?.didClickLoadSavedCountry()
     }
@@ -97,7 +101,7 @@ class CountryListViewController: UIViewController {
         self.view.addSubview(self.saveCountryButton)
         self.view.addSubview(self.getSavedCountryButton)
     }
-    
+
     private func addConstraints() {
         let constraints: [NSLayoutConstraint] = [
             self.countriesTable.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -122,31 +126,31 @@ class CountryListViewController: UIViewController {
 }
 
 extension CountryListViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Store.allCases.count
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return Store.allCases[row].rawValue
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.presenter?.didSelectStore(Store.allCases[row])
     }
-    
+
 }
 
 extension CountryListViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.countries.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: .value1, reuseIdentifier: self.tableCellId)
         let country = self.countries[indexPath.row]
@@ -154,7 +158,7 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.detailTextLabel?.text = country.code
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let country = self.countries[indexPath.row]
         self.presenter?.didSelectCountry(country)
@@ -163,14 +167,14 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 extension CountryListViewController: CountryListViewControllerDelegate {
-    
+
     func updateCountryList(_ countries: [Country]) {
         self.countries = countries
         DispatchQueue.main.async {
             self.countriesTable.reloadData()
         }
     }
-    
+
     func showSaveResult(_ result: Bool) {
         DispatchQueue.main.async {
             let alert = UIAlertController(
@@ -182,7 +186,7 @@ extension CountryListViewController: CountryListViewControllerDelegate {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
+
     func showSavedCountry(_ country: Country) {
         DispatchQueue.main.async {
             let alert = UIAlertController(
@@ -194,5 +198,5 @@ extension CountryListViewController: CountryListViewControllerDelegate {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
+
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 final class NSUserDefaultsStorage: LocalStorage {
-    
+
     let defaults = UserDefaults.standard
 
     func store<T>(object: T, withKey key: String) -> Bool {

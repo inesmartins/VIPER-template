@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CountryListPresenterDelegate {
+protocol CountryListPresenterDelegate: AnyObject {
     func loadCountryList(inView view: CountryListViewControllerDelegate)
     func didSelectCountry(_ country: Country)
     func didSelectStore(_ store: Store)
@@ -19,8 +19,8 @@ protocol CountryListPresenterDelegate {
 final class CountryListPresenter: CountryListPresenterDelegate {
 
     private var interactor: CountryListInteractorDelegate?
-    private var view: CountryListViewControllerDelegate? = nil
-    private var selectedCountry: Country? = nil
+    private var view: CountryListViewControllerDelegate?
+    private var selectedCountry: Country?
     private var selectedStore = Store.allCases[0]
 
     init(_ interactor: CountryListInteractorDelegate) {
@@ -41,10 +41,10 @@ final class CountryListPresenter: CountryListPresenterDelegate {
     func didSelectStore(_ store: Store) {
         self.selectedStore = store
     }
-    
+
     func didClickSaveCountry() {
         if let selectedCountry = self.selectedCountry {
-            self.interactor?.storeCountry(on: self.selectedStore, selectedCountry, onCompletion: { success in
+            self.interactor?.storeCountry(onStore: self.selectedStore, selectedCountry, onCompletion: { success in
                 self.view?.showSaveResult(success)
             })
         }
