@@ -12,7 +12,7 @@
 		4D01B9332500398500197F7D /* ApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9322500398500197F7D /* ApplicationRouter.swift */; };
 		4D01B93625003AAD00197F7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D01B93425003AAD00197F7D /* Main.storyboard */; };
 		4D01B93A2500F67B00197F7D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9392500F67B00197F7D /* Store.swift */; };
-		4D01B93D2500F8F300197F7D /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B93C2500F8F300197F7D /* LocalStorage.swift */; };
+		4D01B93D2500F8F300197F7D /* KeyValueLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B93C2500F8F300197F7D /* KeyValueLocalStorage.swift */; };
 		4D01B93F2500F91E00197F7D /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */; };
 		4D01B9412500FB4E00197F7D /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9402500FB4E00197F7D /* KeychainStorage.swift */; };
 		4D01B9452500FF6800197F7D /* NSUserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */; };
@@ -21,6 +21,7 @@
 		4D01B950250269A800197F7D /* CryptoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B94F250269A800197F7D /* CryptoService.swift */; };
 		4D01B95425026AE900197F7D /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D01B95125026A0D00197F7D /* CommonCrypto.framework */; };
 		4D01B95525026AE900197F7D /* CommonCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D01B95125026A0D00197F7D /* CommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4D01B95825027C2F00197F7D /* DBLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B95725027C2F00197F7D /* DBLocalStorage.swift */; };
 		4DCA1EBB25002C3700067E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBA25002C3700067E94 /* AppDelegate.swift */; };
 		4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */; };
 		4DCA1EC525002C3700067E94 /* VIPERBoilerplate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EC325002C3700067E94 /* VIPERBoilerplate.xcdatamodeld */; };
@@ -70,7 +71,7 @@
 		4D01B9322500398500197F7D /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouter.swift; sourceTree = "<group>"; };
 		4D01B93525003AAD00197F7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D01B9392500F67B00197F7D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		4D01B93C2500F8F300197F7D /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		4D01B93C2500F8F300197F7D /* KeyValueLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueLocalStorage.swift; sourceTree = "<group>"; };
 		4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		4D01B9402500FB4E00197F7D /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsStorage.swift; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 		4D01B94B2501863D00197F7D /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		4D01B94F250269A800197F7D /* CryptoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoService.swift; sourceTree = "<group>"; };
 		4D01B95125026A0D00197F7D /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = Carthage/Build/iOS/CommonCrypto.framework; sourceTree = "<group>"; };
+		4D01B95725027C2F00197F7D /* DBLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBLocalStorage.swift; sourceTree = "<group>"; };
 		4DCA1EB725002C3700067E94 /* VIPERBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPERBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCA1EBA25002C3700067E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
@@ -126,12 +128,9 @@
 		4D01B93B2500F8D000197F7D /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				4D01B94B2501863D00197F7D /* AppKey.swift */,
 				4D01B9392500F67B00197F7D /* Store.swift */,
-				4D01B93C2500F8F300197F7D /* LocalStorage.swift */,
-				4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */,
-				4D01B9402500FB4E00197F7D /* KeychainStorage.swift */,
-				4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */,
+				4D01B9592502801A00197F7D /* KeyValueLocalStorage */,
+				4D01B95A2502802C00197F7D /* DBLocalStorage */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -150,6 +149,27 @@
 				4D01B94F250269A800197F7D /* CryptoService.swift */,
 			);
 			path = Crypto;
+			sourceTree = "<group>";
+		};
+		4D01B9592502801A00197F7D /* KeyValueLocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				4D01B94B2501863D00197F7D /* AppKey.swift */,
+				4D01B93C2500F8F300197F7D /* KeyValueLocalStorage.swift */,
+				4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */,
+				4D01B9402500FB4E00197F7D /* KeychainStorage.swift */,
+			);
+			path = KeyValueLocalStorage;
+			sourceTree = "<group>";
+		};
+		4D01B95A2502802C00197F7D /* DBLocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				4D01B95725027C2F00197F7D /* DBLocalStorage.swift */,
+				4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */,
+				4DCA1EC325002C3700067E94 /* VIPERBoilerplate.xcdatamodeld */,
+			);
+			path = DBLocalStorage;
 			sourceTree = "<group>";
 		};
 		4DCA1EAE25002C3700067E94 = {
@@ -186,7 +206,6 @@
 				4DCA1EC825002C3A00067E94 /* LaunchScreen.storyboard */,
 				4D01B93425003AAD00197F7D /* Main.storyboard */,
 				4DCA1ECB25002C3A00067E94 /* Info.plist */,
-				4DCA1EC325002C3700067E94 /* VIPERBoilerplate.xcdatamodeld */,
 			);
 			path = VIPERBoilerplate;
 			sourceTree = "<group>";
@@ -387,7 +406,7 @@
 			files = (
 				4D01B950250269A800197F7D /* CryptoService.swift in Sources */,
 				4D01B92F2500348D00197F7D /* Country.swift in Sources */,
-				4D01B93D2500F8F300197F7D /* LocalStorage.swift in Sources */,
+				4D01B93D2500F8F300197F7D /* KeyValueLocalStorage.swift in Sources */,
 				4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */,
 				4DCA1EBB25002C3700067E94 /* AppDelegate.swift in Sources */,
 				4DCA1EF52500313D00067E94 /* CountryListInteractor.swift in Sources */,
@@ -400,6 +419,7 @@
 				4DCA1EC525002C3700067E94 /* VIPERBoilerplate.xcdatamodeld in Sources */,
 				4D01B94825011ED600197F7D /* DataExtensions.swift in Sources */,
 				4DCA1EF32500312800067E94 /* CountryListPresenter.swift in Sources */,
+				4D01B95825027C2F00197F7D /* DBLocalStorage.swift in Sources */,
 				4D01B9332500398500197F7D /* ApplicationRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

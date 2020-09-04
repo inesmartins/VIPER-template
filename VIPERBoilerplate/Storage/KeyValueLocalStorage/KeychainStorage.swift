@@ -1,7 +1,7 @@
 import Foundation
 import Security
 
-class KeyChainStorage: LocalStorage {
+class KeyChainStorage: KeyValueLocalStorage {
 
     private class SecKey {
         static let itemClass = kSecClass as String

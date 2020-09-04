@@ -1,6 +1,6 @@
 import Foundation
 
-final class NSUserDefaultsStorage: LocalStorage {
+final class NSUserDefaultsStorage: KeyValueLocalStorage {
 
     let defaults = UserDefaults.standard
 

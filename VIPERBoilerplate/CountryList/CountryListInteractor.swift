@@ -31,7 +31,7 @@ final class CountryListInteractor: CountryListInteractorDelegate {
             case .keychain:
                 onCompletion(KeyChainStorage().store(object: country, withKey: key))
             case .coreData:
-                onCompletion(CoreDataStorage().store(object: country, withKey: key))
+                onCompletion(CoreDataStorage().storeObject(country))
             case .textFile:
                 fatalError("Not implemented")
             case .sqlLite:
@@ -51,7 +51,7 @@ final class CountryListInteractor: CountryListInteractorDelegate {
             case .keychain:
                 return onCompletion(KeyChainStorage().load(key: key))
             case .coreData:
-                return onCompletion(CoreDataStorage().load(key: key))
+                return onCompletion(CoreDataStorage().loadFirstObject())
             case .textFile:
                 fatalError("Not implemented")
             case .sqlLite:
