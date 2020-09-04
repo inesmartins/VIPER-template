@@ -1,11 +1,3 @@
-//
-//  ApplicationRouter.swift
-//  VIPER-boilerplate
-//
-//  Created by Inês Martins on 02/09/2020.
-//  Copyright © 2020 Inês Martins. All rights reserved.
-//
-
 import UIKit
 import Foundation
 

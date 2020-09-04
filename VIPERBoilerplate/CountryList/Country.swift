@@ -1,11 +1,3 @@
-//
-//  Country.swift
-//  VIPER-boilerplate
-//
-//  Created by Inês Martins on 02/09/2020.
-//  Copyright © 2020 Inês Martins. All rights reserved.
-//
-
 import Foundation
 
 class Country: Codable {
@@ -31,6 +23,7 @@ class Country: Codable {
                 self.name = name
                 self.code = code
             } else {
+                // TODO: improve NSError construction
                 throw NSError(domain: "", code: 0, userInfo: nil)
             }
         } catch let error as NSError {

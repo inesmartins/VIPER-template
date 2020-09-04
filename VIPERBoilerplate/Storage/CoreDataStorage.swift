@@ -1,17 +1,9 @@
-//
-//  CoreDataStorage.swift
-//  VIPER-boilerplate
-//
-//  Created by Inês Martins on 03/09/2020.
-//  Copyright © 2020 Inês Martins. All rights reserved.
-//
-
 import Foundation
 import CoreData
 
 final class CoreDataStorage: LocalStorage {
 
-    let container = NSPersistentContainer(name: "CoreDataDemo")
+    let container = NSPersistentContainer(name: "CoreDataContainer")
     lazy var persistentContainer: NSPersistentContainer = {
         self.container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
