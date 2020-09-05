@@ -1,0 +1,20 @@
+{
+  "commitish" : "e191b1beadf3041259652e6e464eaceff16e5fbb",
+  "iOS" : [
+    {
+      "name" : "AppAuthEnterpriseUserAgent",
+      "hash" : "efd02cb5cf774f8fb3280059b9e7136d8b98f28e3a58a8d2cffde5ce8621a9ca",
+      "linking" : "dynamic"
+    },
+    {
+      "name" : "AppAuth",
+      "hash" : "878856e73cb7843f9a0047ed3ffbc6afeaf186cf67a0962e2a201d3226018ee6",
+      "linking" : "dynamic"
+    },
+    {
+      "name" : "AppAuthCore",
+      "hash" : "b08d238769ae8f3b1b027d1a83ab5e5762fafc7b395f8f321cb33db21a66e826",
+      "linking" : "dynamic"
+    }
+  ]
+}

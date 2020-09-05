@@ -33,6 +33,7 @@
 		4D01B9752503873C00197F7D /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9742503873C00197F7D /* AuthenticationViewController.swift */; };
 		4D01B9772503877300197F7D /* AuthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9762503877300197F7D /* AuthenticationPresenter.swift */; };
 		4D01B9792503877E00197F7D /* AuthnticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9782503877E00197F7D /* AuthnticationInteractor.swift */; };
+		4D01B97E2503A82D00197F7D /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B97D2503A82D00197F7D /* AuthenticationService.swift */; };
 		4DCA1EBB25002C3700067E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBA25002C3700067E94 /* AppDelegate.swift */; };
 		4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */; };
 		4DCA1EC525002C3700067E94 /* VIPERBoilerplate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EC325002C3700067E94 /* VIPERBoilerplate.xcdatamodeld */; };
@@ -103,6 +104,7 @@
 		4D01B9742503873C00197F7D /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		4D01B9762503877300197F7D /* AuthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPresenter.swift; sourceTree = "<group>"; };
 		4D01B9782503877E00197F7D /* AuthnticationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthnticationInteractor.swift; sourceTree = "<group>"; };
+		4D01B97D2503A82D00197F7D /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		4DCA1EB725002C3700067E94 /* VIPERBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPERBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCA1EBA25002C3700067E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		4D01B971250386D300197F7D /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				4D01B97D2503A82D00197F7D /* AuthenticationService.swift */,
 				4D01B972250386F000197F7D /* AuthenticationRouter.swift */,
 				4D01B9782503877E00197F7D /* AuthnticationInteractor.swift */,
 				4D01B9762503877300197F7D /* AuthenticationPresenter.swift */,
@@ -489,6 +492,7 @@
 				4D01B962250287AF00197F7D /* DeviceInfoPresenter.swift in Sources */,
 				4D01B9412500FB4E00197F7D /* KeychainStorage.swift in Sources */,
 				4D01B9662502883200197F7D /* HomeRouter.swift in Sources */,
+				4D01B97E2503A82D00197F7D /* AuthenticationService.swift in Sources */,
 				4DCA1EF82500325100067E94 /* CountryListRouter.swift in Sources */,
 				4D01B9452500FF6800197F7D /* NSUserDefaultsStorage.swift in Sources */,
 				4D01B93A2500F67B00197F7D /* Store.swift in Sources */,

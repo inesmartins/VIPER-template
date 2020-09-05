@@ -9,7 +9,7 @@ protocol AuthenticationRouterDelegate: class {
 final class AuthenticationRouter: AuthenticationRouterDelegate {
 
     private var appRouter: AppRouterDelegate?
-    private weak var rootViewController: UINavigationController?
+    private var rootViewController: UINavigationController?
 
     init(routerDelegate: AppRouterDelegate) {
         self.appRouter = routerDelegate

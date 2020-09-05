@@ -49,6 +49,8 @@ final class HomeViewController: UIViewController {
 
     private func setupUIComponents() {
 
+        self.view.backgroundColor = .white
+
         self.buttonsContainer.translatesAutoresizingMaskIntoConstraints = false
         self.buttonsContainer.backgroundColor = .white
 
@@ -57,34 +59,40 @@ final class HomeViewController: UIViewController {
         self.deviceInfoButton.addTarget(self,
                                         action: #selector(self.handleDeviceInfoButtonClick),
                                         for: .touchUpInside)
-        self.deviceInfoButton.backgroundColor = .gray
         self.deviceInfoButton.setTitle("See Device Info", for: .normal)
-        self.deviceInfoButton.backgroundColor = .white
         self.deviceInfoButton.setTitleColor(.black, for: .normal)
+        self.deviceInfoButton.layer.borderColor = UIColor.black.cgColor
+        self.deviceInfoButton.layer.cornerRadius = 7
+        self.deviceInfoButton.layer.borderWidth = 2
 
         // deviceInfoButton UIButton
         self.countryListButton.translatesAutoresizingMaskIntoConstraints = false
         self.countryListButton.addTarget(self,
                                          action: #selector(self.handleCountryListButtonClick),
                                          for: .touchUpInside)
-        self.countryListButton.backgroundColor = .white
         self.countryListButton.setTitle("See Country List", for: .normal)
         self.countryListButton.setTitleColor(.black, for: .normal)
+        self.countryListButton.layer.borderColor = UIColor.black.cgColor
+        self.countryListButton.layer.cornerRadius = 7
+        self.countryListButton.layer.borderWidth = 2
 
     }
 
     private func addConstraints() {
         let constraints: [NSLayoutConstraint] = [
-            self.buttonsContainer.heightAnchor.constraint(equalToConstant: 100.0),
-            self.buttonsContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.buttonsContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.buttonsContainer.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+
+            self.buttonsContainer.heightAnchor.constraint(equalToConstant: 120.0),
+            self.buttonsContainer.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
+            self.buttonsContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20.0),
+            self.buttonsContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20.0),
+
             self.deviceInfoButton.heightAnchor.constraint(equalToConstant: 50.0),
             self.deviceInfoButton.topAnchor.constraint(equalTo: self.buttonsContainer.topAnchor),
             self.deviceInfoButton.leadingAnchor.constraint(equalTo: self.buttonsContainer.leadingAnchor),
             self.deviceInfoButton.trailingAnchor.constraint(equalTo: self.buttonsContainer.trailingAnchor),
+
             self.countryListButton.heightAnchor.constraint(equalToConstant: 50.0),
-            self.countryListButton.topAnchor.constraint(equalTo: self.deviceInfoButton.bottomAnchor),
+            self.countryListButton.topAnchor.constraint(equalTo: self.deviceInfoButton.bottomAnchor, constant: 20.0),
             self.countryListButton.leadingAnchor.constraint(equalTo: self.buttonsContainer.leadingAnchor),
             self.countryListButton.trailingAnchor.constraint(equalTo: self.buttonsContainer.trailingAnchor),
             self.countryListButton.bottomAnchor.constraint(equalTo: self.buttonsContainer.bottomAnchor)
