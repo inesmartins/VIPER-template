@@ -35,6 +35,8 @@
 		4D01B97E2503A82D00197F7D /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B97D2503A82D00197F7D /* AuthenticationService.swift */; };
 		4D01B9802503AC6A00197F7D /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B97F2503AC6A00197F7D /* UINavigationControllerExtensions.swift */; };
 		4D01B9822503AFD800197F7D /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9812503AFD800197F7D /* HomeInteractor.swift */; };
+		4D8F3B7D2503E5740034719E /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8F3B7C2503E5740034719E /* ToastSwiftFramework.framework */; };
+		4D8F3B7E2503E5740034719E /* ToastSwiftFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8F3B7C2503E5740034719E /* ToastSwiftFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4DCA1EBB25002C3700067E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBA25002C3700067E94 /* AppDelegate.swift */; };
 		4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */; };
 		4DCA1EC525002C3700067E94 /* VIPERBoilerplate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EC325002C3700067E94 /* VIPERBoilerplate.xcdatamodeld */; };
@@ -72,6 +74,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4D01B95D2502854F00197F7D /* Device.framework in Embed Frameworks */,
+				4D8F3B7E2503E5740034719E /* ToastSwiftFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +109,7 @@
 		4D01B97D2503A82D00197F7D /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		4D01B97F2503AC6A00197F7D /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		4D01B9812503AFD800197F7D /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		4D8F3B7C2503E5740034719E /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
 		4DCA1EB725002C3700067E94 /* VIPERBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPERBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCA1EBA25002C3700067E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D01B95C2502854F00197F7D /* Device.framework in Frameworks */,
+				4D8F3B7D2503E5740034719E /* ToastSwiftFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +290,7 @@
 		4DCA1EED2500301900067E94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D8F3B7C2503E5740034719E /* ToastSwiftFramework.framework */,
 				4D01B95B2502854F00197F7D /* Device.framework */,
 			);
 			name = Frameworks;

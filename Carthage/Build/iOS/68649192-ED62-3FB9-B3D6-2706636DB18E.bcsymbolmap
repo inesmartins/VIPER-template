@@ -1,7 +1,7 @@
 BCSymbolMap Version: 2.0
 Apple clang version 11.0.3 (clang-1103.0.32.62)
 /Users/inesmartins/Library/Caches/org.carthage.CarthageKit/DerivedData/11.7_11E801a/Device/3.2.1/Build/Intermediates.noindex/ArchiveIntermediates/Device/IntermediateBuildFilesPath/Device.build/Release-iphoneos/Device.build/DerivedSources/Device_vers.c
-/Users/inesmartins/Desktop/duckduckgo/VIPERBoilerplate/Carthage/Checkouts/Device
+/Users/inesmartins/Desktop/iOS-Templates/VIPER-template/Carthage/Checkouts/Device
 _$s6Device7VersionOSQAASQ2eeoiySbx_xtFZTW
 _$s6Device7VersionOSHAASH9hashValueSivgTW
 _$s6Device7VersionOSHAASH4hash4intoys6HasherVz_tFTW
@@ -56,7 +56,7 @@ ___swift_reflection_version
 Apple clang version 11.0.3 (clang-1103.0.32.53)
 <swift-imported-modules>
 Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
-/Users/inesmartins/Desktop/duckduckgo/VIPERBoilerplate/Carthage/Checkouts/Device/Source/Version.swift
+/Users/inesmartins/Desktop/iOS-Templates/VIPER-template/Carthage/Checkouts/Device/Source/Version.swift
 $s6Device7VersionOMa
 <compiler-generated>
 $s6Device7VersionOwui
@@ -114,7 +114,7 @@ _got.$sSL1loiySbx_xtFZTq
 _got.$sSL2leoiySbx_xtFZTq
 _got.$sSL2geoiySbx_xtFZTq
 _got.$sSL1goiySbx_xtFZTq
-/Users/inesmartins/Desktop/duckduckgo/VIPERBoilerplate/Carthage/Checkouts/Device/Source/Size.swift
+/Users/inesmartins/Desktop/iOS-Templates/VIPER-template/Carthage/Checkouts/Device/Source/Size.swift
 $s6Device4SizeOMa
 $s6Device4SizeOwui
 $s6Device4SizeOwup
@@ -154,7 +154,7 @@ _$s6Device4TypeOMf
 _symbolic _____ 6Device4TypeO
 _$s6Device4TypeOMF
 _$s6Device4TypeOSYAAMA
-/Users/inesmartins/Desktop/duckduckgo/VIPERBoilerplate/Carthage/Checkouts/Device/Source/Type.swift
+/Users/inesmartins/Desktop/iOS-Templates/VIPER-template/Carthage/Checkouts/Device/Source/Type.swift
 $s6Device4TypeOMa
 $s6Device4TypeOwui
 $s6Device4TypeOwup
@@ -177,7 +177,7 @@ _$s6DeviceAACMF
 _$sS2SSysWL
 _objc_classes
 _$s6DeviceAACABycfCTq
-/Users/inesmartins/Desktop/duckduckgo/VIPERBoilerplate/Carthage/Checkouts/Device/Source/iOS/Device.swift
+/Users/inesmartins/Desktop/iOS-Templates/VIPER-template/Carthage/Checkouts/Device/Source/iOS/Device.swift
 $sS2SSysWl
 $s6DeviceAACMa
 size

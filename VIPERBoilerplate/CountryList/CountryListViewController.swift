@@ -1,4 +1,5 @@
 import UIKit
+import ToastSwiftFramework
 
 protocol CountryListViewControllerDelegate: class {
     func updateCountryList(_ countries: [Country])
@@ -169,25 +170,13 @@ extension CountryListViewController: CountryListViewControllerDelegate {
 
     func showSaveResult(_ result: Bool) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(
-                title: result ? "Saved" : "Not Saved",
-                message: "",
-                preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            alert.modalPresentationStyle = .currentContext
-            self.present(alert, animated: true, completion: nil)
+            self.view.makeToast(result ? "Saved" : "Not Saved", duration: 0.5, position: .top)
         }
     }
 
     func showSavedCountry(_ country: Country) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(
-                title: "Saved Country: \(country.name) - \(country.code   )",
-                message: "",
-                preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            alert.modalPresentationStyle = .currentContext
-            self.present(alert, animated: true, completion: nil)
+            self.view.makeToast("Saved Country: \(country.name) - \(country.code)", duration: 1.0, position: .top)
         }
     }
 
