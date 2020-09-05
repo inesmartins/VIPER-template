@@ -1,7 +1,7 @@
 import Foundation
 
 final class AuthenticationService {
-    
+
     class func validateLogin(
         _ username: String,
         _ password: String,

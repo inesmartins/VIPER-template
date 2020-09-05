@@ -1,6 +1,0 @@
-framework module AppAuthEnterpriseUserAgent {
-  umbrella header "AppAuthEnterpriseUserAgent.h"
-
-  export *
-  module * { export * }
-}

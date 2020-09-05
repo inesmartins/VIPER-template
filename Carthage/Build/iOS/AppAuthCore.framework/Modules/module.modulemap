@@ -1,6 +1,0 @@
-framework module AppAuthCore {
-  umbrella header "AppAuthCore.h"
-
-  export *
-  module * { export * }
-}
