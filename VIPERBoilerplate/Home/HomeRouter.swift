@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-protocol HomeRouterDelegate: AnyObject {
+protocol HomeRouterDelegate: class {
     func showHome(onRootViewController rootViewController: UINavigationController)
     func showDeviceInfo()
     func showCountryList()
@@ -10,27 +10,30 @@ protocol HomeRouterDelegate: AnyObject {
 final class HomeRouter: HomeRouterDelegate {
 
     private weak var routerDelegate: AppRouterDelegate?
-    private var homeViewController: UIViewController?
+    private var rootViewController: UINavigationController?
 
     init(routerDelegate: AppRouterDelegate) {
         self.routerDelegate = routerDelegate
     }
 
     func showHome(onRootViewController rootViewController: UINavigationController) {
-        let interactor = HomeInteractor()
-        let presenter = HomePresenter(interactor, routingDelegate: self)
-        self.homeViewController = HomeViewController(presenter)
-        rootViewController.addChild(self.homeViewController!)
+        self.rootViewController = rootViewController
+        self.rootViewController?.pushViewController(self.makeHomeViewController(), animated: true)
     }
 
     func showDeviceInfo() {
-        let deviceInfoCtrl = DeviceInfoRouter().makeDeviceInfo()
-        self.homeViewController?.present(deviceInfoCtrl, animated: true, completion: nil)
+        self.rootViewController?.pushViewController(DeviceInfoRouter().makeDeviceInfo(), animated: true)
     }
 
     func showCountryList() {
-        let countryListCtrl = CountryListRouter().makeCountryList()
-        self.homeViewController?.present(countryListCtrl, animated: true, completion: nil)
+        self.rootViewController?.pushViewController(CountryListRouter().makeCountryList(), animated: true)
     }
 
+    // MARK: - Auxiliary Methods
+
+    private func makeHomeViewController() -> HomeViewController {
+        let interactor = HomeInteractor()
+        let presenter = HomePresenter(interactor, routerDelegate: self)
+        return HomeViewController(presenter)
+    }
 }

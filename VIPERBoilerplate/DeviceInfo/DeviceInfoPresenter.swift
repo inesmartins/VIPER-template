@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DeviceInfoPresenterDelegate: AnyObject {
+protocol DeviceInfoPresenterDelegate: class {
 }
 
 final class DeviceInfoPresenter: DeviceInfoPresenterDelegate {

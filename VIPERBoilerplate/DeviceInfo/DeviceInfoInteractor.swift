@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DeviceInfoInteractorDelegate {
+protocol DeviceInfoInteractorDelegate: class {
 }
 
 final class DeviceInfoInteractor: DeviceInfoInteractorDelegate {

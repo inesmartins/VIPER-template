@@ -29,6 +29,10 @@
 		4D01B96B250288B800197F7D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B96A250288B800197F7D /* HomeViewController.swift */; };
 		4D01B96D2502893100197F7D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B96C2502893100197F7D /* HomePresenter.swift */; };
 		4D01B96F25028AE300197F7D /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B96E25028AE200197F7D /* HomeInteractor.swift */; };
+		4D01B973250386F000197F7D /* AuthenticationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B972250386F000197F7D /* AuthenticationRouter.swift */; };
+		4D01B9752503873C00197F7D /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9742503873C00197F7D /* AuthenticationViewController.swift */; };
+		4D01B9772503877300197F7D /* AuthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9762503877300197F7D /* AuthenticationPresenter.swift */; };
+		4D01B9792503877E00197F7D /* AuthnticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9782503877E00197F7D /* AuthnticationInteractor.swift */; };
 		4DCA1EBB25002C3700067E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBA25002C3700067E94 /* AppDelegate.swift */; };
 		4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */; };
 		4DCA1EC525002C3700067E94 /* VIPERBoilerplate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EC325002C3700067E94 /* VIPERBoilerplate.xcdatamodeld */; };
@@ -95,6 +99,10 @@
 		4D01B96A250288B800197F7D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4D01B96C2502893100197F7D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		4D01B96E25028AE200197F7D /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		4D01B972250386F000197F7D /* AuthenticationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRouter.swift; sourceTree = "<group>"; };
+		4D01B9742503873C00197F7D /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		4D01B9762503877300197F7D /* AuthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPresenter.swift; sourceTree = "<group>"; };
+		4D01B9782503877E00197F7D /* AuthnticationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthnticationInteractor.swift; sourceTree = "<group>"; };
 		4DCA1EB725002C3700067E94 /* VIPERBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPERBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCA1EBA25002C3700067E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +209,17 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		4D01B971250386D300197F7D /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4D01B972250386F000197F7D /* AuthenticationRouter.swift */,
+				4D01B9782503877E00197F7D /* AuthnticationInteractor.swift */,
+				4D01B9762503877300197F7D /* AuthenticationPresenter.swift */,
+				4D01B9742503873C00197F7D /* AuthenticationViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		4DCA1EAE25002C3700067E94 = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +246,7 @@
 			children = (
 				4DCA1EBA25002C3700067E94 /* AppDelegate.swift */,
 				4D01B9322500398500197F7D /* AppRouter.swift */,
+				4D01B971250386D300197F7D /* Authentication */,
 				4D01B9672502883800197F7D /* Home */,
 				4D01B9602502879100197F7D /* DeviceInfo */,
 				4DCA1EF6250031EA00067E94 /* CountryList */,
@@ -455,12 +475,15 @@
 			files = (
 				4D01B92F2500348D00197F7D /* Country.swift in Sources */,
 				4D01B964250287BF00197F7D /* DeviceInfoInteractor.swift in Sources */,
+				4D01B973250386F000197F7D /* AuthenticationRouter.swift in Sources */,
 				4D01B96D2502893100197F7D /* HomePresenter.swift in Sources */,
 				4D01B96F25028AE300197F7D /* HomeInteractor.swift in Sources */,
 				4D01B93D2500F8F300197F7D /* KeyValueLocalStorage.swift in Sources */,
 				4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */,
 				4DCA1EBB25002C3700067E94 /* AppDelegate.swift in Sources */,
+				4D01B9772503877300197F7D /* AuthenticationPresenter.swift in Sources */,
 				4DCA1EF52500313D00067E94 /* CountryListInteractor.swift in Sources */,
+				4D01B9792503877E00197F7D /* AuthnticationInteractor.swift in Sources */,
 				4D01B95F2502875900197F7D /* DeviceInfoViewController.swift in Sources */,
 				4D01B96B250288B800197F7D /* HomeViewController.swift in Sources */,
 				4D01B962250287AF00197F7D /* DeviceInfoPresenter.swift in Sources */,
@@ -475,6 +498,7 @@
 				4D01B94825011ED600197F7D /* DataExtensions.swift in Sources */,
 				4D01B9692502886300197F7D /* DeviceInfoRouter.swift in Sources */,
 				4DCA1EF32500312800067E94 /* CountryListPresenter.swift in Sources */,
+				4D01B9752503873C00197F7D /* AuthenticationViewController.swift in Sources */,
 				4D01B95825027C2F00197F7D /* DBLocalStorage.swift in Sources */,
 				4D01B9332500398500197F7D /* AppRouter.swift in Sources */,
 			);

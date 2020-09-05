@@ -1,29 +1,19 @@
 import UIKit
 import Foundation
 
-protocol AppRouterDelegate: AnyObject {
-    func showHome()
+protocol AppRouterDelegate: class {
 }
 
 final class AppRouter: AppRouterDelegate {
 
-    private let window: UIWindow
     private let rootViewController = UINavigationController()
-    private var homeRouter: HomeRouter?
+    private var authenticationRouter: AuthenticationRouter?
 
-    init(window: UIWindow) {
-        self.window = window
-    }
-
-    func launchApplication() {
-        self.window.rootViewController = self.rootViewController
-        self.homeRouter = HomeRouter(routerDelegate: self)
-        self.homeRouter?.showHome(onRootViewController: self.rootViewController)
-        self.window.makeKeyAndVisible()
-    }
-
-    func showHome() {
-        self.rootViewController.popToRootViewController(animated: true)
+    func launchApplication(onWindow window: UIWindow) {
+        window.rootViewController = self.rootViewController
+        self.authenticationRouter = AuthenticationRouter(routerDelegate: self)
+        self.authenticationRouter?.showAuthenticationPage(onRootViewController: self.rootViewController)
+        window.makeKeyAndVisible()
     }
 
 }

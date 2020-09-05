@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
+import Device
 
-protocol DeviceInfoViewControllerDelegate: AnyObject {
-
+protocol DeviceInfoViewControllerDelegate: class {
 }
 
 final class DeviceInfoViewController: UIViewController {
@@ -12,6 +12,8 @@ final class DeviceInfoViewController: UIViewController {
     private var presenter: DeviceInfoPresenterDelegate?
 
     // MARK: - UI components
+
+    private lazy var textArea = UITextView(frame: .zero)
 
     // MARK: - UIViewController Lifecycle
 
@@ -24,4 +26,33 @@ final class DeviceInfoViewController: UIViewController {
         super.init(coder: coder)
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupViews()
+    }
+
+    private func setupViews() {
+        self.addSubviews()
+        self.setupUIComponents()
+        self.addConstraints()
+    }
+
+    private func addSubviews() {
+        self.view.addSubview(self.textArea)
+    }
+
+    private func setupUIComponents() {
+        self.textArea.translatesAutoresizingMaskIntoConstraints = false
+        self.textArea.text = "Version: \(Device.version())\nType: \(Device.type())"
+    }
+
+    private func addConstraints() {
+        let constraints = [
+            self.textArea.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.textArea.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.textArea.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.textArea.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
 }

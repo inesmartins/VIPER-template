@@ -25,7 +25,7 @@ class KeyChainStorage: KeyValueLocalStorage {
 
         // removes previous entry
         let deleteStatus = SecItemDelete(query)
-        guard deleteStatus == noErr else { return false }
+        guard deleteStatus == noErr || deleteStatus == errSecItemNotFound else { return false }
 
         // adds new entry
         let addStatus = SecItemAdd(query, nil)

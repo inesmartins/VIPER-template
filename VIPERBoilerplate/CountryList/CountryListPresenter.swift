@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CountryListPresenterDelegate: AnyObject {
+protocol CountryListPresenterDelegate: class {
     func loadCountryList(inView view: CountryListViewControllerDelegate)
     func didSelectCountry(_ country: Country)
     func didSelectStore(_ store: Store)

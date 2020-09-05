@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-protocol HomeViewControllerDelegate: AnyObject {
+protocol HomeViewControllerDelegate: class {
 
 }
 

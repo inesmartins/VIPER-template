@@ -1,10 +1,10 @@
 import Foundation
 
-protocol DeviceInfoRouterDelegate {
+protocol DeviceInfoRouterDelegate: class {
     func makeDeviceInfo() -> DeviceInfoViewController
 }
 
-final class DeviceInfoRouter: DeviceInfoRouterDelegate{
+final class DeviceInfoRouter: DeviceInfoRouterDelegate {
 
     func makeDeviceInfo() -> DeviceInfoViewController {
         let interactor = DeviceInfoInteractor()

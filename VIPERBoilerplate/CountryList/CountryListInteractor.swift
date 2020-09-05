@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CountryListInteractorDelegate: AnyObject {
+protocol CountryListInteractorDelegate: class {
     func loadCountryList() -> [Country]?
     func storeCountry(onStore: Store, _ country: Country, onCompletion: @escaping ((_ result: Bool) -> Void))
     func loadStoredCountry(from: Store, onCompletion: @escaping ((_ country: Country?) -> Void))

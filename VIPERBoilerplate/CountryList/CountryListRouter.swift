@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CountryListRouterDelegate {
+protocol CountryListRouterDelegate: class {
     func makeCountryList() -> CountryListViewController
 }
 

@@ -1,34 +1,26 @@
-//
-//  HomePresenter.swift
-//  VIPERBoilerplate
-//
-//  Created by Inês Martins on 04/09/2020.
-//  Copyright © 2020 Inês Martins. All rights reserved.
-//
-
 import Foundation
 
-protocol HomePresenterDelegate: AnyObject {
+protocol HomePresenterDelegate: class {
     func didClickDeviceInfoButton()
     func didClickCountryListButton()
 }
 
 final class HomePresenter: HomePresenterDelegate {
 
-    private var interactor: HomeInteractorDelegate?
-    private var routerDelegate: HomeRouterDelegate?
+    private weak var interactor: HomeInteractorDelegate?
+    private var router: HomeRouterDelegate?
 
-    init(_ interactor: HomeInteractorDelegate, routingDelegate: HomeRouterDelegate) {
+    init(_ interactor: HomeInteractorDelegate, routerDelegate: HomeRouterDelegate) {
         self.interactor = interactor
-        self.routerDelegate = routingDelegate
+        self.router = routerDelegate
     }
 
     func didClickDeviceInfoButton() {
-        self.routerDelegate?.showDeviceInfo()
+        self.router?.showDeviceInfo()
     }
 
     func didClickCountryListButton() {
-        self.routerDelegate?.showCountryList()
+        self.router?.showCountryList()
     }
 
 }

@@ -1,6 +1,6 @@
 import UIKit
 
-protocol CountryListViewControllerDelegate: AnyObject {
+protocol CountryListViewControllerDelegate: class {
     func updateCountryList(_ countries: [Country])
     func showSaveResult(_ result: Bool)
     func showSavedCountry(_ country: Country)
