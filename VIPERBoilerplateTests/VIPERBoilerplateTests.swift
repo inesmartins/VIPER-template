@@ -1,13 +1,5 @@
-//
-//  VIPER_boilerplateTests.swift
-//  VIPER-boilerplateTests
-//
-//  Created by Inês Martins on 02/09/2020.
-//  Copyright © 2020 Inês Martins. All rights reserved.
-//
-
 import XCTest
-@testable import VIPER_boilerplate
+@testable import VIPERBoilerplate
 
 class VIPERBoilerplateTests: XCTestCase {
 
