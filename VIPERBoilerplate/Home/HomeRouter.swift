@@ -18,6 +18,7 @@ final class HomeRouter: HomeRouterDelegate {
 
     func showHome(onRootViewController rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
+        self.rootViewController?.popViewController(animated: true)
         self.rootViewController?.pushViewController(self.makeHomeViewController(), animated: true)
     }
 

@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 protocol AuthenticationViewControllerDelegate: class {
+    func showAuthenticationError()
 }
 
 final class AuthenticationViewController: UIViewController {
@@ -86,13 +87,14 @@ final class AuthenticationViewController: UIViewController {
         self.loginButton.translatesAutoresizingMaskIntoConstraints = false
         self.loginButton.setTitle("Login", for: .normal)
         self.loginButton.setTitleColor(.black, for: .normal)
+        self.loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
         self.loginButton.addTarget(self, action: #selector(self.handleLoginButton), for: .touchUpInside)
         self.updateLoginButton(enabled: false)
     }
 
     @objc func handleLoginButton() {
         if let username = self.username, let password = self.password {
-            self.presenter?.didClickLoginButton(username: username, password: password)
+            self.presenter?.didClickLoginButton(onView: self, username: username, password: password)
         }
     }
 
@@ -152,4 +154,12 @@ extension AuthenticationViewController: UITextFieldDelegate {
 
         return true
     }
+}
+
+extension AuthenticationViewController: AuthenticationViewControllerDelegate {
+
+    func showAuthenticationError() {
+        fatalError("Authentication error modal not implemented")
+    }
+
 }
