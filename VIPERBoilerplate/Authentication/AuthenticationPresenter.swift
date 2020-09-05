@@ -16,7 +16,6 @@ final class AuthenticationPresenter: AuthenticationPresenterDelegate {
 
     func didClickLoginButton(username: String, password: String) {
         self.interactor?.validateLogin(username, password) { authenticated in
-            
         }
     }
 
