@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        ApplicationRouter(window: self.window!).launchApplication()
+        AppRouter(window: self.window!).launchApplication()
         return true
     }
 

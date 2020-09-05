@@ -1,8 +1,12 @@
 import Foundation
 
-final class CountryListRouter {
+protocol CountryListRouterDelegate {
+    func makeCountryList() -> CountryListViewController
+}
 
-    func showCountryList() -> CountryListViewController {
+final class CountryListRouter: CountryListRouterDelegate {
+
+    func makeCountryList() -> CountryListViewController {
         let interactor = CountryListInteractor()
         let presenter = CountryListPresenter(interactor)
         return CountryListViewController(presenter)

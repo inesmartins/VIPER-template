@@ -1,5 +1,5 @@
 //
-//  CryptoService.swift
+//  HomeInteractor.swift
 //  VIPERBoilerplate
 //
 //  Created by Inês Martins on 04/09/2020.
@@ -8,5 +8,9 @@
 
 import Foundation
 
-class CryptoService {
+protocol HomeInteractorDelegate: AnyObject {
+
+}
+
+final class HomeInteractor: HomeInteractorDelegate {    
 }

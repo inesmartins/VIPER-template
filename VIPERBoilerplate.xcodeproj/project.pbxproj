@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D01B92F2500348D00197F7D /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B92E2500348D00197F7D /* Country.swift */; };
 		4D01B931250036F500197F7D /* CountryList.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D01B930250036F500197F7D /* CountryList.json */; };
-		4D01B9332500398500197F7D /* ApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9322500398500197F7D /* ApplicationRouter.swift */; };
+		4D01B9332500398500197F7D /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9322500398500197F7D /* AppRouter.swift */; };
 		4D01B93625003AAD00197F7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D01B93425003AAD00197F7D /* Main.storyboard */; };
 		4D01B93A2500F67B00197F7D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9392500F67B00197F7D /* Store.swift */; };
 		4D01B93D2500F8F300197F7D /* KeyValueLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B93C2500F8F300197F7D /* KeyValueLocalStorage.swift */; };
@@ -18,10 +18,17 @@
 		4D01B9452500FF6800197F7D /* NSUserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */; };
 		4D01B94825011ED600197F7D /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B94725011ED600197F7D /* DataExtensions.swift */; };
 		4D01B94C2501863D00197F7D /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B94B2501863D00197F7D /* AppKey.swift */; };
-		4D01B950250269A800197F7D /* CryptoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B94F250269A800197F7D /* CryptoService.swift */; };
-		4D01B95425026AE900197F7D /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D01B95125026A0D00197F7D /* CommonCrypto.framework */; };
-		4D01B95525026AE900197F7D /* CommonCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D01B95125026A0D00197F7D /* CommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4D01B95825027C2F00197F7D /* DBLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B95725027C2F00197F7D /* DBLocalStorage.swift */; };
+		4D01B95C2502854F00197F7D /* Device.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D01B95B2502854F00197F7D /* Device.framework */; };
+		4D01B95D2502854F00197F7D /* Device.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D01B95B2502854F00197F7D /* Device.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4D01B95F2502875900197F7D /* DeviceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B95E2502875900197F7D /* DeviceInfoViewController.swift */; };
+		4D01B962250287AF00197F7D /* DeviceInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B961250287AF00197F7D /* DeviceInfoPresenter.swift */; };
+		4D01B964250287BF00197F7D /* DeviceInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B963250287BF00197F7D /* DeviceInfoInteractor.swift */; };
+		4D01B9662502883200197F7D /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9652502883200197F7D /* HomeRouter.swift */; };
+		4D01B9692502886300197F7D /* DeviceInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9682502886300197F7D /* DeviceInfoRouter.swift */; };
+		4D01B96B250288B800197F7D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B96A250288B800197F7D /* HomeViewController.swift */; };
+		4D01B96D2502893100197F7D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B96C2502893100197F7D /* HomePresenter.swift */; };
+		4D01B96F25028AE300197F7D /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B96E25028AE200197F7D /* HomeInteractor.swift */; };
 		4DCA1EBB25002C3700067E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBA25002C3700067E94 /* AppDelegate.swift */; };
 		4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */; };
 		4DCA1EC525002C3700067E94 /* VIPERBoilerplate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EC325002C3700067E94 /* VIPERBoilerplate.xcdatamodeld */; };
@@ -58,7 +65,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4D01B95525026AE900197F7D /* CommonCrypto.framework in Embed Frameworks */,
+				4D01B95D2502854F00197F7D /* Device.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,7 +75,7 @@
 /* Begin PBXFileReference section */
 		4D01B92E2500348D00197F7D /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		4D01B930250036F500197F7D /* CountryList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryList.json; sourceTree = "<group>"; };
-		4D01B9322500398500197F7D /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouter.swift; sourceTree = "<group>"; };
+		4D01B9322500398500197F7D /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		4D01B93525003AAD00197F7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D01B9392500F67B00197F7D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		4D01B93C2500F8F300197F7D /* KeyValueLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueLocalStorage.swift; sourceTree = "<group>"; };
@@ -77,9 +84,17 @@
 		4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsStorage.swift; sourceTree = "<group>"; };
 		4D01B94725011ED600197F7D /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		4D01B94B2501863D00197F7D /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
-		4D01B94F250269A800197F7D /* CryptoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoService.swift; sourceTree = "<group>"; };
 		4D01B95125026A0D00197F7D /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = Carthage/Build/iOS/CommonCrypto.framework; sourceTree = "<group>"; };
 		4D01B95725027C2F00197F7D /* DBLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBLocalStorage.swift; sourceTree = "<group>"; };
+		4D01B95B2502854F00197F7D /* Device.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Device.framework; path = Carthage/Build/iOS/Device.framework; sourceTree = "<group>"; };
+		4D01B95E2502875900197F7D /* DeviceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoViewController.swift; sourceTree = "<group>"; };
+		4D01B961250287AF00197F7D /* DeviceInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoPresenter.swift; sourceTree = "<group>"; };
+		4D01B963250287BF00197F7D /* DeviceInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoInteractor.swift; sourceTree = "<group>"; };
+		4D01B9652502883200197F7D /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		4D01B9682502886300197F7D /* DeviceInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoRouter.swift; sourceTree = "<group>"; };
+		4D01B96A250288B800197F7D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4D01B96C2502893100197F7D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		4D01B96E25028AE200197F7D /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		4DCA1EB725002C3700067E94 /* VIPERBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPERBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCA1EBA25002C3700067E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D01B95425026AE900197F7D /* CommonCrypto.framework in Frameworks */,
+				4D01B95C2502854F00197F7D /* Device.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,14 +158,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		4D01B94E2502699A00197F7D /* Crypto */ = {
-			isa = PBXGroup;
-			children = (
-				4D01B94F250269A800197F7D /* CryptoService.swift */,
-			);
-			path = Crypto;
-			sourceTree = "<group>";
-		};
 		4D01B9592502801A00197F7D /* KeyValueLocalStorage */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +177,28 @@
 				4DCA1EC325002C3700067E94 /* VIPERBoilerplate.xcdatamodeld */,
 			);
 			path = DBLocalStorage;
+			sourceTree = "<group>";
+		};
+		4D01B9602502879100197F7D /* DeviceInfo */ = {
+			isa = PBXGroup;
+			children = (
+				4D01B9682502886300197F7D /* DeviceInfoRouter.swift */,
+				4D01B963250287BF00197F7D /* DeviceInfoInteractor.swift */,
+				4D01B961250287AF00197F7D /* DeviceInfoPresenter.swift */,
+				4D01B95E2502875900197F7D /* DeviceInfoViewController.swift */,
+			);
+			path = DeviceInfo;
+			sourceTree = "<group>";
+		};
+		4D01B9672502883800197F7D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4D01B9652502883200197F7D /* HomeRouter.swift */,
+				4D01B96E25028AE200197F7D /* HomeInteractor.swift */,
+				4D01B96C2502893100197F7D /* HomePresenter.swift */,
+				4D01B96A250288B800197F7D /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		4DCA1EAE25002C3700067E94 = {
@@ -197,10 +226,11 @@
 			isa = PBXGroup;
 			children = (
 				4DCA1EBA25002C3700067E94 /* AppDelegate.swift */,
-				4D01B9322500398500197F7D /* ApplicationRouter.swift */,
+				4D01B9322500398500197F7D /* AppRouter.swift */,
+				4D01B9672502883800197F7D /* Home */,
+				4D01B9602502879100197F7D /* DeviceInfo */,
 				4DCA1EF6250031EA00067E94 /* CountryList */,
 				4D01B93B2500F8D000197F7D /* Storage */,
-				4D01B94E2502699A00197F7D /* Crypto */,
 				4D01B94625011EC800197F7D /* Extensions */,
 				4DCA1EC625002C3A00067E94 /* Assets.xcassets */,
 				4DCA1EC825002C3A00067E94 /* LaunchScreen.storyboard */,
@@ -231,6 +261,7 @@
 		4DCA1EED2500301900067E94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D01B95B2502854F00197F7D /* Device.framework */,
 				4D01B95125026A0D00197F7D /* CommonCrypto.framework */,
 				4DCA1EEE2500301A00067E94 /* Alamofire.framework */,
 			);
@@ -261,6 +292,7 @@
 				4DCA1EB425002C3700067E94 /* Frameworks */,
 				4DCA1EB525002C3700067E94 /* Resources */,
 				4D01B94D2502497400197F7D /* ShellScript */,
+				4D01B9702502B22F00197F7D /* ShellScript */,
 				4D01B95625026AE900197F7D /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -397,6 +429,23 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		4D01B9702502B22F00197F7D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -404,13 +453,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D01B950250269A800197F7D /* CryptoService.swift in Sources */,
 				4D01B92F2500348D00197F7D /* Country.swift in Sources */,
+				4D01B964250287BF00197F7D /* DeviceInfoInteractor.swift in Sources */,
+				4D01B96D2502893100197F7D /* HomePresenter.swift in Sources */,
+				4D01B96F25028AE300197F7D /* HomeInteractor.swift in Sources */,
 				4D01B93D2500F8F300197F7D /* KeyValueLocalStorage.swift in Sources */,
 				4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */,
 				4DCA1EBB25002C3700067E94 /* AppDelegate.swift in Sources */,
 				4DCA1EF52500313D00067E94 /* CountryListInteractor.swift in Sources */,
+				4D01B95F2502875900197F7D /* DeviceInfoViewController.swift in Sources */,
+				4D01B96B250288B800197F7D /* HomeViewController.swift in Sources */,
+				4D01B962250287AF00197F7D /* DeviceInfoPresenter.swift in Sources */,
 				4D01B9412500FB4E00197F7D /* KeychainStorage.swift in Sources */,
+				4D01B9662502883200197F7D /* HomeRouter.swift in Sources */,
 				4DCA1EF82500325100067E94 /* CountryListRouter.swift in Sources */,
 				4D01B9452500FF6800197F7D /* NSUserDefaultsStorage.swift in Sources */,
 				4D01B93A2500F67B00197F7D /* Store.swift in Sources */,
@@ -418,9 +473,10 @@
 				4D01B94C2501863D00197F7D /* AppKey.swift in Sources */,
 				4DCA1EC525002C3700067E94 /* VIPERBoilerplate.xcdatamodeld in Sources */,
 				4D01B94825011ED600197F7D /* DataExtensions.swift in Sources */,
+				4D01B9692502886300197F7D /* DeviceInfoRouter.swift in Sources */,
 				4DCA1EF32500312800067E94 /* CountryListPresenter.swift in Sources */,
 				4D01B95825027C2F00197F7D /* DBLocalStorage.swift in Sources */,
-				4D01B9332500398500197F7D /* ApplicationRouter.swift in Sources */,
+				4D01B9332500398500197F7D /* AppRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
