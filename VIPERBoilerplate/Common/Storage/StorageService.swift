@@ -1,6 +1,6 @@
 import Foundation
 
-protocol StorageServiceDelegate {
+protocol StorageServiceProtocol {
 
     func save<T: Codable>(object: T,
                           withKey key: String,
@@ -19,7 +19,7 @@ final class StorageService {
 
 }
 
-extension StorageService: StorageServiceDelegate {
+extension StorageService: StorageServiceProtocol {
 
     func save<T: Codable>(object: T, withKey key: String, inStore store: Store,
                           onCompletion: @escaping (_ result: Result<Bool, Error>) -> Void) {

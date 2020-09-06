@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 
-protocol DuckDuckGoServiceDelegate: AnyObject {
+protocol DuckDuckGoServiceProtocol: AnyObject {
     func search(searchParams: SearchParams, onCompletion: @escaping (Result<SearchResult?, Error>) -> Void)
 }
 
@@ -11,7 +11,7 @@ final class DuckDuckGoService {
 
 }
 
-extension DuckDuckGoService: DuckDuckGoServiceDelegate {
+extension DuckDuckGoService: DuckDuckGoServiceProtocol {
 
     func search(searchParams: SearchParams, onCompletion: @escaping (Result<SearchResult?, Error>) -> Void) {
 

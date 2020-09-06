@@ -1,6 +1,6 @@
 import Foundation
 
-protocol AuthenticationInteractorDelegate: AnyObject {
+protocol AuthenticationInteractorProtocol: AnyObject {
 
     func validateLogin(
         _ username: String,
@@ -17,7 +17,7 @@ final class AuthenticationInteractor {
     }
 }
 
-extension AuthenticationInteractor: AuthenticationInteractorDelegate {
+extension AuthenticationInteractor: AuthenticationInteractorProtocol {
 
     func validateLogin(
         _ username: String,

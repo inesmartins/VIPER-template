@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-protocol HomeRouterDelegate: AnyObject {
+protocol HomeRouterProtocol: AnyObject {
     func showHome(onRootViewController rootViewController: UINavigationController)
     func showDeviceInfo()
     func showCountryList()
@@ -9,15 +9,15 @@ protocol HomeRouterDelegate: AnyObject {
 
 final class HomeRouter {
 
-    private var appRouter: AppRouterDelegate?
-    private let storageService: StorageServiceDelegate
-    private let ddgService: DuckDuckGoServiceDelegate
+    private var appRouter: AppRouterProtocol?
+    private let storageService: StorageServiceProtocol
+    private let ddgService: DuckDuckGoServiceProtocol
 
     private var rootViewController: UINavigationController?
 
-    init(storageService: StorageServiceDelegate,
-         ddgService: DuckDuckGoServiceDelegate,
-         appRouter: AppRouterDelegate) {
+    init(storageService: StorageServiceProtocol,
+         ddgService: DuckDuckGoServiceProtocol,
+         appRouter: AppRouterProtocol) {
         self.appRouter = appRouter
         self.ddgService = ddgService
         self.storageService = storageService
@@ -25,7 +25,7 @@ final class HomeRouter {
 
 }
 
-extension HomeRouter: HomeRouterDelegate {
+extension HomeRouter: HomeRouterProtocol {
 
     func showHome(onRootViewController rootViewController: UINavigationController) {
         self.rootViewController = rootViewController

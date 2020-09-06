@@ -1,7 +1,7 @@
 import UIKit
 import ToastSwiftFramework
 
-protocol CountryListViewControllerDelegate: AnyObject {
+protocol CountryListViewControllerProtocol: AnyObject {
     func updateCountryList(_ countries: [Country])
     func showSaveResult(_ result: Bool)
     func showSavedCountry(_ country: Country)
@@ -15,7 +15,7 @@ class CountryListViewController: UIViewController {
 
     // MARK: - UIViewController Properties
 
-    private var presenter: CountryListPresenterDelegate?
+    private var presenter: CountryListPresenterProtocol?
     private var countries = [Country]()
 
     // MARK: - UI components
@@ -27,7 +27,7 @@ class CountryListViewController: UIViewController {
 
     // MARK: - UIViewController Lifecycle
 
-    init(_ presenter: CountryListPresenterDelegate) {
+    init(_ presenter: CountryListPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -89,7 +89,7 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
     }
 }
 
-extension CountryListViewController: CountryListViewControllerDelegate {
+extension CountryListViewController: CountryListViewControllerProtocol {
 
     func updateCountryList(_ countries: [Country]) {
         self.countries = countries

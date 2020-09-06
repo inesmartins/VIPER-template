@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CountryListInteractorDelegate: AnyObject {
+protocol CountryListInteractorProtocol: AnyObject {
     func loadCountryList() -> [Country]?
     func storeCountry(
         inStore store: Store,
@@ -13,14 +13,14 @@ protocol CountryListInteractorDelegate: AnyObject {
 
 final class CountryListInteractor {
 
-    private let storageService: StorageServiceDelegate
+    private let storageService: StorageServiceProtocol
 
-    init(storageService: StorageServiceDelegate) {
+    init(storageService: StorageServiceProtocol) {
         self.storageService = storageService
     }
 }
 
-extension CountryListInteractor: CountryListInteractorDelegate {
+extension CountryListInteractor: CountryListInteractorProtocol {
 
     func loadCountryList() -> [Country]? {
         if let filepath = Bundle.main.path(forResource: "CountryList", ofType: "json") {

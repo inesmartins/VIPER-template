@@ -1,20 +1,20 @@
 import Foundation
 
-protocol CountryListRouterDelegate: AnyObject {
+protocol CountryListRouterProtocol: AnyObject {
     func makeCountryList() -> CountryListViewController
 }
 
 final class CountryListRouter {
 
-    private let storageService: StorageServiceDelegate
+    private let storageService: StorageServiceProtocol
 
-    init(storageService: StorageServiceDelegate) {
+    init(storageService: StorageServiceProtocol) {
         self.storageService = storageService
     }
 
 }
 
-extension CountryListRouter: CountryListRouterDelegate {
+extension CountryListRouter: CountryListRouterProtocol {
 
     func makeCountryList() -> CountryListViewController {
         let interactor = CountryListInteractor(storageService: self.storageService)

@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-protocol AuthenticationViewControllerDelegate: AnyObject {
+protocol AuthenticationViewControllerProtocol: AnyObject {
     func showAuthenticationError()
 }
 
@@ -9,7 +9,7 @@ final class AuthenticationViewController: KeyboardAwareViewController {
 
     // MARK: - UIViewController Properties
 
-    private var presenter: AuthenticationPresenterDelegate?
+    private var presenter: AuthenticationPresenterProtocol?
     private var username: String?
     private var password: String?
 
@@ -24,7 +24,7 @@ final class AuthenticationViewController: KeyboardAwareViewController {
 
     // MARK: - UIViewController Lifecycle
 
-    init(presenter: AuthenticationPresenterDelegate) {
+    init(presenter: AuthenticationPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -40,7 +40,7 @@ final class AuthenticationViewController: KeyboardAwareViewController {
 
 }
 
-extension AuthenticationViewController: AuthenticationViewControllerDelegate {
+extension AuthenticationViewController: AuthenticationViewControllerProtocol {
 
     func showAuthenticationError() {
         fatalError("Authentication error modal not implemented")

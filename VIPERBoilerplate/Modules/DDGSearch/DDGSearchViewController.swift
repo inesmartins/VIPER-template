@@ -3,7 +3,7 @@ import UIKit
 import Device
 import ToastSwiftFramework
 
-protocol DDGSearchViewControllerDelegate: AnyObject {
+protocol DDGSearchViewControllerProtocol: AnyObject {
     func showResult(_ searchResult: SearchResult)
     func showNoResultsFound()
 }
@@ -12,7 +12,7 @@ final class DDGSearchViewController: KeyboardAwareViewController {
 
     // MARK: - UIViewController Properties
 
-    private var presenter: DDGSearchPresenterDelegate?
+    private var presenter: DDGSearchPresenterProtocol?
     private var searchTerm: String?
 
     // MARK: - UI components
@@ -22,7 +22,7 @@ final class DDGSearchViewController: KeyboardAwareViewController {
 
     // MARK: - UIViewController Lifecycle
 
-    init(_ presenter: DDGSearchPresenterDelegate) {
+    init(_ presenter: DDGSearchPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,7 +38,7 @@ final class DDGSearchViewController: KeyboardAwareViewController {
 
 }
 
-extension DDGSearchViewController: DDGSearchViewControllerDelegate {
+extension DDGSearchViewController: DDGSearchViewControllerProtocol {
 
     func showNoResultsFound() {
         self.view.makeToast("No Results Found")

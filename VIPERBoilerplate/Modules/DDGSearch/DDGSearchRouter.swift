@@ -1,19 +1,19 @@
 import Foundation
 
-protocol DeviceInfoRouterDelegate: AnyObject {
+protocol DeviceInfoRouterProtocol: AnyObject {
     func makeDeviceInfo() -> DDGSearchViewController
 }
 
 final class DDGSearchRouter {
     
-    private let ddgService: DuckDuckGoServiceDelegate
+    private let ddgService: DuckDuckGoServiceProtocol
 
-    init(ddgService: DuckDuckGoServiceDelegate) {
+    init(ddgService: DuckDuckGoServiceProtocol) {
         self.ddgService = ddgService
     }
 }
 
-extension DDGSearchRouter: DeviceInfoRouterDelegate {
+extension DDGSearchRouter: DeviceInfoRouterProtocol {
 
     func makeDeviceInfo() -> DDGSearchViewController {
         let interactor = DDGSearchInteractor(ddgService: self.ddgService)

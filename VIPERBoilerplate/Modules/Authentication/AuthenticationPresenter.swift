@@ -1,24 +1,24 @@
 import Foundation
 
-protocol AuthenticationPresenterDelegate: AnyObject {
-    func didClickLoginButton(on view: AuthenticationViewControllerDelegate, username: String, password: String)
+protocol AuthenticationPresenterProtocol: AnyObject {
+    func didClickLoginButton(on view: AuthenticationViewControllerProtocol, username: String, password: String)
 }
 
 final class AuthenticationPresenter {
 
-    private var interactor: AuthenticationInteractorDelegate?
-    private var router: AuthenticationRouterDelegate?
+    private var interactor: AuthenticationInteractorProtocol?
+    private var router: AuthenticationRouterProtocol?
 
-    init(interactor: AuthenticationInteractorDelegate, router: AuthenticationRouterDelegate) {
+    init(interactor: AuthenticationInteractorProtocol, router: AuthenticationRouterProtocol) {
         self.interactor = interactor
         self.router = router
     }
 
 }
 
-extension AuthenticationPresenter: AuthenticationPresenterDelegate {
+extension AuthenticationPresenter: AuthenticationPresenterProtocol {
 
-    func didClickLoginButton(on view: AuthenticationViewControllerDelegate, username: String, password: String) {
+    func didClickLoginButton(on view: AuthenticationViewControllerProtocol, username: String, password: String) {
         self.interactor?.validateLogin(username, password) { authenticated in
             guard authenticated else {
                 view.showAuthenticationError()

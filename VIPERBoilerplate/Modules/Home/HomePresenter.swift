@@ -1,23 +1,23 @@
 import Foundation
 
-protocol HomePresenterDelegate: AnyObject {
+protocol HomePresenterProtocol: AnyObject {
     func didClickDeviceInfoButton()
     func didClickCountryListButton()
 }
 
 final class HomePresenter {
 
-    private var interactor: HomeInteractorDelegate?
-    private var router: HomeRouterDelegate?
+    private var interactor: HomeInteractorProtocol?
+    private var router: HomeRouterProtocol?
 
-    init(_ interactor: HomeInteractorDelegate, router: HomeRouterDelegate) {
+    init(_ interactor: HomeInteractorProtocol, router: HomeRouterProtocol) {
         self.interactor = interactor
         self.router = router
     }
 
 }
 
-extension HomePresenter: HomePresenterDelegate {
+extension HomePresenter: HomePresenterProtocol {
 
     func didClickDeviceInfoButton() {
         self.router?.showDeviceInfo()

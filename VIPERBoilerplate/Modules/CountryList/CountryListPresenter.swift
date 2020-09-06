@@ -1,7 +1,7 @@
 import Foundation
 
-protocol CountryListPresenterDelegate: AnyObject {
-    func viewWasLoaded(on view: CountryListViewControllerDelegate)
+protocol CountryListPresenterProtocol: AnyObject {
+    func viewWasLoaded(on view: CountryListViewControllerProtocol)
     func didSelectCountry(_ country: Country)
     func didSelectStore(_ store: Store)
     func didClickSaveCountry()
@@ -10,20 +10,20 @@ protocol CountryListPresenterDelegate: AnyObject {
 
 final class CountryListPresenter {
 
-    private var interactor: CountryListInteractorDelegate?
-    private var view: CountryListViewControllerDelegate?
+    private var interactor: CountryListInteractorProtocol?
+    private var view: CountryListViewControllerProtocol?
     private var selectedCountry: Country?
     private var selectedStore = Store.allCases[0]
 
-    init(_ interactor: CountryListInteractorDelegate) {
+    init(_ interactor: CountryListInteractorProtocol) {
         self.interactor = interactor
     }
 
 }
 
-extension CountryListPresenter: CountryListPresenterDelegate {
+extension CountryListPresenter: CountryListPresenterProtocol {
 
-    func viewWasLoaded(on view: CountryListViewControllerDelegate) {
+    func viewWasLoaded(on view: CountryListViewControllerProtocol) {
         self.view = view
         if let countries = self.interactor?.loadCountryList() {
             self.view?.updateCountryList(countries)

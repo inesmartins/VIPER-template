@@ -1,14 +1,14 @@
 import Foundation
 import UIKit
 
-protocol HomeViewControllerDelegate: AnyObject {
+protocol HomeViewControllerProtocol: AnyObject {
 }
 
 final class HomeViewController: UIViewController {
 
     // MARK: - UIViewController Properties
 
-    private var presenter: HomePresenterDelegate?
+    private var presenter: HomePresenterProtocol?
 
     // MARK: - UI components
 
@@ -18,7 +18,7 @@ final class HomeViewController: UIViewController {
 
     // MARK: - UIViewController Lifecycle
 
-    init(_ presenter: HomePresenterDelegate) {
+    init(_ presenter: HomePresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -33,7 +33,7 @@ final class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: HomeViewControllerDelegate {
+extension HomeViewController: HomeViewControllerProtocol {
 }
 
 private extension HomeViewController {

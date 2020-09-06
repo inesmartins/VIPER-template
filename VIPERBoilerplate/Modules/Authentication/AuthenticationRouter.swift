@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-protocol AuthenticationRouterDelegate: AnyObject {
+protocol AuthenticationRouterProtocol: AnyObject {
     func showAuthenticationScreen(onRootViewController rootViewController: UINavigationController)
     func showHomeScreen()
 }
@@ -9,17 +9,17 @@ protocol AuthenticationRouterDelegate: AnyObject {
 final class AuthenticationRouter {
 
     private var authService: AuthenticationService
-    private var router: AppRouterDelegate?
+    private var router: AppRouterProtocol?
     private var rootViewController: UINavigationController?
 
-    init(authService: AuthenticationService, appRouter: AppRouterDelegate) {
+    init(authService: AuthenticationService, appRouter: AppRouterProtocol) {
         self.authService = authService
         self.router = appRouter
     }
 
 }
 
-extension AuthenticationRouter: AuthenticationRouterDelegate {
+extension AuthenticationRouter: AuthenticationRouterProtocol {
 
     func showAuthenticationScreen(onRootViewController rootViewController: UINavigationController) {
         self.rootViewController = rootViewController

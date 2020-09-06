@@ -1,7 +1,7 @@
 import UIKit
 import Foundation
 
-protocol AppRouterDelegate: AnyObject {
+protocol AppRouterProtocol: AnyObject {
     func showHomeScreen()
 }
 
@@ -27,7 +27,7 @@ final class AppRouter {
 
 }
 
-extension AppRouter: AppRouterDelegate {
+extension AppRouter: AppRouterProtocol {
 
     func showHomeScreen() {
         self.homeRouter = HomeRouter(storageService: self.storageService,
