@@ -9,6 +9,10 @@ protocol CountryListViewControllerDelegate: class {
 
 class CountryListViewController: UIViewController {
 
+    // MARK: - Class properties
+
+    private static let tableCellId = "tableCell"
+
     // MARK: - UIViewController Properties
 
     private var presenter: CountryListPresenterDelegate?
@@ -16,7 +20,6 @@ class CountryListViewController: UIViewController {
 
     // MARK: - UI components
 
-    private let tableCellId = "tableCell"
     private lazy var countriesTable = UITableView(frame: .zero)
     private lazy var storeSelector = UIPickerView(frame: .zero)
     private lazy var saveCountryButton = UIButton(frame: .zero)
@@ -53,7 +56,9 @@ class CountryListViewController: UIViewController {
         self.countriesTable.translatesAutoresizingMaskIntoConstraints = false
         self.countriesTable.dataSource = self
         self.countriesTable.delegate = self
-        self.countriesTable.register(UITableViewCell.self, forCellReuseIdentifier: self.tableCellId)
+        self.countriesTable.register(
+            CountryListTableViewCell.self,
+            forCellReuseIdentifier: CountryListViewController.tableCellId)
 
         // storeSelector UIPickerView
         self.storeSelector.translatesAutoresizingMaskIntoConstraints = false
@@ -145,10 +150,10 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.init(style: .value1, reuseIdentifier: self.tableCellId)
         let country = self.countries[indexPath.row]
-        cell.textLabel?.text = country.name
-        cell.detailTextLabel?.text = country.code
+        let cell = tableView.dequeueReusableCell(withIdentifier: CountryListViewController.tableCellId)
+            as? CountryListTableViewCell ?? CountryListTableViewCell()
+        cell.setupView(forCountry: country)
         return cell
     }
 
@@ -157,6 +162,10 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
         self.presenter?.didSelectCountry(country)
     }
 
+    // Added to minimize the complexity of height calculations -> improving UITableView performance
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50.0
+    }
 }
 
 extension CountryListViewController: CountryListViewControllerDelegate {

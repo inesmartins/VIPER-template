@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='VIPERBoilerplateTests.xctest' tests='2' failures='0'>
+  <testsuite name='VIPERBoilerplateTests.VIPERBoilerplateTests' tests='2' failures='0'>
+    <testcase classname='VIPERBoilerplateTests.VIPERBoilerplateTests' name='testExample' time='0.006'/>
+    <testcase classname='VIPERBoilerplateTests.VIPERBoilerplateTests' name='testPerformanceExample' time='0.361'/>
+  </testsuite>
+</testsuites>

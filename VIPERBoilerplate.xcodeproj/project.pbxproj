@@ -37,6 +37,7 @@
 		4D01B9822503AFD800197F7D /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9812503AFD800197F7D /* HomeInteractor.swift */; };
 		4D8F3B7D2503E5740034719E /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8F3B7C2503E5740034719E /* ToastSwiftFramework.framework */; };
 		4D8F3B7E2503E5740034719E /* ToastSwiftFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8F3B7C2503E5740034719E /* ToastSwiftFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4D8F3B802504E86C0034719E /* CountryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F3B7F2504E86C0034719E /* CountryListTableViewCell.swift */; };
 		4DCA1EBB25002C3700067E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBA25002C3700067E94 /* AppDelegate.swift */; };
 		4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */; };
 		4DCA1EC525002C3700067E94 /* VIPERBoilerplate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EC325002C3700067E94 /* VIPERBoilerplate.xcdatamodeld */; };
@@ -110,6 +111,7 @@
 		4D01B97F2503AC6A00197F7D /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		4D01B9812503AFD800197F7D /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		4D8F3B7C2503E5740034719E /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
+		4D8F3B7F2504E86C0034719E /* CountryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableViewCell.swift; sourceTree = "<group>"; };
 		4DCA1EB725002C3700067E94 /* VIPERBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPERBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCA1EBA25002C3700067E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				4DCA1EF42500313D00067E94 /* CountryListInteractor.swift */,
 				4DCA1EF22500312800067E94 /* CountryListPresenter.swift */,
 				4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */,
+				4D8F3B7F2504E86C0034719E /* CountryListTableViewCell.swift */,
 			);
 			path = CountryList;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				4D01B93F2500F91E00197F7D /* CoreDataStorage.swift in Sources */,
 				4D01B9802503AC6A00197F7D /* UINavigationControllerExtensions.swift in Sources */,
 				4D01B94C2501863D00197F7D /* AppKey.swift in Sources */,
+				4D8F3B802504E86C0034719E /* CountryListTableViewCell.swift in Sources */,
 				4DCA1EC525002C3700067E94 /* VIPERBoilerplate.xcdatamodeld in Sources */,
 				4D01B94825011ED600197F7D /* DataExtensions.swift in Sources */,
 				4D01B9692502886300197F7D /* DeviceInfoRouter.swift in Sources */,
