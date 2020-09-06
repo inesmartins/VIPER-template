@@ -34,7 +34,7 @@ extension KeyChainStorage: KeyValueLocalStorage {
                 domain: "Error while deleting previous entry: \(deleteStatus.description)",
                 code: 0, userInfo: nil)
         }
-        
+
         // adds new entry
         let addStatus = SecItemAdd(query, nil)
         guard addStatus == errSecSuccess else {

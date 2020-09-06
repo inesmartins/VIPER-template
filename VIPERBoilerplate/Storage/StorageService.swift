@@ -1,16 +1,14 @@
 import Foundation
 
 final class StorageService {
-    
+
     let userDefaults = NSUserDefaultsStorage()
     let keychain = KeyChainStorage()
     let coreData = CoreDataStorage()
-    
-    func save<T: Codable>(object: T,
-                 withKey key: String,
-                 inStore store: Store,
-                 onCompletion: @escaping (_ result: Result<Bool, Error>) -> Void) {
-        
+
+    func save<T: Codable>(object: T, withKey key: String, inStore store: Store,
+                          onCompletion: @escaping (_ result: Result<Bool, Error>) -> Void) {
+
         DispatchQueue.global(qos: .background).async {
             do {
                 switch store {
@@ -40,7 +38,7 @@ final class StorageService {
             }
         }
     }
-    
+
     func load<T: Codable>(
         fromStore store: Store,
         withKey key: String,

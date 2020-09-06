@@ -5,7 +5,7 @@ final class NSUserDefaultsStorage {
 }
 
 extension NSUserDefaultsStorage: KeyValueLocalStorage {
-    
+
     func store<T: Codable>(object: T, withKey key: String) throws {
         self.defaults.set(Data(from: object), forKey: key)
     }

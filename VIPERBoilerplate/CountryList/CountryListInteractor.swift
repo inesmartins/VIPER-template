@@ -12,7 +12,7 @@ protocol CountryListInteractorDelegate: class {
 }
 
 final class CountryListInteractor {
-    
+
     private let storage = StorageService()
 }
 
@@ -47,15 +47,14 @@ extension CountryListInteractor: CountryListInteractorDelegate {
 
     func loadStoredCountry(from store: Store, onCompletion: @escaping ((_ country: Country?) -> Void)) {
         let key = AppKey.selectedCountry.rawValue
-        self.storage.load(fromStore: store, withKey: key) { result in
+        self.storage.load(fromStore: store, withKey: key) { (result: Result<Country?, Error>) in
             do {
                 onCompletion(try result.get())
             } catch let error {
                 #if DEBUG
                 print(error.localizedDescription)
                 #endif
-                
-                onCompletion(false)
+                onCompletion(nil)
             }
         }
     }
