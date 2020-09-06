@@ -5,7 +5,7 @@ protocol HomePresenterDelegate: class {
     func didClickCountryListButton()
 }
 
-final class HomePresenter: HomePresenterDelegate {
+final class HomePresenter {
 
     private weak var interactor: HomeInteractorDelegate?
     private var router: HomeRouterDelegate?
@@ -14,6 +14,10 @@ final class HomePresenter: HomePresenterDelegate {
         self.interactor = interactor
         self.router = routerDelegate
     }
+
+}
+
+extension HomePresenter: HomePresenterDelegate {
 
     func didClickDeviceInfoButton() {
         self.router?.showDeviceInfo()

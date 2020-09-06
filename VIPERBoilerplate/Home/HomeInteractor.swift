@@ -3,5 +3,8 @@ import Foundation
 protocol HomeInteractorDelegate: class {
 }
 
-final class HomeInteractor: HomeInteractorDelegate {
+final class HomeInteractor {
+}
+
+extension HomeInteractor: HomeInteractorDelegate {
 }

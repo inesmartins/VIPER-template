@@ -1,6 +1,10 @@
 import Foundation
 import UIKit
 
+protocol CountryListTableViewCellDelegate: class {
+    func setupView(forCountry country: Country)
+}
+
 class CountryListTableViewCell: UITableViewCell {
 
     private static let cellPrimaryFont = UIFont.systemFont(ofSize: 18.0)
@@ -13,6 +17,10 @@ class CountryListTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+
+}
+
+extension CountryListTableViewCell: CountryListTableViewCellDelegate {
 
     func setupView(forCountry country: Country) {
         self.textLabel?.text = country.name

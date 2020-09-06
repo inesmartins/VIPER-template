@@ -6,7 +6,7 @@ protocol AuthenticationRouterDelegate: class {
     func showHomeScreen()
 }
 
-final class AuthenticationRouter: AuthenticationRouterDelegate {
+final class AuthenticationRouter {
 
     private var appRouter: AppRouterDelegate?
     private var rootViewController: UINavigationController?
@@ -14,6 +14,10 @@ final class AuthenticationRouter: AuthenticationRouterDelegate {
     init(routerDelegate: AppRouterDelegate) {
         self.appRouter = routerDelegate
     }
+
+}
+
+extension AuthenticationRouter: AuthenticationRouterDelegate {
 
     func showAuthenticationScreen(onRootViewController rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
@@ -24,7 +28,11 @@ final class AuthenticationRouter: AuthenticationRouterDelegate {
         self.appRouter?.showHomeScreen()
     }
 
-    private func makeAuthenticationViewController() -> AuthenticationViewController {
+}
+
+private extension AuthenticationRouter {
+
+    func makeAuthenticationViewController() -> AuthenticationViewController {
         let interactor = AuthenticationInteractor()
         let presenter = AuthenticationPresenter(interactor, router: self)
         return AuthenticationViewController(presenter: presenter)

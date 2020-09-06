@@ -1,10 +1,10 @@
 import Foundation
 
 protocol AuthenticationPresenterDelegate: class {
-    func didClickLoginButton(onView view: AuthenticationViewController, username: String, password: String)
+    func didClickLoginButton(on view: AuthenticationViewControllerDelegate, username: String, password: String)
 }
 
-final class AuthenticationPresenter: AuthenticationPresenterDelegate {
+final class AuthenticationPresenter {
 
     private var interactor: AuthenticationInteractorDelegate?
     private var router: AuthenticationRouterDelegate?
@@ -14,7 +14,11 @@ final class AuthenticationPresenter: AuthenticationPresenterDelegate {
         self.router = router
     }
 
-    func didClickLoginButton(onView view: AuthenticationViewController, username: String, password: String) {
+}
+
+extension AuthenticationPresenter: AuthenticationPresenterDelegate {
+
+    func didClickLoginButton(on view: AuthenticationViewControllerDelegate, username: String, password: String) {
         self.interactor?.validateLogin(username, password) { authenticated in
             guard authenticated else {
                 view.showAuthenticationError()

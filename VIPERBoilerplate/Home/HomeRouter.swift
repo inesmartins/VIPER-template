@@ -7,7 +7,7 @@ protocol HomeRouterDelegate: class {
     func showCountryList()
 }
 
-final class HomeRouter: HomeRouterDelegate {
+final class HomeRouter {
 
     private weak var routerDelegate: AppRouterDelegate?
     private var rootViewController: UINavigationController?
@@ -15,6 +15,10 @@ final class HomeRouter: HomeRouterDelegate {
     init(routerDelegate: AppRouterDelegate) {
         self.routerDelegate = routerDelegate
     }
+
+}
+
+extension HomeRouter: HomeRouterDelegate {
 
     func showHome(onRootViewController rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
@@ -30,9 +34,11 @@ final class HomeRouter: HomeRouterDelegate {
         self.rootViewController?.pushViewController(CountryListRouter().makeCountryList(), animated: true)
     }
 
-    // MARK: - Auxiliary Methods
+}
 
-    private func makeHomeViewController() -> HomeViewController {
+private extension HomeRouter {
+
+    func makeHomeViewController() -> HomeViewController {
         let interactor = HomeInteractor()
         let presenter = HomePresenter(interactor, routerDelegate: self)
         return HomeViewController(presenter)

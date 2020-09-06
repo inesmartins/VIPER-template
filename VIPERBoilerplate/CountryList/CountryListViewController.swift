@@ -38,89 +38,10 @@ class CountryListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter?.loadCountryList(inView: self)
+        self.presenter?.loadCountryList(on: self)
         self.setupView()
     }
 
-    // MARK: - Setup UI Components
-
-    private func setupView() {
-        self.addSubviews()
-        self.setupUIComponents()
-        self.addConstraints()
-    }
-
-    private func setupUIComponents() {
-
-        // countriesTable UITableView
-        self.countriesTable.translatesAutoresizingMaskIntoConstraints = false
-        self.countriesTable.dataSource = self
-        self.countriesTable.delegate = self
-        self.countriesTable.register(
-            CountryListTableViewCell.self,
-            forCellReuseIdentifier: CountryListViewController.tableCellId)
-
-        // storeSelector UIPickerView
-        self.storeSelector.translatesAutoresizingMaskIntoConstraints = false
-        self.storeSelector.dataSource = self
-        self.storeSelector.delegate = self
-        self.storeSelector.backgroundColor = .white
-
-        // saveCountryButton UIButton
-        self.saveCountryButton.translatesAutoresizingMaskIntoConstraints = false
-        self.saveCountryButton.addTarget(
-            self,
-            action: #selector(self.handleSaveCountryButtonClick), for: .touchUpInside)
-        self.saveCountryButton.backgroundColor = .green
-        self.saveCountryButton.setTitle("Save Country", for: .normal)
-        self.saveCountryButton.setTitleColor(.black, for: .normal)
-
-        // getSavedCountryButton UIButton
-        self.getSavedCountryButton.translatesAutoresizingMaskIntoConstraints = false
-        self.getSavedCountryButton.addTarget(self,
-                                             action: #selector(self.handleGetSavedCountryButtonClick),
-                                             for: .touchUpInside)
-        self.getSavedCountryButton.backgroundColor = .gray
-        self.getSavedCountryButton.setTitle("Get Saved Country", for: .normal)
-        self.getSavedCountryButton.setTitleColor(.black, for: .normal)
-    }
-
-    @objc func handleSaveCountryButtonClick() {
-        self.presenter?.didClickSaveCountry()
-    }
-
-    @objc func handleGetSavedCountryButtonClick() {
-        self.presenter?.didClickLoadSavedCountry()
-    }
-
-    private func addSubviews() {
-        self.view.addSubview(self.countriesTable)
-        self.view.addSubview(self.storeSelector)
-        self.view.addSubview(self.saveCountryButton)
-        self.view.addSubview(self.getSavedCountryButton)
-    }
-
-    private func addConstraints() {
-        let constraints: [NSLayoutConstraint] = [
-            self.countriesTable.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.countriesTable.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.countriesTable.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.storeSelector.heightAnchor.constraint(equalToConstant: 120.0),
-            self.storeSelector.topAnchor.constraint(equalTo: self.countriesTable.bottomAnchor),
-            self.storeSelector.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.storeSelector.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.saveCountryButton.heightAnchor.constraint(equalToConstant: 50.0),
-            self.saveCountryButton.topAnchor.constraint(equalTo: self.storeSelector.bottomAnchor),
-            self.saveCountryButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.saveCountryButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.getSavedCountryButton.heightAnchor.constraint(equalToConstant: 50.0),
-            self.getSavedCountryButton.topAnchor.constraint(equalTo: self.saveCountryButton.bottomAnchor),
-            self.getSavedCountryButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.getSavedCountryButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.getSavedCountryButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
 }
 
 extension CountryListViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -189,4 +110,85 @@ extension CountryListViewController: CountryListViewControllerDelegate {
         }
     }
 
+}
+
+private extension CountryListViewController {
+
+    func setupView() {
+        self.addSubviews()
+        self.setupUIComponents()
+        self.addConstraints()
+    }
+
+    func setupUIComponents() {
+
+        // countriesTable UITableView
+        self.countriesTable.translatesAutoresizingMaskIntoConstraints = false
+        self.countriesTable.dataSource = self
+        self.countriesTable.delegate = self
+        self.countriesTable.register(
+            CountryListTableViewCell.self,
+            forCellReuseIdentifier: CountryListViewController.tableCellId)
+
+        // storeSelector UIPickerView
+        self.storeSelector.translatesAutoresizingMaskIntoConstraints = false
+        self.storeSelector.dataSource = self
+        self.storeSelector.delegate = self
+        self.storeSelector.backgroundColor = .white
+
+        // saveCountryButton UIButton
+        self.saveCountryButton.translatesAutoresizingMaskIntoConstraints = false
+        self.saveCountryButton.addTarget(
+            self,
+            action: #selector(self.handleSaveCountryButtonClick), for: .touchUpInside)
+        self.saveCountryButton.backgroundColor = .green
+        self.saveCountryButton.setTitle("Save Country", for: .normal)
+        self.saveCountryButton.setTitleColor(.black, for: .normal)
+
+        // getSavedCountryButton UIButton
+        self.getSavedCountryButton.translatesAutoresizingMaskIntoConstraints = false
+        self.getSavedCountryButton.addTarget(self,
+                                             action: #selector(self.handleGetSavedCountryButtonClick),
+                                             for: .touchUpInside)
+        self.getSavedCountryButton.backgroundColor = .gray
+        self.getSavedCountryButton.setTitle("Get Saved Country", for: .normal)
+        self.getSavedCountryButton.setTitleColor(.black, for: .normal)
+    }
+
+    @objc func handleSaveCountryButtonClick() {
+        self.presenter?.didClickSaveCountry()
+    }
+
+    @objc func handleGetSavedCountryButtonClick() {
+        self.presenter?.didClickLoadSavedCountry()
+    }
+
+    func addSubviews() {
+        self.view.addSubview(self.countriesTable)
+        self.view.addSubview(self.storeSelector)
+        self.view.addSubview(self.saveCountryButton)
+        self.view.addSubview(self.getSavedCountryButton)
+    }
+
+    func addConstraints() {
+        let constraints: [NSLayoutConstraint] = [
+            self.countriesTable.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.countriesTable.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.countriesTable.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.storeSelector.heightAnchor.constraint(equalToConstant: 120.0),
+            self.storeSelector.topAnchor.constraint(equalTo: self.countriesTable.bottomAnchor),
+            self.storeSelector.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.storeSelector.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.saveCountryButton.heightAnchor.constraint(equalToConstant: 50.0),
+            self.saveCountryButton.topAnchor.constraint(equalTo: self.storeSelector.bottomAnchor),
+            self.saveCountryButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.saveCountryButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.getSavedCountryButton.heightAnchor.constraint(equalToConstant: 50.0),
+            self.getSavedCountryButton.topAnchor.constraint(equalTo: self.saveCountryButton.bottomAnchor),
+            self.getSavedCountryButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.getSavedCountryButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.getSavedCountryButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
 }

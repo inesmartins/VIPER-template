@@ -31,22 +31,29 @@ final class DeviceInfoViewController: UIViewController {
         self.setupViews()
     }
 
-    private func setupViews() {
+}
+
+extension DeviceInfoViewController: DeviceInfoViewControllerDelegate {
+}
+
+private extension DeviceInfoViewController {
+
+    func setupViews() {
         self.addSubviews()
         self.setupUIComponents()
         self.addConstraints()
     }
 
-    private func addSubviews() {
+    func addSubviews() {
         self.view.addSubview(self.textArea)
     }
 
-    private func setupUIComponents() {
+    func setupUIComponents() {
         self.textArea.translatesAutoresizingMaskIntoConstraints = false
         self.textArea.text = "Version: \(Device.version())\nType: \(Device.type())"
     }
 
-    private func addConstraints() {
+    func addConstraints() {
         let constraints = [
             self.textArea.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.textArea.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),

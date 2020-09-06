@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 protocol HomeViewControllerDelegate: class {
-
 }
 
 final class HomeViewController: UIViewController {
@@ -32,22 +31,26 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.setupView()
     }
+}
 
-    // MARK: - Setup UI Components
+extension HomeViewController: HomeViewControllerDelegate {
+}
 
-    private func setupView() {
+private extension HomeViewController {
+
+    func setupView() {
         self.addSubviews()
         self.setupUIComponents()
         self.addConstraints()
     }
 
-    private func addSubviews() {
+    func addSubviews() {
         self.view.addSubview(self.buttonsContainer)
         self.buttonsContainer.addSubview(self.deviceInfoButton)
         self.buttonsContainer.addSubview(self.countryListButton)
     }
 
-    private func setupUIComponents() {
+    func setupUIComponents() {
 
         self.view.backgroundColor = .white
 
@@ -78,7 +81,7 @@ final class HomeViewController: UIViewController {
 
     }
 
-    private func addConstraints() {
+    func addConstraints() {
         let constraints: [NSLayoutConstraint] = [
 
             self.buttonsContainer.heightAnchor.constraint(equalToConstant: 120.0),

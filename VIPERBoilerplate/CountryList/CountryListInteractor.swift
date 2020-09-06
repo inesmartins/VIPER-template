@@ -6,7 +6,10 @@ protocol CountryListInteractorDelegate: class {
     func loadStoredCountry(from: Store, onCompletion: @escaping ((_ country: Country?) -> Void))
 }
 
-final class CountryListInteractor: CountryListInteractorDelegate {
+final class CountryListInteractor {
+}
+
+extension CountryListInteractor: CountryListInteractorDelegate {
 
     func loadCountryList() -> [Country]? {
         if let filepath = Bundle.main.path(forResource: "CountryList", ofType: "json") {

@@ -38,16 +38,44 @@ final class AuthenticationViewController: UIViewController {
         self.setupView()
     }
 
-    // MARK: - Setup UI Components
+}
 
-    private func setupView() {
+extension AuthenticationViewController: AuthenticationViewControllerDelegate {
+
+    func showAuthenticationError() {
+        fatalError("Authentication error modal not implemented")
+    }
+
+}
+
+extension AuthenticationViewController: UITextFieldDelegate {
+
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String) -> Bool {
+
+        if textField == self.usernameTextField {
+            self.username = (string == "" && textField.text?.count == 1) ? nil : textField.text
+        } else {
+            self.password = (string == "" && textField.text?.count == 1) ? nil : textField.text
+        }
+        self.updateLoginButton(enabled: self.username != nil && self.password != nil)
+
+        return true
+    }
+}
+
+private extension AuthenticationViewController {
+
+    func setupView() {
         self.addSubviews()
         self.setupUIComponents()
         self.addConstraints()
         self.listenToKeyboardEvents()
     }
 
-    private func listenToKeyboardEvents() {
+    func listenToKeyboardEvents() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.keyboardWillShow),
@@ -88,7 +116,7 @@ final class AuthenticationViewController: UIViewController {
         self.view.frame.origin.y = 0
     }
 
-    private func addSubviews() {
+    func addSubviews() {
         self.view.addSubview(self.titleLabelContainer)
         self.titleLabelContainer.addSubview(self.titleLabel)
         self.view.addSubview(self.formContainer)
@@ -97,7 +125,7 @@ final class AuthenticationViewController: UIViewController {
         self.formContainer.addSubview(self.loginButton)
     }
 
-    private func setupUIComponents() {
+    func setupUIComponents() {
 
         self.view.backgroundColor = .white
 
@@ -136,11 +164,11 @@ final class AuthenticationViewController: UIViewController {
 
     @objc func handleLoginButton() {
         if let username = self.username, let password = self.password {
-            self.presenter?.didClickLoginButton(onView: self, username: username, password: password)
+            self.presenter?.didClickLoginButton(on: self, username: username, password: password)
         }
     }
 
-    private func addConstraints() {
+    func addConstraints() {
 
         let constraints = [
             self.titleLabelContainer.heightAnchor.constraint(
@@ -174,34 +202,8 @@ final class AuthenticationViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
 
-    private func updateLoginButton(enabled: Bool) {
+    func updateLoginButton(enabled: Bool) {
         self.loginButton.alpha = enabled ? 1.0 : 0.2
-    }
-
-}
-
-extension AuthenticationViewController: UITextFieldDelegate {
-
-    func textField(
-        _ textField: UITextField,
-        shouldChangeCharactersIn range: NSRange,
-        replacementString string: String) -> Bool {
-
-        if textField == self.usernameTextField {
-            self.username = (string == "" && textField.text?.count == 1) ? nil : textField.text
-        } else {
-            self.password = (string == "" && textField.text?.count == 1) ? nil : textField.text
-        }
-        self.updateLoginButton(enabled: self.username != nil && self.password != nil)
-
-        return true
-    }
-}
-
-extension AuthenticationViewController: AuthenticationViewControllerDelegate {
-
-    func showAuthenticationError() {
-        fatalError("Authentication error modal not implemented")
     }
 
 }

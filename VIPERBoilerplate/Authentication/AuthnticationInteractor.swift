@@ -8,7 +8,10 @@ protocol AuthenticationInteractorDelegate: class {
         onCompletion: @escaping ((_ authenticated: Bool) -> Void))
 }
 
-final class AuthenticationInteractor: AuthenticationInteractorDelegate {
+final class AuthenticationInteractor {
+}
+
+extension AuthenticationInteractor: AuthenticationInteractorDelegate {
 
     func validateLogin(
         _ username: String,

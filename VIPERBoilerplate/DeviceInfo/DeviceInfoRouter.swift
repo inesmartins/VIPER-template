@@ -4,7 +4,10 @@ protocol DeviceInfoRouterDelegate: class {
     func makeDeviceInfo() -> DeviceInfoViewController
 }
 
-final class DeviceInfoRouter: DeviceInfoRouterDelegate {
+final class DeviceInfoRouter {
+}
+
+extension DeviceInfoRouter: DeviceInfoRouterDelegate {
 
     func makeDeviceInfo() -> DeviceInfoViewController {
         let interactor = DeviceInfoInteractor()
