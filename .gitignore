@@ -1,7 +1,4 @@
-## User settings
-xcuserdata/
-
-### Xcode Patch ###
+### Xcode ###
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
