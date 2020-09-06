@@ -1,25 +1,38 @@
 import UIKit
 import Foundation
 
-protocol AppRouterDelegate: class {
+protocol AppRouterDelegate: AnyObject {
     func showHomeScreen()
 }
 
-final class AppRouter: AppRouterDelegate {
+final class AppRouter {
 
-    private let rootViewController = UINavigationController()
+    // MARK: - Services
+    private let authService = AuthenticationService()
+    private let ddgService = DuckDuckGoService()
+    private let storageService = StorageService()
+
+    // MARK: - Routers
     private var authenticationRouter: AuthenticationRouter?
     private var homeRouter: HomeRouter?
 
+    private let rootViewController = UINavigationController()
+
     func launchApplication(onWindow window: UIWindow) {
         window.rootViewController = self.rootViewController
-        self.authenticationRouter = AuthenticationRouter(routerDelegate: self)
+        self.authenticationRouter = AuthenticationRouter(authService: self.authService, appRouter: self)
         self.authenticationRouter?.showAuthenticationScreen(onRootViewController: self.rootViewController)
         window.makeKeyAndVisible()
     }
 
+}
+
+extension AppRouter: AppRouterDelegate {
+
     func showHomeScreen() {
-        self.homeRouter = HomeRouter(routerDelegate: self)
+        self.homeRouter = HomeRouter(storageService: self.storageService,
+                                     ddgService: self.ddgService,
+                                     appRouter: self)
         self.homeRouter?.showHome(onRootViewController: self.rootViewController)
     }
 

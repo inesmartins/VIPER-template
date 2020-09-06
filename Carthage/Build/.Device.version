@@ -2,7 +2,7 @@
   "commitish" : "3.2.1",
   "iOS" : [
     {
-      "hash" : "f425f644a2b74c7bf5c3ec2fbb505fe1214141013dcf7cc19838688879e25f11",
+      "hash" : "6b0bebd56fe7553d3afe7fe62d4f10bc3e3568004b9f01bf0f9bbe582249453c",
       "name" : "Device",
       "linking" : "dynamic",
       "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
