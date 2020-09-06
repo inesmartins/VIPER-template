@@ -57,7 +57,6 @@ private extension HomeViewController {
         self.buttonsContainer.translatesAutoresizingMaskIntoConstraints = false
         self.buttonsContainer.backgroundColor = .white
 
-        // deviceInfoButton UIButton
         self.deviceInfoButton.translatesAutoresizingMaskIntoConstraints = false
         self.deviceInfoButton.addTarget(self,
                                         action: #selector(self.handleDeviceInfoButtonClick),
@@ -68,7 +67,6 @@ private extension HomeViewController {
         self.deviceInfoButton.layer.cornerRadius = 7
         self.deviceInfoButton.layer.borderWidth = 2
 
-        // deviceInfoButton UIButton
         self.countryListButton.translatesAutoresizingMaskIntoConstraints = false
         self.countryListButton.addTarget(self,
                                          action: #selector(self.handleCountryListButtonClick),

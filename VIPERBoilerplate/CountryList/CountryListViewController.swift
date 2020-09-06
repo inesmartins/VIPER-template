@@ -83,7 +83,7 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
         self.presenter?.didSelectCountry(country)
     }
 
-    // Added to minimize the complexity of height calculations -> improving UITableView performance
+    // Added to minimize the complexity of height calculations, improving UITableView performance
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
     }

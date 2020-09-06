@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-final class CoreDataStorage: DBLocalStorage {
+final class CoreDataStorage {
 
     private let context: NSManagedObjectContext = {
         let container = NSPersistentContainer(name: "VIPERBoilerplate")
@@ -18,7 +18,9 @@ final class CoreDataStorage: DBLocalStorage {
     private let countryEntityName = "CountryEntity"
     private lazy var countryEntity = NSEntityDescription.entity(forEntityName: self.countryEntityName, in: self.context)
 
-    // MARK: - Store/Load Data
+}
+
+extension CoreDataStorage: DBLocalStorage {
 
     func storeObject<T>(_ object: T) -> Bool {
         if let country = object as? Country {
@@ -44,9 +46,11 @@ final class CoreDataStorage: DBLocalStorage {
         return nil
     }
 
-    // MARK: - Helper Methods
+}
 
-    private func loadAllCountries() -> [Country]? {
+private extension CoreDataStorage {
+
+    func loadAllCountries() -> [Country]? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: self.countryEntityName)
         request.returnsObjectsAsFaults = false
         do {
@@ -65,7 +69,7 @@ final class CoreDataStorage: DBLocalStorage {
         }
     }
 
-    private func loadFirstCountry() -> Country? {
+    func loadFirstCountry() -> Country? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: self.countryEntityName)
         request.returnsObjectsAsFaults = false
         do {
@@ -82,7 +86,7 @@ final class CoreDataStorage: DBLocalStorage {
         }
     }
 
-    private func saveContext () -> Bool {
+    func saveContext () -> Bool {
         if self.context.hasChanges {
             do {
                 try context.save()

@@ -1,7 +1,7 @@
 import Foundation
 import Security
 
-class KeyChainStorage: KeyValueLocalStorage {
+final class KeyChainStorage {
 
     private class SecKey {
         static let itemClass = kSecClass as String
@@ -13,6 +13,10 @@ class KeyChainStorage: KeyValueLocalStorage {
         static let matchLimit = kSecMatchLimit as String
         static let matchOne = kSecMatchLimitOne
     }
+
+}
+
+extension KeyChainStorage: KeyValueLocalStorage {
 
     func store<T>(object: T, withKey key: String) -> Bool {
 

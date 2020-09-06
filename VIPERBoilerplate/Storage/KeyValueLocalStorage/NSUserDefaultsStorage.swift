@@ -1,8 +1,10 @@
 import Foundation
 
-final class NSUserDefaultsStorage: KeyValueLocalStorage {
-
+final class NSUserDefaultsStorage {
     let defaults = UserDefaults.standard
+}
+
+extension NSUserDefaultsStorage: KeyValueLocalStorage {
 
     func store<T>(object: T, withKey key: String) -> Bool {
         self.defaults.set(Data(from: object), forKey: key)
