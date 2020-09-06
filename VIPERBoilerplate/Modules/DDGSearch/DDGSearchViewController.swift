@@ -13,10 +13,11 @@ final class DDGSearchViewController: KeyboardAwareViewController {
     // MARK: - UIViewController Properties
 
     private var presenter: DDGSearchPresenterDelegate?
+    private var searchTerm: String?
 
     // MARK: - UI components
 
-    private lazy var textArea = UITextView(frame: .zero)
+    private lazy var textField = UITextField(frame: .zero)
     private lazy var searchButton = UIButton(frame: .zero)
 
     // MARK: - UIViewController Lifecycle
@@ -44,10 +45,22 @@ extension DDGSearchViewController: DDGSearchViewControllerDelegate {
     }
 
     func showResult(_ searchResult: SearchResult) {
-        self.view.makeToast("\(searchResult)")
-        // TODO: implement better solution
+        debugPrint(searchResult)
     }
 
+}
+
+extension DDGSearchViewController: UITextFieldDelegate {
+
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String) -> Bool {
+
+        self.searchTerm = (string == "" && textField.text?.count == 1) ? nil : textField.text
+        self.updateSearchButton(enabled: self.searchTerm != nil)
+        return true
+    }
 }
 
 private extension DDGSearchViewController {
@@ -59,32 +72,32 @@ private extension DDGSearchViewController {
     }
 
     func addSubviews() {
-        self.view.addSubview(self.textArea)
+        self.view.addSubview(self.textField)
         self.view.addSubview(self.searchButton)
     }
 
     func setupUIComponents() {
         self.view.backgroundColor = .white
-        self.textArea.translatesAutoresizingMaskIntoConstraints = false
-        self.textArea.layer.borderWidth = 1.0
-        self.textArea.layer.borderColor = UIColor.systemBlue.cgColor
-        self.textArea.layer.cornerRadius = 7.0
+        self.textField.translatesAutoresizingMaskIntoConstraints = false
+        self.textField.borderStyle = .roundedRect
         self.searchButton.translatesAutoresizingMaskIntoConstraints = false
         self.searchButton.setTitle("Search on DuckDuckGo", for: .normal)
-        self.searchButton.setTitleColor(.red, for: .normal)
+        self.searchButton.setTitleColor(.black, for: .normal)
         self.searchButton.addTarget(self, action: #selector(self.handleSearchButtonClick), for: .touchUpInside)
     }
 
     @objc func handleSearchButtonClick() {
-        self.presenter?.didClickSearchButton(searchTerm: self.textArea.text, on: self)
+        if let searchTerm = self.textField.text {
+            self.presenter?.didClickSearchButton(searchTerm: searchTerm, on: self)
+        }
     }
 
     func addConstraints() {
         let constraints = [
-            self.textArea.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
-            self.textArea.heightAnchor.constraint(equalToConstant: 50.0),
-            self.textArea.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
-            self.textArea.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
+            self.textField.heightAnchor.constraint(equalToConstant: 50.0),
+            self.textField.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
+            self.textField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20.0),
+            self.textField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20.0),
             self.searchButton.widthAnchor.constraint(equalTo: self.view.widthAnchor),
             self.searchButton.heightAnchor.constraint(equalToConstant: 50.0),
             self.searchButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -93,4 +106,9 @@ private extension DDGSearchViewController {
         ]
         NSLayoutConstraint.activate(constraints)
     }
+
+    func updateSearchButton(enabled: Bool) {
+        self.searchButton.alpha = enabled ? 1.0 : 0.2
+    }
+
 }

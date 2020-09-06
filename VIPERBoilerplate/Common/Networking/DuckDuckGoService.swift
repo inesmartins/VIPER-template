@@ -15,8 +15,13 @@ extension DuckDuckGoService: DuckDuckGoServiceDelegate {
 
     func search(searchParams: SearchParams, onCompletion: @escaping (Result<SearchResult?, Error>) -> Void) {
 
-        let requestURL = "\(self.ddgEndpoint)?\(searchParams.buildQuery())"
-        AF.request(requestURL).response { result in
+        let urlString = "\(self.ddgEndpoint)?\(searchParams.buildQuery())"
+        guard let encoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            let url = URL(string: encoded) else {
+                onCompletion(.failure(NSError(domain: "Unable to create path", code: 0, userInfo: nil)))
+                return
+        }
+        AF.request(url).response { result in
             if let error = result.error {
                 onCompletion(.failure(error))
             } else if let resultData = result.data {
