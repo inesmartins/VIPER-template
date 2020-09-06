@@ -20,4 +20,5 @@ class CountryListTableViewCell: UITableViewCell {
         self.textLabel?.font = CountryListTableViewCell.cellPrimaryFont
         self.detailTextLabel?.font = CountryListTableViewCell.cellSecondaryFont
     }
+
 }

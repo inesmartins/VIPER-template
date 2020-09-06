@@ -13,7 +13,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         AppRouter().launchApplication(onWindow: self.window!)
         return true
+    }
 
+    // MARK: - State Restoration
+
+    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+            return true
+    }
+
+    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+            return true
     }
 
 }
