@@ -19,9 +19,16 @@ extension DuckDuckGoService: DuckDuckGoServiceDelegate {
         AF.request(requestURL).response { result in
             if let error = result.error {
                 onCompletion(.failure(error))
-                return
+            } else if let resultData = result.data {
+                do {
+                    let searchResult = try JSONDecoder().decode(SearchResult.self, from: resultData)
+                    onCompletion(.success(searchResult))
+                } catch {
+                    onCompletion(.success(nil))
+                }
+            } else {
+                onCompletion(.success(nil))
             }
-            onCompletion(.success(result.data?.to(type: SearchResult.self)))
         }
     }
 

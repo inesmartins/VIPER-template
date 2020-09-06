@@ -66,18 +66,26 @@ private extension DDGSearchViewController {
     func setupUIComponents() {
         self.view.backgroundColor = .white
         self.textArea.translatesAutoresizingMaskIntoConstraints = false
+        self.textArea.layer.borderWidth = 1.0
+        self.textArea.layer.borderColor = UIColor.systemBlue.cgColor
+        self.textArea.layer.cornerRadius = 7.0
         self.searchButton.translatesAutoresizingMaskIntoConstraints = false
         self.searchButton.setTitle("Search on DuckDuckGo", for: .normal)
         self.searchButton.setTitleColor(.red, for: .normal)
+        self.searchButton.addTarget(self, action: #selector(self.handleSearchButtonClick), for: .touchUpInside)
+    }
+
+    @objc func handleSearchButtonClick() {
+        self.presenter?.didClickSearchButton(searchTerm: self.textArea.text, on: self)
     }
 
     func addConstraints() {
         let constraints = [
             self.textArea.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
             self.textArea.heightAnchor.constraint(equalToConstant: 50.0),
-            self.textArea.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            self.textArea.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.searchButton.widthAnchor.constraint(equalToConstant: 150.0),
+            self.textArea.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
+            self.textArea.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
+            self.searchButton.widthAnchor.constraint(equalTo: self.view.widthAnchor),
             self.searchButton.heightAnchor.constraint(equalToConstant: 50.0),
             self.searchButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.searchButton.bottomAnchor.constraint(
