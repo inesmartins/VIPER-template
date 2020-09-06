@@ -52,9 +52,7 @@ extension Cache where Key: Codable, Value: Codable {
     }
 }
 
-// MARK: - Private Methods
-
-private extension Cache {
+extension Cache {
 
     /** Wrapper around Key objects in order to make them NSCache compatible. */
     final class WrappedKey: NSObject {
@@ -122,6 +120,7 @@ private extension Cache {
         }
     }
 }
+
 
 private extension Cache {
 

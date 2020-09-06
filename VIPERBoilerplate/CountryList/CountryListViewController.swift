@@ -38,7 +38,7 @@ class CountryListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter?.loadCountryList(on: self)
+        self.presenter?.viewWasLoaded(on: self)
         self.setupView()
     }
 

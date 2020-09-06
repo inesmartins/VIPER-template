@@ -1,7 +1,7 @@
 import Foundation
 
 protocol CountryListPresenterDelegate: class {
-    func loadCountryList(on view: CountryListViewControllerDelegate)
+    func viewWasLoaded(on view: CountryListViewControllerDelegate)
     func didSelectCountry(_ country: Country)
     func didSelectStore(_ store: Store)
     func didClickSaveCountry()
@@ -23,7 +23,7 @@ final class CountryListPresenter {
 
 extension CountryListPresenter: CountryListPresenterDelegate {
 
-    func loadCountryList(on view: CountryListViewControllerDelegate) {
+    func viewWasLoaded(on view: CountryListViewControllerDelegate) {
         self.view = view
         if let countries = self.interactor?.loadCountryList() {
             self.view?.updateCountryList(countries)
@@ -40,7 +40,8 @@ extension CountryListPresenter: CountryListPresenterDelegate {
 
     func didClickSaveCountry() {
         if let selectedCountry = self.selectedCountry {
-            self.interactor?.storeCountry(onStore: self.selectedStore, selectedCountry, onCompletion: { success in
+            self.interactor?.storeCountry(inStore: self.selectedStore,
+                                          selectedCountry, onCompletion: { success in
                 self.view?.showSaveResult(success)
             })
         }

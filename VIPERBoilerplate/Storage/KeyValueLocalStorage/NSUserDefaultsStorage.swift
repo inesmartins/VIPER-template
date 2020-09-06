@@ -5,15 +5,17 @@ final class NSUserDefaultsStorage {
 }
 
 extension NSUserDefaultsStorage: KeyValueLocalStorage {
-
-    func store<T>(object: T, withKey key: String) -> Bool {
+    
+    func store<T: Codable>(object: T, withKey key: String) throws {
         self.defaults.set(Data(from: object), forKey: key)
-        return true
     }
 
-    func load<T: Codable>(key: String) -> T? {
-        guard let data = self.defaults.data(forKey: key) else { return nil }
-        return data.to(type: T.self)
+    func value<T: Codable>(forKey key: String) throws -> T? {
+        guard let data = self.defaults.data(forKey: key),
+            let object = data.to(type: T.self) else {
+            return nil
+        }
+        return object
     }
 
 }

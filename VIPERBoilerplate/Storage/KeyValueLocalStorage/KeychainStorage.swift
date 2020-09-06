@@ -18,7 +18,7 @@ final class KeyChainStorage {
 
 extension KeyChainStorage: KeyValueLocalStorage {
 
-    func store<T>(object: T, withKey key: String) -> Bool {
+    func store<T: Codable>(object: T, withKey key: String) throws {
 
         let data = Data(from: object)
         let query = [
@@ -29,28 +29,41 @@ extension KeyChainStorage: KeyValueLocalStorage {
 
         // removes previous entry
         let deleteStatus = SecItemDelete(query)
-        guard deleteStatus == noErr || deleteStatus == errSecItemNotFound else { return false }
-
+        guard deleteStatus == noErr || deleteStatus == errSecItemNotFound else {
+            throw NSError(
+                domain: "Error while deleting previous entry: \(deleteStatus.description)",
+                code: 0, userInfo: nil)
+        }
+        
         // adds new entry
         let addStatus = SecItemAdd(query, nil)
-        guard addStatus == errSecSuccess else { return false }
-        return true
+        guard addStatus == errSecSuccess else {
+            throw NSError(
+                domain: "Error while adding new entry: \(addStatus.description)",
+                code: 0, userInfo: nil)
+        }
     }
 
-    func load<T>(key: String) -> T? {
+    func value<T: Codable>(forKey: String) throws -> T? {
 
         let query = [
             SecKey.itemClass: SecKey.genericPasswordClass,
-            SecKey.itemAccountName: key,
+            SecKey.itemAccountName: forKey,
             SecKey.shouldReturnData: SecKey.trueBoolean,
             SecKey.matchLimit: SecKey.matchOne
         ] as CFDictionary
 
         var dataTypeRef: AnyObject?
         let loadStatus: OSStatus = SecItemCopyMatching(query, &dataTypeRef)
-        guard loadStatus == errSecSuccess else { return nil }
-        guard let data = dataTypeRef as? Data else { return nil }
-        return data.to(type: T.self)
+        if loadStatus == errSecItemNotFound {
+            return nil
+        }
+        guard loadStatus == errSecSuccess,
+            let data = dataTypeRef as? Data,
+            let object = data.to(type: T.self) else {
+            throw NSError(domain: "Unable to load entry from keychain", code: 0, userInfo: nil)
+        }
+        return object
     }
 
 }
