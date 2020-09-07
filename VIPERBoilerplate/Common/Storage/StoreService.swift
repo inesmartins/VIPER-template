@@ -11,7 +11,7 @@ protocol StorageServiceProtocol {
                           onCompletion: @escaping (_ result: Result<T?, Error>) -> Void)
 }
 
-final class StorageService {
+final class StoreService {
 
     let userDefaults = NSUserDefaultsStorage()
     let keychain = KeyChainStorage()
@@ -19,7 +19,7 @@ final class StorageService {
 
 }
 
-extension StorageService: StorageServiceProtocol {
+extension StoreService: StorageServiceProtocol {
 
     func save<T: Codable>(object: T, withKey key: String, inStore store: Store,
                           onCompletion: @escaping (_ result: Result<Bool, Error>) -> Void) {

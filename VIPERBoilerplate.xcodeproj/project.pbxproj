@@ -39,7 +39,7 @@
 		4D8F3B7E2503E5740034719E /* ToastSwiftFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8F3B7C2503E5740034719E /* ToastSwiftFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4D8F3B802504E86C0034719E /* CountryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F3B7F2504E86C0034719E /* CountryListTableViewCell.swift */; };
 		4D8F3B832504F6100034719E /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F3B822504F6100034719E /* Cache.swift */; };
-		4D8F3B86250513FC0034719E /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F3B85250513FC0034719E /* StorageService.swift */; };
+		4D8F3B86250513FC0034719E /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F3B85250513FC0034719E /* StoreService.swift */; };
 		4D8F3B8925053A3F0034719E /* DuckDuckGoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F3B8825053A3F0034719E /* DuckDuckGoService.swift */; };
 		4D8F3B8B25053A520034719E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8F3B8A25053A520034719E /* Alamofire.framework */; };
 		4D8F3B8C25053A520034719E /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8F3B8A25053A520034719E /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -125,7 +125,7 @@
 		4D8F3B7C2503E5740034719E /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
 		4D8F3B7F2504E86C0034719E /* CountryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableViewCell.swift; sourceTree = "<group>"; };
 		4D8F3B822504F6100034719E /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		4D8F3B85250513FC0034719E /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		4D8F3B85250513FC0034719E /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		4D8F3B8825053A3F0034719E /* DuckDuckGoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuckDuckGoService.swift; sourceTree = "<group>"; };
 		4D8F3B8A25053A520034719E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		4D8F3B8E250541D70034719E /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				4D01B9392500F67B00197F7D /* Store.swift */,
-				4D8F3B85250513FC0034719E /* StorageService.swift */,
+				4D8F3B85250513FC0034719E /* StoreService.swift */,
 				4D01B9592502801A00197F7D /* KeyValueLocalStorage */,
 				4D01B95A2502802C00197F7D /* DBLocalStorage */,
 				4D8F3B842504F6AC0034719E /* Cache */,
@@ -593,7 +593,7 @@
 				4D8F3B8F250541D70034719E /* SearchResult.swift in Sources */,
 				4D01B94C2501863D00197F7D /* AppKey.swift in Sources */,
 				4D8F3B802504E86C0034719E /* CountryListTableViewCell.swift in Sources */,
-				4D8F3B86250513FC0034719E /* StorageService.swift in Sources */,
+				4D8F3B86250513FC0034719E /* StoreService.swift in Sources */,
 				4D8F3B9D250557D20034719E /* SearchResultDefinition.swift in Sources */,
 				4DCA1EC525002C3700067E94 /* VIPERBoilerplate.xcdatamodeld in Sources */,
 				4D01B94825011ED600197F7D /* DataExtensions.swift in Sources */,

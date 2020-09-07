@@ -8,13 +8,13 @@ protocol AuthenticationRouterProtocol: AnyObject {
 
 final class AuthenticationRouter {
 
-    private var authService: AuthenticationService
-    private var router: AppRouterProtocol?
+    private var storeService: StoreService
+    private var delegate: AppRouterDelegate?
     private var rootViewController: UINavigationController?
 
-    init(authService: AuthenticationService, appRouter: AppRouterProtocol) {
-        self.authService = authService
-        self.router = appRouter
+    init(storeService: StoreService, appRouter: AppRouterDelegate) {
+        self.storeService = storeService
+        self.delegate = appRouter
     }
 
 }
@@ -27,7 +27,7 @@ extension AuthenticationRouter: AuthenticationRouterProtocol {
     }
 
     func showHomeScreen() {
-        self.router?.showHomeScreen()
+        self.delegate?.showHomeScreen()
     }
 
 }

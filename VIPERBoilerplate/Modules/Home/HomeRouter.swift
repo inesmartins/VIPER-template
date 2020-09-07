@@ -9,7 +9,7 @@ protocol HomeRouterProtocol: AnyObject {
 
 final class HomeRouter {
 
-    private var appRouter: AppRouterProtocol?
+    private var appRouter: AppRouterDelegate?
     private let storageService: StorageServiceProtocol
     private let ddgService: DuckDuckGoServiceProtocol
 
@@ -17,7 +17,7 @@ final class HomeRouter {
 
     init(storageService: StorageServiceProtocol,
          ddgService: DuckDuckGoServiceProtocol,
-         appRouter: AppRouterProtocol) {
+         appRouter: AppRouterDelegate) {
         self.appRouter = appRouter
         self.ddgService = ddgService
         self.storageService = storageService

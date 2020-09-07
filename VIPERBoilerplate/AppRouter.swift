@@ -1,16 +1,14 @@
 import UIKit
 import Foundation
 
-protocol AppRouterProtocol: AnyObject {
+protocol AppRouterDelegate: AnyObject {
     func showHomeScreen()
 }
 
 final class AppRouter {
 
     // MARK: - Services
-    private let authService = AuthenticationService()
-    private let ddgService = DuckDuckGoService()
-    private let storageService = StorageService()
+    private let storeService = StoreService()
 
     // MARK: - Routers
     private var authenticationRouter: AuthenticationRouter?
@@ -20,19 +18,17 @@ final class AppRouter {
 
     func launchApplication(onWindow window: UIWindow) {
         window.rootViewController = self.rootViewController
-        self.authenticationRouter = AuthenticationRouter(authService: self.authService, appRouter: self)
+        self.authenticationRouter = AuthenticationRouter(authService: self.storeService, appRouter: self)
         self.authenticationRouter?.showAuthenticationScreen(onRootViewController: self.rootViewController)
         window.makeKeyAndVisible()
     }
 
 }
 
-extension AppRouter: AppRouterProtocol {
+extension AppRouter: AppRouterDelegate {
 
     func showHomeScreen() {
-        self.homeRouter = HomeRouter(storageService: self.storageService,
-                                     ddgService: self.ddgService,
-                                     appRouter: self)
+        self.homeRouter = HomeRouter(storeService: self.storeService, appRouter: self)
         self.homeRouter?.showHome(onRootViewController: self.rootViewController)
     }
 
