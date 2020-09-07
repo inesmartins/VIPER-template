@@ -55,7 +55,6 @@
 		4DCA1EBF25002C3700067E94 /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */; };
 		4DCA1EC525002C3700067E94 /* VIPERBoilerplate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EC325002C3700067E94 /* VIPERBoilerplate.xcdatamodeld */; };
 		4DCA1EC725002C3A00067E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DCA1EC625002C3A00067E94 /* Assets.xcassets */; };
-		4DCA1ECA25002C3A00067E94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCA1EC825002C3A00067E94 /* LaunchScreen.storyboard */; };
 		4DCA1ED525002C3B00067E94 /* VIPERBoilerplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1ED425002C3B00067E94 /* VIPERBoilerplateTests.swift */; };
 		4DCA1EE025002C3B00067E94 /* VIPERBoilerplateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EDF25002C3B00067E94 /* VIPERBoilerplateUITests.swift */; };
 		4DCA1EF32500312800067E94 /* CountryListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA1EF22500312800067E94 /* CountryListPresenter.swift */; };
@@ -142,7 +141,6 @@
 		4DCA1EBE25002C3700067E94 /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
 		4DCA1EC425002C3700067E94 /* VIPER_boilerplate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VIPER_boilerplate.xcdatamodel; sourceTree = "<group>"; };
 		4DCA1EC625002C3A00067E94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4DCA1EC925002C3A00067E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4DCA1ECB25002C3A00067E94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DCA1ED025002C3B00067E94 /* VIPERBoilerplateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VIPERBoilerplateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCA1ED425002C3B00067E94 /* VIPERBoilerplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPERBoilerplateTests.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 		4D8F3B9725054D930034719E /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				4DCA1EC825002C3A00067E94 /* LaunchScreen.storyboard */,
 				4D8F3B9525054D380034719E /* KeyboardAwareViewController.swift */,
 			);
 			path = UIComponents;
@@ -512,7 +509,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D01B931250036F500197F7D /* CountryList.json in Resources */,
-				4DCA1ECA25002C3A00067E94 /* LaunchScreen.storyboard in Resources */,
 				4DCA1EC725002C3A00067E94 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,17 +646,6 @@
 			targetProxy = 4DCA1EDC25002C3B00067E94 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		4DCA1EC825002C3A00067E94 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4DCA1EC925002C3A00067E94 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4DCA1EE225002C3B00067E94 /* Debug */ = {
