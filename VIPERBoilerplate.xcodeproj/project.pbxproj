@@ -14,7 +14,7 @@
 		4D01B93D2500F8F300197F7D /* KeyValueLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B93C2500F8F300197F7D /* KeyValueLocalStorage.swift */; };
 		4D01B93F2500F91E00197F7D /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */; };
 		4D01B9412500FB4E00197F7D /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9402500FB4E00197F7D /* KeychainStorage.swift */; };
-		4D01B9452500FF6800197F7D /* NSUserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */; };
+		4D01B9452500FF6800197F7D /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9442500FF6800197F7D /* UserDefaultsStorage.swift */; };
 		4D01B94825011ED600197F7D /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B94725011ED600197F7D /* Data+Extension.swift */; };
 		4D01B94C2501863D00197F7D /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B94B2501863D00197F7D /* AppKey.swift */; };
 		4D01B95825027C2F00197F7D /* DBLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B95725027C2F00197F7D /* DBLocalStorage.swift */; };
@@ -102,7 +102,7 @@
 		4D01B93C2500F8F300197F7D /* KeyValueLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueLocalStorage.swift; sourceTree = "<group>"; };
 		4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		4D01B9402500FB4E00197F7D /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
-		4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsStorage.swift; sourceTree = "<group>"; };
+		4D01B9442500FF6800197F7D /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 		4D01B94725011ED600197F7D /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		4D01B94B2501863D00197F7D /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		4D01B95725027C2F00197F7D /* DBLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBLocalStorage.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 			children = (
 				4D01B94B2501863D00197F7D /* AppKey.swift */,
 				4D01B93C2500F8F300197F7D /* KeyValueLocalStorage.swift */,
-				4D01B9442500FF6800197F7D /* NSUserDefaultsStorage.swift */,
+				4D01B9442500FF6800197F7D /* UserDefaultsStorage.swift */,
 				4D01B9402500FB4E00197F7D /* KeychainStorage.swift */,
 			);
 			path = KeyValueLocalStorage;
@@ -595,7 +595,7 @@
 				4D8F3B99250554B40034719E /* SearchResultAbstract.swift in Sources */,
 				4D26CB7A25067CDF00103C87 /* SearchResultRelatedTopicIcon.swift in Sources */,
 				4DB318502506452000EB5462 /* APIService.swift in Sources */,
-				4D01B9452500FF6800197F7D /* NSUserDefaultsStorage.swift in Sources */,
+				4D01B9452500FF6800197F7D /* UserDefaultsStorage.swift in Sources */,
 				4D01B93A2500F67B00197F7D /* Store.swift in Sources */,
 				4D01B93F2500F91E00197F7D /* CoreDataStorage.swift in Sources */,
 				4D01B9802503AC6A00197F7D /* UINavigationController+Extension.swift in Sources */,

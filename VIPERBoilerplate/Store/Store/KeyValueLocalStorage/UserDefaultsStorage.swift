@@ -1,10 +1,10 @@
 import Foundation
 
-final class NSUserDefaultsStorage {
+final class UserDefaultsStorage {
     let defaults = UserDefaults.standard
 }
 
-extension NSUserDefaultsStorage: KeyValueLocalStorage {
+extension UserDefaultsStorage: KeyValueLocalStorage {
 
     func insert<T: Codable>(_ object: T, forKey key: String) throws {
         self.defaults.set(Data(from: object), forKey: key)

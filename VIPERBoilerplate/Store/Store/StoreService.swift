@@ -13,13 +13,13 @@ protocol StoreServiceType: AnyObject {
 final class StoreService {
 
     private let coreData: CoreDataStorage
+    private let userDefaults: UserDefaultsStorage
+    private let keychain: KeyChainStorage
 
-    // TODO: should be injected for testability
-    private let userDefaults = NSUserDefaultsStorage()
-    private let keychain = KeyChainStorage()
-
-    init(container: NSPersistentContainer) {
-        self.coreData = CoreDataStorage(container: container)
+    init(coreData: CoreDataStorage, userDefaults: UserDefaultsStorage, keychain: KeyChainStorage) {
+        self.coreData = coreData
+        self.userDefaults = userDefaults
+        self.keychain = keychain
     }
 }
 
