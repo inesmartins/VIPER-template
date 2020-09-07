@@ -13,10 +13,10 @@ protocol CountryListInteractorProtocol: AnyObject {
 
 final class CountryListInteractor {
 
-    private let storageService: StorageServiceProtocol
+    private let store: StoreServiceType
 
-    init(storageService: StorageServiceProtocol) {
-        self.storageService = storageService
+    init(store: StoreServiceType) {
+        self.store = store
     }
 }
 
@@ -37,7 +37,7 @@ extension CountryListInteractor: CountryListInteractorProtocol {
     }
 
     func storeCountry(inStore store: Store, _ country: Country, onCompletion: @escaping ((Bool) -> Void)) {
-        self.storageService.save(object: country, withKey: AppKey.selectedCountry.rawValue, inStore: store) { result in
+        self.store.save(object: country, withKey: AppKey.selectedCountry.rawValue, inStore: store) { result in
             do {
                 onCompletion(try result.get())
             } catch let error {
@@ -51,7 +51,7 @@ extension CountryListInteractor: CountryListInteractorProtocol {
 
     func loadStoredCountry(from store: Store, onCompletion: @escaping ((_ country: Country?) -> Void)) {
         let key = AppKey.selectedCountry.rawValue
-        self.storageService.load(fromStore: store, withKey: key) { (result: Result<Country?, Error>) in
+        self.store.load(fromStore: store, withKey: key) { (result: Result<Country?, Error>) in
             do {
                 onCompletion(try result.get())
             } catch let error {

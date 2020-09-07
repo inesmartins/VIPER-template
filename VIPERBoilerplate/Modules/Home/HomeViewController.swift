@@ -1,14 +1,15 @@
 import Foundation
 import UIKit
 
-protocol HomeViewControllerProtocol: AnyObject {
+protocol HomeViewControllerType {
+    var delegate: HomeViewToPresenterDelegate { get }
 }
 
 final class HomeViewController: UIViewController {
 
     // MARK: - UIViewController Properties
 
-    private var presenter: HomePresenterProtocol?
+    var delegate: HomeViewToPresenterDelegate
 
     // MARK: - UI components
 
@@ -18,13 +19,13 @@ final class HomeViewController: UIViewController {
 
     // MARK: - UIViewController Lifecycle
 
-    init(_ presenter: HomePresenterProtocol) {
-        self.presenter = presenter
+    init(_ delegate: HomeViewToPresenterDelegate) {
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -33,8 +34,7 @@ final class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: HomeViewControllerProtocol {
-}
+extension HomeViewController: HomeViewControllerType {}
 
 private extension HomeViewController {
 
@@ -102,10 +102,10 @@ private extension HomeViewController {
     }
 
     @objc func handleDeviceInfoButtonClick() {
-        self.presenter?.didClickDeviceInfoButton()
+        self.delegate.didClickDeviceInfoButton()
     }
 
     @objc func handleCountryListButtonClick() {
-        self.presenter?.didClickCountryListButton()
+        self.delegate.didClickCountryListButton()
     }
 }

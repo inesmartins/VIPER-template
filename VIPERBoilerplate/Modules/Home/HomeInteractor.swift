@@ -1,10 +1,9 @@
 import Foundation
 
-protocol HomeInteractorProtocol: AnyObject {
-}
+protocol HomeInteractorType {}
+protocol HomePresenterToInteractorDelegate: AnyObject {}
 
-final class HomeInteractor {
-}
+final class HomeInteractor {}
 
-extension HomeInteractor: HomeInteractorProtocol {
-}
+extension HomeInteractor: HomeInteractorType {}
+extension HomeInteractor: HomePresenterToInteractorDelegate {}

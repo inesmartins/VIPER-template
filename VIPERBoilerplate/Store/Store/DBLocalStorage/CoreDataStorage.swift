@@ -3,20 +3,16 @@ import CoreData
 
 final class CoreDataStorage {
 
-    private let context: NSManagedObjectContext = {
-        let container = NSPersistentContainer(name: "VIPERBoilerplate")
-        container.loadPersistentStores(completionHandler: { (_, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container.viewContext
-    }()
-
     // MARK: - CoreData Entities
 
+    private let context: NSManagedObjectContext
     private let countryEntityName = "CountryEntity"
     private lazy var countryEntity = NSEntityDescription.entity(forEntityName: self.countryEntityName, in: self.context)
+
+    init(container: NSPersistentContainer) {
+        self.context = container.viewContext
+    }
+
 
 }
 

@@ -1,31 +1,38 @@
 import Foundation
 
-protocol AuthenticationInteractorProtocol: AnyObject {
+protocol AuthenticationInteractorType {}
 
-    func validateLogin(
-        _ username: String,
-        _ password: String,
-        onCompletion: @escaping ((_ authenticated: Bool) -> Void))
+protocol AuthenticationPresenterToInteractorDelegate: AnyObject {
+
+    func validateLogin(_ username: String, _ password: String)
 }
 
 final class AuthenticationInteractor {
 
-    private let authService: AuthenticationService
+    private let authService: AuthServiceType?
+    weak var delegate: AuthenticationInteractorToPresenterDelegate?
 
-    init(authService: AuthenticationService) {
+    init(authService: AuthServiceType) {
         self.authService = authService
     }
 }
 
-extension AuthenticationInteractor: AuthenticationInteractorProtocol {
+extension AuthenticationInteractor: AuthenticationInteractorType {}
 
-    func validateLogin(
-        _ username: String,
-        _ password: String,
-        onCompletion: @escaping ((_ authenticated: Bool) -> Void)) {
+extension AuthenticationInteractor: AuthenticationPresenterToInteractorDelegate {
 
-        self.authService.validateLogin(username, password) { success in
-            onCompletion(success)
+    func validateLogin(_ username: String, _ password: String) {
+
+        guard let authService = self.authService else {
+            assertionFailure("authService should be present in AuthInteractor")
+            return
+        }
+        authService.validateLogin(username, password) { success in
+            if success {
+                self.delegate?.onAuthenticationSucceeded()
+            } else {
+                self.delegate?.onAuthenticationFailed()
+            }
         }
     }
 

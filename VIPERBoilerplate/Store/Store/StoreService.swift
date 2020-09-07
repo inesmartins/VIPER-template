@@ -1,7 +1,6 @@
-import Foundation
+import CoreData
 
-protocol StorageServiceProtocol {
-
+protocol StoreServiceType: AnyObject {
     func save<T: Codable>(object: T,
                           withKey key: String,
                           inStore store: Store,
@@ -13,14 +12,19 @@ protocol StorageServiceProtocol {
 
 final class StoreService {
 
-    let userDefaults = NSUserDefaultsStorage()
-    let keychain = KeyChainStorage()
-    let coreData = CoreDataStorage()
+    private let coreData: CoreDataStorage
 
+    // TODO: should be injected for testability
+    private let userDefaults = NSUserDefaultsStorage()
+    private let keychain = KeyChainStorage()
+    
+    init(container: NSPersistentContainer) {
+        self.coreData = CoreDataStorage(container: container)
+    }
 }
 
-extension StoreService: StorageServiceProtocol {
-
+extension StoreService: StoreServiceType {
+    
     func save<T: Codable>(object: T, withKey key: String, inStore store: Store,
                           onCompletion: @escaping (_ result: Result<Bool, Error>) -> Void) {
 

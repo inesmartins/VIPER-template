@@ -1,22 +1,22 @@
 import Foundation
 
-protocol DDGSearchPresenterProtocol: AnyObject {
-    func didClickSearchButton(searchTerm: String, on view: DDGSearchViewControllerProtocol)
+protocol DDGSearchViewToPresenterDelegate: AnyObject {
+    func didClickSearchButton(searchTerm: String, on view: DDGSearchViewControllerType)
 }
 
 final class DDGSearchPresenter {
 
-    private var interactor: DDGSearchInteractorProtocol?
-    private var view: DDGSearchViewControllerProtocol?
+    private var interactor: DDGSearchPresenterToInteractorDelegate?
+    private var view: DDGSearchViewControllerType?
 
-    init(_ interactor: DDGSearchInteractorProtocol) {
+    init(_ interactor: DDGSearchPresenterToInteractorDelegate) {
         self.interactor = interactor
     }
 }
 
-extension DDGSearchPresenter: DDGSearchPresenterProtocol {
+extension DDGSearchPresenter: DDGSearchViewToPresenterDelegate {
 
-    func didClickSearchButton(searchTerm: String, on view: DDGSearchViewControllerProtocol) {
+    func didClickSearchButton(searchTerm: String, on view: DDGSearchViewControllerType) {
         self.view = view
         let searchParams = SearchParams(searchTerm: searchTerm)
         self.interactor?.search(searchParams) { result in

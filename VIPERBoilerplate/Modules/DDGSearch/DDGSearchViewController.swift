@@ -3,7 +3,8 @@ import UIKit
 import Device
 import ToastSwiftFramework
 
-protocol DDGSearchViewControllerProtocol: AnyObject {
+protocol DDGSearchViewControllerType {
+    var delegate: DDGSearchViewToPresenterDelegate { get }
     func showResult(_ searchResult: SearchResult)
     func showNoResultsFound()
 }
@@ -12,7 +13,7 @@ final class DDGSearchViewController: KeyboardAwareViewController {
 
     // MARK: - UIViewController Properties
 
-    private var presenter: DDGSearchPresenterProtocol?
+    var delegate: DDGSearchViewToPresenterDelegate
     private var searchTerm: String?
 
     // MARK: - UI components
@@ -22,13 +23,13 @@ final class DDGSearchViewController: KeyboardAwareViewController {
 
     // MARK: - UIViewController Lifecycle
 
-    init(_ presenter: DDGSearchPresenterProtocol) {
-        self.presenter = presenter
+    init(_ delegate: DDGSearchViewToPresenterDelegate) {
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -38,7 +39,7 @@ final class DDGSearchViewController: KeyboardAwareViewController {
 
 }
 
-extension DDGSearchViewController: DDGSearchViewControllerProtocol {
+extension DDGSearchViewController: DDGSearchViewControllerType {
 
     func showNoResultsFound() {
         self.view.makeToast("No Results Found")
@@ -88,7 +89,7 @@ private extension DDGSearchViewController {
 
     @objc func handleSearchButtonClick() {
         if let searchTerm = self.textField.text {
-            self.presenter?.didClickSearchButton(searchTerm: searchTerm, on: self)
+            self.delegate.didClickSearchButton(searchTerm: searchTerm, on: self)
         }
     }
 

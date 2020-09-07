@@ -1,7 +1,8 @@
 import Foundation
 import UIKit
 
-protocol AuthenticationViewControllerProtocol: AnyObject {
+protocol AuthenticationViewControllerType: AnyObject {
+    var delegate: AuthenticationViewToPresenterDelegate { get }
     func showAuthenticationError()
 }
 
@@ -9,7 +10,7 @@ final class AuthenticationViewController: KeyboardAwareViewController {
 
     // MARK: - UIViewController Properties
 
-    private var presenter: AuthenticationPresenterProtocol?
+    var delegate: AuthenticationViewToPresenterDelegate
     private var username: String?
     private var password: String?
 
@@ -24,13 +25,13 @@ final class AuthenticationViewController: KeyboardAwareViewController {
 
     // MARK: - UIViewController Lifecycle
 
-    init(presenter: AuthenticationPresenterProtocol) {
-        self.presenter = presenter
+    init(delegate: AuthenticationViewToPresenterDelegate) {
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -40,7 +41,7 @@ final class AuthenticationViewController: KeyboardAwareViewController {
 
 }
 
-extension AuthenticationViewController: AuthenticationViewControllerProtocol {
+extension AuthenticationViewController: AuthenticationViewControllerType {
 
     func showAuthenticationError() {
         fatalError("Authentication error modal not implemented")
@@ -122,7 +123,7 @@ private extension AuthenticationViewController {
 
     @objc func handleLoginButton() {
         if let username = self.username, let password = self.password {
-            self.presenter?.didClickLoginButton(on: self, username: username, password: password)
+            self.delegate.didClickLoginButton(on: self, username: username, password: password)
         }
     }
 

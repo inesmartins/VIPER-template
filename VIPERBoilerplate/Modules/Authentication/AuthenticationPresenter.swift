@@ -1,30 +1,48 @@
 import Foundation
 
-protocol AuthenticationPresenterProtocol: AnyObject {
-    func didClickLoginButton(on view: AuthenticationViewControllerProtocol, username: String, password: String)
+protocol AuthenticationPresenterType {}
+
+protocol AuthenticationViewToPresenterDelegate: AnyObject {
+    func didClickLoginButton(on view: AuthenticationViewControllerType, username: String, password: String)
+}
+
+protocol AuthenticationInteractorToPresenterDelegate: AnyObject {
+    func onAuthenticationSucceeded()
+    func onAuthenticationFailed()
 }
 
 final class AuthenticationPresenter {
 
-    private var interactor: AuthenticationInteractorProtocol?
-    private var router: AuthenticationRouterProtocol?
+    private var interactorDelegate: AuthenticationPresenterToInteractorDelegate
+    private weak var routerDelegate: AuthenticationPresenterToRouterDelegate?
+    private weak var view: AuthenticationViewControllerType?
 
-    init(interactor: AuthenticationInteractorProtocol, router: AuthenticationRouterProtocol) {
-        self.interactor = interactor
-        self.router = router
+    init(interactorDelegate: AuthenticationPresenterToInteractorDelegate, routerDelegate: AuthenticationPresenterToRouterDelegate) {
+        self.interactorDelegate = interactorDelegate
+        self.routerDelegate = routerDelegate
     }
 
 }
 
-extension AuthenticationPresenter: AuthenticationPresenterProtocol {
+extension AuthenticationPresenter: AuthenticationPresenterType {}
 
-    func didClickLoginButton(on view: AuthenticationViewControllerProtocol, username: String, password: String) {
-        self.interactor?.validateLogin(username, password) { authenticated in
-            guard authenticated else {
-                view.showAuthenticationError()
-                return
-            }
-            self.router?.showHomeScreen()
-        }
+extension AuthenticationPresenter: AuthenticationViewToPresenterDelegate {
+
+    func didClickLoginButton(on view: AuthenticationViewControllerType, username: String, password: String) {
+        self.view = view
+        self.interactorDelegate.validateLogin(username, password)
     }
+}
+
+extension AuthenticationPresenter: AuthenticationInteractorToPresenterDelegate {
+
+    func onAuthenticationSucceeded() {
+        self.routerDelegate?.onAuthenticationSucceeded()
+    }
+    
+    func onAuthenticationFailed() {
+        self.view?.showAuthenticationError()
+    }
+    
+    
 }

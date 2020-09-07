@@ -1,19 +1,19 @@
 import Foundation
 
-protocol DDGSearchInteractorProtocol: AnyObject {
+protocol DDGSearchPresenterToInteractorDelegate: AnyObject {
     func search(_ searchParams: SearchParams, onCompletion: @escaping (SearchResult?) -> Void)
 }
 
 final class DDGSearchInteractor {
 
-    private let ddgService: DuckDuckGoServiceProtocol
+    private let ddgService: DDGServiceType
 
-    init(ddgService: DuckDuckGoServiceProtocol) {
+    init(ddgService: DDGServiceType) {
         self.ddgService = ddgService
     }
 }
 
-extension DDGSearchInteractor: DDGSearchInteractorProtocol {
+extension DDGSearchInteractor: DDGSearchPresenterToInteractorDelegate {
 
     func search(_ searchParams: SearchParams, onCompletion: @escaping (SearchResult?) -> Void) {
         self.ddgService.search(searchParams: searchParams) { result in

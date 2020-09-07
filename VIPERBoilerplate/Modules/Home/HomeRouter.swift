@@ -1,55 +1,78 @@
 import Foundation
 import UIKit
 
-protocol HomeRouterProtocol: AnyObject {
-    func showHome(onRootViewController rootViewController: UINavigationController)
+protocol HomeRouterType {
+    func startModule()
+}
+
+protocol HomePresenterToRouterDelegate: AnyObject {
     func showDeviceInfo()
     func showCountryList()
 }
 
+protocol CountryListRouterToHomeRouterDelegate: AnyObject {}
+protocol DDGSearchRouterToHomeRouterDelegate: AnyObject {}
+
 final class HomeRouter {
 
-    private var appRouter: AppRouterDelegate?
-    private let storageService: StorageServiceProtocol
-    private let ddgService: DuckDuckGoServiceProtocol
+    private weak var appViewController: AppViewControllerType?
+    private weak var navigationController: UINavigationController?
 
-    private var rootViewController: UINavigationController?
+    private weak var store: StoreServiceType?
+    private weak var ddgService: DDGServiceType?
+    private weak var delegate: HomeRouterToAppRouterDelegate?
 
-    init(storageService: StorageServiceProtocol,
-         ddgService: DuckDuckGoServiceProtocol,
-         appRouter: AppRouterDelegate) {
-        self.appRouter = appRouter
+    init(appViewController: AppViewControllerType,
+         store: StoreServiceType,
+         ddgService: DDGServiceType,
+         delegate: HomeRouterToAppRouterDelegate) {
+        
+        self.appViewController = appViewController
+        self.store = store
         self.ddgService = ddgService
-        self.storageService = storageService
+        self.delegate = delegate
     }
 
 }
 
-extension HomeRouter: HomeRouterProtocol {
+extension HomeRouter: HomeRouterType {
 
-    func showHome(onRootViewController rootViewController: UINavigationController) {
-        self.rootViewController = rootViewController
-        self.rootViewController?.clearViewControllerStack()
-        self.rootViewController?.pushViewController(self.makeHomeViewController(), animated: true)
+    func startModule() {
+        let homeView = self.makeHomeViewController()
+        let navigationController = UINavigationController(rootViewController: homeView)
+        self.navigationController = navigationController
+        self.appViewController?.updateCurrent(to: navigationController)
     }
 
+}
+
+extension HomeRouter: HomePresenterToRouterDelegate {
+    
     func showDeviceInfo() {
-        let ddgRouter = DDGSearchRouter(ddgService: self.ddgService)
-        self.rootViewController?.pushViewController(ddgRouter.makeDeviceInfo(), animated: true)
+        guard let appVC = self.appViewController, let ddgService = self.ddgService else {
+            assertionFailure("store should be present on HomeRouter")
+            return
+        }
+        DDGSearchRouter(appViewController: appVC, ddgService: ddgService, delegate: self).startModule()
     }
 
     func showCountryList() {
-        let countryInfoRouter = CountryListRouter(storageService: self.storageService)
-        self.rootViewController?.pushViewController(countryInfoRouter.makeCountryList(), animated: true)
+        guard let appVC = self.appViewController, let store = self.store else {
+            assertionFailure("store should be present on HomeRouter")
+            return
+        }
+        CountryListRouter(appViewController: appVC, store: store).startModule()
     }
-
 }
+
+extension HomeRouter: DDGSearchRouterToHomeRouterDelegate {}
+extension HomeRouter: CountryListRouterToHomeRouterDelegate {}
 
 private extension HomeRouter {
 
     func makeHomeViewController() -> HomeViewController {
         let interactor = HomeInteractor()
-        let presenter = HomePresenter(interactor, router: self)
+        let presenter = HomePresenter(interactorDelegate: interactor, routerDelegate: self)
         return HomeViewController(presenter)
     }
 }

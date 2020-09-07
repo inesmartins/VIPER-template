@@ -1,43 +1,56 @@
 import Foundation
 import UIKit
 
-protocol AuthenticationRouterProtocol: AnyObject {
-    func showAuthenticationScreen(onRootViewController rootViewController: UINavigationController)
-    func showHomeScreen()
+protocol AuthenticationRouterType {
+    func startModule()
+}
+
+protocol AuthenticationPresenterToRouterDelegate: AnyObject {
+    func onAuthenticationSucceeded()
 }
 
 final class AuthenticationRouter {
 
-    private var storeService: StoreService
-    private var delegate: AppRouterDelegate?
-    private var rootViewController: UINavigationController?
+    private weak var appViewController: AppViewControllerType?
+    private weak var authService: AuthServiceType?
+    private weak var delegate: AuthenticationRouterToAppRouterDelegate?
 
-    init(storeService: StoreService, appRouter: AppRouterDelegate) {
-        self.storeService = storeService
-        self.delegate = appRouter
+    init(appViewController: AppViewControllerType, authService: AuthServiceType, delegate: AuthenticationRouterToAppRouterDelegate) {
+        self.appViewController = appViewController
+        self.authService = authService
+        self.delegate = delegate
     }
 
 }
 
-extension AuthenticationRouter: AuthenticationRouterProtocol {
+extension AuthenticationRouter: AuthenticationRouterType {
 
-    func showAuthenticationScreen(onRootViewController rootViewController: UINavigationController) {
-        self.rootViewController = rootViewController
-        self.rootViewController?.pushViewController(self.makeAuthenticationViewController(), animated: true)
+    func startModule() {
+        guard let authService = self.authService else {
+            assertionFailure("authService should be present in AuthInteractor")
+            return
+        }
+        let authView = self.makeAuthenticationViewController(authService: authService)
+        let navVC = UINavigationController.init(rootViewController: authView)
+        self.appViewController?.updateCurrent(to: navVC)
     }
+}
 
-    func showHomeScreen() {
-        self.delegate?.showHomeScreen()
+extension AuthenticationRouter: AuthenticationPresenterToRouterDelegate {
+
+    func onAuthenticationSucceeded() {
+        self.delegate?.routeToHome()
     }
 
 }
 
 private extension AuthenticationRouter {
 
-    func makeAuthenticationViewController() -> AuthenticationViewController {
+    func makeAuthenticationViewController(authService: AuthServiceType) -> AuthenticationViewController {
         let interactor = AuthenticationInteractor(authService: authService)
-        let presenter = AuthenticationPresenter(interactor: interactor, router: self)
-        return AuthenticationViewController(presenter: presenter)
+        let presenter = AuthenticationPresenter(interactorDelegate: interactor, routerDelegate: self)
+        interactor.delegate = presenter
+        return AuthenticationViewController(delegate: presenter)
     }
 
 }

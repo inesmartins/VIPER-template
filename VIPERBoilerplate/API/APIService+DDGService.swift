@@ -1,17 +1,7 @@
 import Foundation
 import Alamofire
 
-protocol DuckDuckGoServiceProtocol: AnyObject {
-    func search(searchParams: SearchParams, onCompletion: @escaping (Result<SearchResult?, Error>) -> Void)
-}
-
-final class DuckDuckGoService {
-
-    private let ddgEndpoint = "https://api.duckduckgo.com/"
-
-}
-
-extension DuckDuckGoService: DuckDuckGoServiceProtocol {
+extension APIService: DDGServiceType {
 
     func search(searchParams: SearchParams, onCompletion: @escaping (Result<SearchResult?, Error>) -> Void) {
 

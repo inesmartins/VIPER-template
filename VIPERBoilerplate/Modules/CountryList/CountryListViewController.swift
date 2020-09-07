@@ -1,7 +1,7 @@
 import UIKit
 import ToastSwiftFramework
 
-protocol CountryListViewControllerProtocol: AnyObject {
+protocol CountryListViewControllerType {
     func updateCountryList(_ countries: [Country])
     func showSaveResult(_ result: Bool)
     func showSavedCountry(_ country: Country)
@@ -15,7 +15,7 @@ class CountryListViewController: UIViewController {
 
     // MARK: - UIViewController Properties
 
-    private var presenter: CountryListPresenterProtocol?
+    var delegate: CountryListViewToPresenterDelegate?
     private var countries = [Country]()
 
     // MARK: - UI components
@@ -27,18 +27,18 @@ class CountryListViewController: UIViewController {
 
     // MARK: - UIViewController Lifecycle
 
-    init(_ presenter: CountryListPresenterProtocol) {
-        self.presenter = presenter
+    init(_ delegate: CountryListViewToPresenterDelegate) {
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        super.init(nibName: nil, bundle: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter?.viewWasLoaded(on: self)
+        self.delegate?.viewWasLoaded(on: self)
         self.setupView()
     }
 
@@ -59,7 +59,7 @@ extension CountryListViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.presenter?.didSelectStore(Store.allCases[row])
+        self.delegate?.didSelectStore(Store.allCases[row])
     }
 
 }
@@ -80,7 +80,7 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let country = self.countries[indexPath.row]
-        self.presenter?.didSelectCountry(country)
+        self.delegate?.didSelectCountry(country)
     }
 
     // Added to minimize the complexity of height calculations, improving UITableView performance
@@ -89,7 +89,7 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
     }
 }
 
-extension CountryListViewController: CountryListViewControllerProtocol {
+extension CountryListViewController: CountryListViewControllerType {
 
     func updateCountryList(_ countries: [Country]) {
         self.countries = countries
@@ -156,11 +156,11 @@ private extension CountryListViewController {
     }
 
     @objc func handleSaveCountryButtonClick() {
-        self.presenter?.didClickSaveCountry()
+        self.delegate?.didClickSaveCountry()
     }
 
     @objc func handleGetSavedCountryButtonClick() {
-        self.presenter?.didClickLoadSavedCountry()
+        self.delegate?.didClickLoadSavedCountry()
     }
 
     func addSubviews() {

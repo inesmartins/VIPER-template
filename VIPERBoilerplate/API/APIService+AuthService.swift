@@ -1,6 +1,6 @@
-import Foundation
+import Alamofire
 
-final class AuthenticationService {
+extension APIService: AuthServiceType {
 
     func validateLogin(
         _ username: String,
