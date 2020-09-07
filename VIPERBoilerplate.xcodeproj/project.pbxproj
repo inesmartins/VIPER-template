@@ -10,7 +10,6 @@
 		4D01B92F2500348D00197F7D /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B92E2500348D00197F7D /* Country.swift */; };
 		4D01B931250036F500197F7D /* CountryList.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D01B930250036F500197F7D /* CountryList.json */; };
 		4D01B9332500398500197F7D /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9322500398500197F7D /* AppRouter.swift */; };
-		4D01B93625003AAD00197F7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D01B93425003AAD00197F7D /* Main.storyboard */; };
 		4D01B93A2500F67B00197F7D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9392500F67B00197F7D /* Store.swift */; };
 		4D01B93D2500F8F300197F7D /* KeyValueLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B93C2500F8F300197F7D /* KeyValueLocalStorage.swift */; };
 		4D01B93F2500F91E00197F7D /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */; };
@@ -100,7 +99,6 @@
 		4D01B92E2500348D00197F7D /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		4D01B930250036F500197F7D /* CountryList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryList.json; sourceTree = "<group>"; };
 		4D01B9322500398500197F7D /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
-		4D01B93525003AAD00197F7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D01B9392500F67B00197F7D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		4D01B93C2500F8F300197F7D /* KeyValueLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueLocalStorage.swift; sourceTree = "<group>"; };
 		4D01B93E2500F91E00197F7D /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
@@ -289,7 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				4DCA1EC825002C3A00067E94 /* LaunchScreen.storyboard */,
-				4D01B93425003AAD00197F7D /* Main.storyboard */,
 				4D8F3B9525054D380034719E /* KeyboardAwareViewController.swift */,
 			);
 			path = UIComponents;
@@ -517,7 +514,6 @@
 				4D01B931250036F500197F7D /* CountryList.json in Resources */,
 				4DCA1ECA25002C3A00067E94 /* LaunchScreen.storyboard in Resources */,
 				4DCA1EC725002C3A00067E94 /* Assets.xcassets in Resources */,
-				4D01B93625003AAD00197F7D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,14 +652,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4D01B93425003AAD00197F7D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D01B93525003AAD00197F7D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4DCA1EC825002C3A00067E94 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
