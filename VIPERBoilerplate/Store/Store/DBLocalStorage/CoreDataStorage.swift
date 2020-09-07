@@ -13,7 +13,6 @@ final class CoreDataStorage {
         self.context = container.viewContext
     }
 
-
 }
 
 extension CoreDataStorage: DBLocalStorage {

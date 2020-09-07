@@ -1,5 +1,7 @@
 import Foundation
 
+protocol CountryListPresenterType {}
+
 protocol CountryListViewToPresenterDelegate: AnyObject {
     func viewWasLoaded(on view: CountryListViewControllerType)
     func didSelectCountry(_ country: Country)
@@ -8,18 +10,26 @@ protocol CountryListViewToPresenterDelegate: AnyObject {
     func didClickLoadSavedCountry()
 }
 
+protocol CountryListInteractorToPresenterDelegate: AnyObject {
+    func didSaveCountry()
+    func errorWhileSavingCountry(_ error: Error)
+    func didLoadCountry(_ country: Country)
+    func errorWhileLoadingCountry()
+}
+
 final class CountryListPresenter {
 
-    private var interactor: CountryListInteractorProtocol?
+    private var interactor: CountryListPresenterToInteractorDelegate?
     private var view: CountryListViewControllerType?
     private var selectedCountry: Country?
     private var selectedStore = Store.allCases[0]
 
-    init(_ interactor: CountryListInteractorProtocol) {
+    init(_ interactor: CountryListPresenterToInteractorDelegate) {
         self.interactor = interactor
     }
-
 }
+
+extension CountryListPresenter: CountryListPresenterType {}
 
 extension CountryListPresenter: CountryListViewToPresenterDelegate {
 
@@ -40,19 +50,32 @@ extension CountryListPresenter: CountryListViewToPresenterDelegate {
 
     func didClickSaveCountry() {
         if let selectedCountry = self.selectedCountry {
-            self.interactor?.storeCountry(inStore: self.selectedStore,
-                                          selectedCountry, onCompletion: { success in
-                self.view?.showSaveResult(success)
-            })
+            self.interactor?.storeCountry(inStore: self.selectedStore, selectedCountry)
         }
     }
 
     func didClickLoadSavedCountry() {
-        self.interactor?.loadStoredCountry(from: self.selectedStore, onCompletion: { country in
-            if let country = country {
-                self.view?.showSavedCountry(country)
-            }
-        })
+        self.interactor?.loadStoredCountry(from: self.selectedStore)
+    }
+
+}
+
+extension CountryListPresenter: CountryListInteractorToPresenterDelegate {
+
+    func didSaveCountry() {
+        self.view?.showSaveResult(true)
+    }
+
+    func errorWhileSavingCountry(_ error: Error) {
+        self.view?.showSaveResult(false)
+    }
+
+    func didLoadCountry(_ country: Country) {
+        self.view?.showSavedCountry(country)
+    }
+
+    func errorWhileLoadingCountry() {
+        // TODO: show error
     }
 
 }

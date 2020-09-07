@@ -1,6 +1,6 @@
 import Foundation
 
-final class SearchResultDefinition {
+final class SearchResultDefinition: Codable {
 
     enum CodingKeys: String, CodingKey {
         case definition = "Definition"
@@ -9,11 +9,11 @@ final class SearchResultDefinition {
     }
 
     /** dictionary definition (may differ from Abstract) */
-    var definition: String
+    private var definition: String
     /** name of Definition source */
-    var definitionSource: String
+    private var definitionSource: String
     /** deep link to expanded definition page in DefinitionSource */
-    var definitionURL: String
+    private var definitionURL: String
 
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)

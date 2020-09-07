@@ -4,7 +4,7 @@ import Device
 import ToastSwiftFramework
 
 protocol DDGSearchViewControllerType {
-    var delegate: DDGSearchViewToPresenterDelegate { get }
+    var delegate: DDGSearchViewToPresenterType { get }
     func showResult(_ searchResult: SearchResult)
     func showNoResultsFound()
 }
@@ -13,7 +13,7 @@ final class DDGSearchViewController: KeyboardAwareViewController {
 
     // MARK: - UIViewController Properties
 
-    var delegate: DDGSearchViewToPresenterDelegate
+    var delegate: DDGSearchViewToPresenterType
     private var searchTerm: String?
 
     // MARK: - UI components
@@ -23,7 +23,7 @@ final class DDGSearchViewController: KeyboardAwareViewController {
 
     // MARK: - UIViewController Lifecycle
 
-    init(_ delegate: DDGSearchViewToPresenterDelegate) {
+    init(_ delegate: DDGSearchViewToPresenterType) {
         self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }

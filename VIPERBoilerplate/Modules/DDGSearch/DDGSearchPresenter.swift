@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DDGSearchViewToPresenterDelegate: AnyObject {
+protocol DDGSearchViewToPresenterType: AnyObject {
     func didClickSearchButton(searchTerm: String, on view: DDGSearchViewControllerType)
 }
 
@@ -14,7 +14,7 @@ final class DDGSearchPresenter {
     }
 }
 
-extension DDGSearchPresenter: DDGSearchViewToPresenterDelegate {
+extension DDGSearchPresenter: DDGSearchViewToPresenterType {
 
     func didClickSearchButton(searchTerm: String, on view: DDGSearchViewControllerType) {
         self.view = view

@@ -1,7 +1,6 @@
-
 import Foundation
 
-protocol APIServiceType: AnyObject {}
+typealias APIServiceType = AuthServiceType & HomeServiceType
 
 protocol AuthServiceType: AnyObject {
     func validateLogin(
@@ -17,6 +16,3 @@ protocol DDGServiceType: AnyObject {
 final class APIService {
     internal let ddgEndpoint = "https://api.duckduckgo.com/"
 }
-
-extension APIService: APIServiceType {}
-

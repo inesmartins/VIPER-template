@@ -17,14 +17,14 @@ final class StoreService {
     // TODO: should be injected for testability
     private let userDefaults = NSUserDefaultsStorage()
     private let keychain = KeyChainStorage()
-    
+
     init(container: NSPersistentContainer) {
         self.coreData = CoreDataStorage(container: container)
     }
 }
 
 extension StoreService: StoreServiceType {
-    
+
     func save<T: Codable>(object: T, withKey key: String, inStore store: Store,
                           onCompletion: @escaping (_ result: Result<Bool, Error>) -> Void) {
 

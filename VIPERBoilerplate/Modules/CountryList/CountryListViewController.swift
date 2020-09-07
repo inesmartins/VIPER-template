@@ -2,6 +2,7 @@ import UIKit
 import ToastSwiftFramework
 
 protocol CountryListViewControllerType {
+    var delegate: CountryListViewToPresenterDelegate { get }
     func updateCountryList(_ countries: [Country])
     func showSaveResult(_ result: Bool)
     func showSavedCountry(_ country: Country)
@@ -15,7 +16,7 @@ class CountryListViewController: UIViewController {
 
     // MARK: - UIViewController Properties
 
-    var delegate: CountryListViewToPresenterDelegate?
+    var delegate: CountryListViewToPresenterDelegate
     private var countries = [Country]()
 
     // MARK: - UI components
@@ -33,12 +34,12 @@ class CountryListViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        super.init(nibName: nil, bundle: nil)
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate?.viewWasLoaded(on: self)
+        self.delegate.viewWasLoaded(on: self)
         self.setupView()
     }
 
@@ -59,7 +60,7 @@ extension CountryListViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.delegate?.didSelectStore(Store.allCases[row])
+        self.delegate.didSelectStore(Store.allCases[row])
     }
 
 }
@@ -80,7 +81,7 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let country = self.countries[indexPath.row]
-        self.delegate?.didSelectCountry(country)
+        self.delegate.didSelectCountry(country)
     }
 
     // Added to minimize the complexity of height calculations, improving UITableView performance
@@ -156,11 +157,11 @@ private extension CountryListViewController {
     }
 
     @objc func handleSaveCountryButtonClick() {
-        self.delegate?.didClickSaveCountry()
+        self.delegate.didClickSaveCountry()
     }
 
     @objc func handleGetSavedCountryButtonClick() {
-        self.delegate?.didClickLoadSavedCountry()
+        self.delegate.didClickLoadSavedCountry()
     }
 
     func addSubviews() {

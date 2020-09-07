@@ -1,26 +1,24 @@
 import Foundation
 
-protocol CountryListInteractorProtocol: AnyObject {
+protocol CountryListInteractorType {}
+
+protocol CountryListPresenterToInteractorDelegate: AnyObject {
     func loadCountryList() -> [Country]?
-    func storeCountry(
-        inStore store: Store,
-        _ country: Country,
-        onCompletion: @escaping ((_ result: Bool) -> Void))
-    func loadStoredCountry(
-        from: Store,
-        onCompletion: @escaping ((_ country: Country?) -> Void))
+    func storeCountry(inStore store: Store, _ country: Country)
+    func loadStoredCountry(from: Store)
 }
 
 final class CountryListInteractor {
 
     private let store: StoreServiceType
+    weak var delegate: CountryListInteractorToPresenterDelegate?
 
     init(store: StoreServiceType) {
         self.store = store
     }
 }
 
-extension CountryListInteractor: CountryListInteractorProtocol {
+extension CountryListInteractor: CountryListPresenterToInteractorDelegate {
 
     func loadCountryList() -> [Country]? {
         if let filepath = Bundle.main.path(forResource: "CountryList", ofType: "json") {
@@ -36,29 +34,34 @@ extension CountryListInteractor: CountryListInteractorProtocol {
         return nil
     }
 
-    func storeCountry(inStore store: Store, _ country: Country, onCompletion: @escaping ((Bool) -> Void)) {
+    func storeCountry(inStore store: Store, _ country: Country) {
         self.store.save(object: country, withKey: AppKey.selectedCountry.rawValue, inStore: store) { result in
             do {
-                onCompletion(try result.get())
+                _ = try result.get()
+                self.delegate?.didSaveCountry()
             } catch let error {
                 #if DEBUG
                 debugPrint(error)
                 #endif
-                onCompletion(false)
+                self.delegate?.errorWhileSavingCountry(error)
             }
         }
     }
 
-    func loadStoredCountry(from store: Store, onCompletion: @escaping ((_ country: Country?) -> Void)) {
+    func loadStoredCountry(from store: Store) {
         let key = AppKey.selectedCountry.rawValue
         self.store.load(fromStore: store, withKey: key) { (result: Result<Country?, Error>) in
             do {
-                onCompletion(try result.get())
+                if let country = try result.get() {
+                    self.delegate?.didLoadCountry(country)
+                } else {
+                    self.delegate?.errorWhileLoadingCountry()
+                }
             } catch let error {
                 #if DEBUG
                 print(error)
                 #endif
-                onCompletion(nil)
+                self.delegate?.errorWhileLoadingCountry()
             }
         }
     }

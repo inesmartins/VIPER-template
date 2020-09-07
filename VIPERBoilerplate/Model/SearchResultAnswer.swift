@@ -6,12 +6,12 @@ final class SearchResultAnswer: Codable {
         case answer = "Answer"
         case answerType = "AnswerType"
     }
-    
+
     /** instant answer */
     var answer: String
     /** calc, color, digest, info, ip, iploc, phone, pw, rand, regexp, unicode, upc, or zip. */
     var answerType: String
-    
+
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         do {
@@ -28,11 +28,10 @@ final class SearchResultAnswer: Codable {
             throw error
         }
     }
-    
+
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.answer, forKey: CodingKeys.answer.rawValue)
         aCoder.encode(self.answerType, forKey: CodingKeys.answerType.rawValue)
     }
-    
-}
 
+}

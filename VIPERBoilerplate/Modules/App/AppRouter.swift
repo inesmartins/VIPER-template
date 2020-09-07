@@ -14,22 +14,19 @@ protocol HomeRouterToAppRouterDelegate: AnyObject {}
 final class AppRouter {
 
     private var store: StoreServiceType
-    private var authService: AuthServiceType
-    private var ddgService: DDGServiceType
+    private var apiService: APIServiceType
     private var appViewController: AppViewControllerType
 
     private var authRouter: AuthenticationRouter?
     private var homeRouter: HomeRouter?
-    
+
     init(appViewController: AppViewControllerType,
          store: StoreServiceType,
-         authService: AuthServiceType,
-         ddgService: DDGServiceType) {
+         apiService: APIServiceType) {
 
         self.appViewController = appViewController
         self.store = store
-        self.authService = authService
-        self.ddgService = ddgService
+        self.apiService = apiService
     }
 }
 
@@ -41,13 +38,12 @@ extension AppRouter: AppRouterType {
 }
 
 extension AppRouter: AuthenticationRouterToAppRouterDelegate {
-    
+
     func routeToHome() {
-        self.homeRouter = HomeRouter(
-            appViewController: self.appViewController,
-            store: store,
-            ddgService: ddgService,
-            delegate: self)
+        self.homeRouter = HomeRouter(appViewController: self.appViewController,
+                                     store: self.store,
+                                     homeService: self.apiService,
+                                     delegate: self)
         self.homeRouter?.startModule()
     }
 }
@@ -58,8 +54,8 @@ private extension AppRouter {
 
     func routeToAuthentication() {
         self.authRouter = AuthenticationRouter(appViewController: self.appViewController,
-                                               authService: self.authService,
-                                               delegate: self)
+                                               authService: self.apiService,
+                                               routerDelegate: self)
         self.authRouter?.startModule()
     }
 

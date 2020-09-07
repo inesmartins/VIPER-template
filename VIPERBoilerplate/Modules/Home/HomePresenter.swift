@@ -24,7 +24,7 @@ extension HomePresenter: HomePresenterType {}
 extension HomePresenter: HomeViewToPresenterDelegate {
 
     func didClickDeviceInfoButton() {
-        self.routerDelegate?.showDeviceInfo()
+        self.routerDelegate?.showDDGSearch()
     }
 
     func didClickCountryListButton() {

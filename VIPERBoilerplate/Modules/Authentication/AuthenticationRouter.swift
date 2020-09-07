@@ -13,12 +13,14 @@ final class AuthenticationRouter {
 
     private weak var appViewController: AppViewControllerType?
     private weak var authService: AuthServiceType?
-    private weak var delegate: AuthenticationRouterToAppRouterDelegate?
+    private weak var routerDelegate: AuthenticationRouterToAppRouterDelegate?
 
-    init(appViewController: AppViewControllerType, authService: AuthServiceType, delegate: AuthenticationRouterToAppRouterDelegate) {
+    init(appViewController: AppViewControllerType,
+         authService: AuthServiceType,
+         routerDelegate: AuthenticationRouterToAppRouterDelegate) {
         self.appViewController = appViewController
         self.authService = authService
-        self.delegate = delegate
+        self.routerDelegate = routerDelegate
     }
 
 }
@@ -27,7 +29,7 @@ extension AuthenticationRouter: AuthenticationRouterType {
 
     func startModule() {
         guard let authService = self.authService else {
-            assertionFailure("authService should be present in AuthInteractor")
+            assertionFailure("authService should be present in \(self)")
             return
         }
         let authView = self.makeAuthenticationViewController(authService: authService)
@@ -39,7 +41,7 @@ extension AuthenticationRouter: AuthenticationRouterType {
 extension AuthenticationRouter: AuthenticationPresenterToRouterDelegate {
 
     func onAuthenticationSucceeded() {
-        self.delegate?.routeToHome()
+        self.routerDelegate?.routeToHome()
     }
 
 }

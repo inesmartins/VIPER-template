@@ -8,12 +8,15 @@ final class SearchResult: Codable {
     var abstract: SearchResultAbstract
     var answer: SearchResultAnswer
     var definition: SearchResultDefinition
+    /**  array of internal links to related topics associated with Abstract */
+    var relatedTopics: SearchResultRelatedTopic
 
     required init(from decoder: Decoder) throws {
         do {
             self.abstract = try SearchResultAbstract(from: decoder)
             self.answer = try SearchResultAnswer(from: decoder)
             self.definition = try SearchResultDefinition(from: decoder)
+            self.relatedTopics  = try SearchResultRelatedTopic(from: decoder)
         } catch let error as NSError {
             throw error
         }
@@ -28,14 +31,6 @@ final class SearchResult: Codable {
 }
 
 /*
-RelatedTopics: array of internal links to related topics associated with Abstract
-   Result: HTML link(s) to related topic(s)
-   FirstURL: first URL in Result
-   Icon: icon associated with related topic(s)
-     URL: URL of icon
-     Height: height of icon (px)
-     Width: width of icon (px)
-   Text: text from first URL
  Results: array of external links associated with Abstract
    Result: HTML link(s) to external site(s)
    FirstURL: first URL in Result

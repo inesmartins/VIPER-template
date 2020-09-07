@@ -17,7 +17,8 @@ final class AuthenticationPresenter {
     private weak var routerDelegate: AuthenticationPresenterToRouterDelegate?
     private weak var view: AuthenticationViewControllerType?
 
-    init(interactorDelegate: AuthenticationPresenterToInteractorDelegate, routerDelegate: AuthenticationPresenterToRouterDelegate) {
+    init(interactorDelegate: AuthenticationPresenterToInteractorDelegate,
+         routerDelegate: AuthenticationPresenterToRouterDelegate) {
         self.interactorDelegate = interactorDelegate
         self.routerDelegate = routerDelegate
     }
@@ -39,10 +40,9 @@ extension AuthenticationPresenter: AuthenticationInteractorToPresenterDelegate {
     func onAuthenticationSucceeded() {
         self.routerDelegate?.onAuthenticationSucceeded()
     }
-    
+
     func onAuthenticationFailed() {
         self.view?.showAuthenticationError()
     }
-    
-    
+
 }
