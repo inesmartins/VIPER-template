@@ -16,12 +16,57 @@ final class AuthenticationViewController: KeyboardAwareViewController {
 
     // MARK: - UI components
 
-    private lazy var titleLabelContainer = UIView(frame: .zero)
-    private lazy var titleLabel = UILabel(frame: .zero)
-    private lazy var formContainer = UIView(frame: .zero)
-    private lazy var usernameTextField = UITextField(frame: .zero)
-    private lazy var passwordTextField = UITextField(frame: .zero)
-    private lazy var loginButton = UIButton(frame: .zero)
+    private lazy var titleLabelContainer: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "Sign in"
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 22.0)
+        return label
+    }()
+
+    private lazy var formContainer: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private lazy var usernameTextField: UITextField = {
+        let textField = UITextField(frame: .zero)
+        textField.delegate = self
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.borderStyle = .roundedRect
+        textField.textContentType = .username
+        textField.autocapitalizationType = .none
+        return textField
+    }()
+
+    private lazy var passwordTextField: UITextField = {
+        let textField = UITextField(frame: .zero)
+        textField.delegate = self
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.borderStyle = .roundedRect
+        // tries auto-filling password on Associated Domains
+        //textField.textContentType = .newPassword
+        textField.isSecureTextEntry = true
+        return textField
+    }()
+    
+    private lazy var loginButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
+        button.addTarget(self, action: #selector(self.handleLoginButton), for: .touchUpInside)
+        return button
+    }()
 
     // MARK: - UIViewController Lifecycle
 
@@ -70,9 +115,10 @@ extension AuthenticationViewController: UITextFieldDelegate {
 private extension AuthenticationViewController {
 
     func setupView() {
+        self.view.backgroundColor = .white
         self.addSubviews()
-        self.setupUIComponents()
         self.addConstraints()
+        self.updateLoginButton(enabled: false)
     }
 
     func addSubviews() {
@@ -82,43 +128,6 @@ private extension AuthenticationViewController {
         self.formContainer.addSubview(self.usernameTextField)
         self.formContainer.addSubview(self.passwordTextField)
         self.formContainer.addSubview(self.loginButton)
-    }
-
-    func setupUIComponents() {
-
-        self.view.backgroundColor = .white
-
-        self.titleLabelContainer.translatesAutoresizingMaskIntoConstraints = false
-        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.titleLabel.text = "Sign in"
-        self.titleLabel.textColor = .black
-        self.titleLabel.font = UIFont.systemFont(ofSize: 22.0)
-
-        // formContainer UIView
-        self.formContainer.translatesAutoresizingMaskIntoConstraints = false
-
-        // usernameTextField UITextField
-        self.usernameTextField.delegate = self
-        self.usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-        self.usernameTextField.borderStyle = .roundedRect
-        self.usernameTextField.textContentType = .username
-        self.usernameTextField.autocapitalizationType = .none
-
-        // passwordTextField UITextField
-        self.passwordTextField.delegate = self
-        self.passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        self.passwordTextField.borderStyle = .roundedRect
-        // tries auto-filling password on Associated Domains
-        //self.passwordTextField.textContentType = .newPassword
-        self.passwordTextField.isSecureTextEntry = true
-
-        // loginButton UIButton
-        self.loginButton.translatesAutoresizingMaskIntoConstraints = false
-        self.loginButton.setTitle("Login", for: .normal)
-        self.loginButton.setTitleColor(.black, for: .normal)
-        self.loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
-        self.loginButton.addTarget(self, action: #selector(self.handleLoginButton), for: .touchUpInside)
-        self.updateLoginButton(enabled: false)
     }
 
     @objc func handleLoginButton() {

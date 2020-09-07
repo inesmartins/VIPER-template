@@ -6,11 +6,11 @@ protocol DDGSearchViewToPresenterType: AnyObject {
 
 final class DDGSearchPresenter {
 
-    private var interactor: DDGSearchPresenterToInteractorDelegate?
-    private var view: DDGSearchViewControllerType?
+    private weak var interactorDelegate: DDGSearchPresenterToInteractorDelegate?
+    private weak var view: DDGSearchViewControllerType?
 
-    init(_ interactor: DDGSearchPresenterToInteractorDelegate) {
-        self.interactor = interactor
+    init(_ interactorDelegate: DDGSearchPresenterToInteractorDelegate) {
+        self.interactorDelegate = interactorDelegate
     }
 }
 
@@ -19,7 +19,7 @@ extension DDGSearchPresenter: DDGSearchViewToPresenterType {
     func didClickSearchButton(searchTerm: String, on view: DDGSearchViewControllerType) {
         self.view = view
         let searchParams = SearchParams(searchTerm: searchTerm)
-        self.interactor?.search(searchParams) { result in
+        self.interactorDelegate?.search(searchParams) { result in
             if let searchResult = result {
                 self.view?.showResult(searchResult)
             } else {

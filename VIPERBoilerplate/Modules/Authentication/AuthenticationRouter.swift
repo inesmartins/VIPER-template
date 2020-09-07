@@ -11,13 +11,13 @@ protocol AuthenticationPresenterToRouterDelegate: AnyObject {
 
 final class AuthenticationRouter {
 
-    private weak var appViewController: AppViewControllerType?
-    private weak var authService: AuthServiceType?
-    private weak var routerDelegate: AuthenticationRouterToAppRouterDelegate?
+    private let appViewController: AppViewControllerType?
+    private let routerDelegate: AuthRouterToAppRouterDelegate?
+    private let authService: AuthServiceType?
 
     init(appViewController: AppViewControllerType,
          authService: AuthServiceType,
-         routerDelegate: AuthenticationRouterToAppRouterDelegate) {
+         routerDelegate: AuthRouterToAppRouterDelegate) {
         self.appViewController = appViewController
         self.authService = authService
         self.routerDelegate = routerDelegate

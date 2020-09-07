@@ -13,7 +13,7 @@ protocol AuthenticationInteractorToPresenterDelegate: AnyObject {
 
 final class AuthenticationPresenter {
 
-    private var interactorDelegate: AuthenticationPresenterToInteractorDelegate
+    private weak var interactorDelegate: AuthenticationPresenterToInteractorDelegate?
     private weak var routerDelegate: AuthenticationPresenterToRouterDelegate?
     private weak var view: AuthenticationViewControllerType?
 
@@ -31,7 +31,7 @@ extension AuthenticationPresenter: AuthenticationViewToPresenterDelegate {
 
     func didClickLoginButton(on view: AuthenticationViewControllerType, username: String, password: String) {
         self.view = view
-        self.interactorDelegate.validateLogin(username, password)
+        self.interactorDelegate?.validateLogin(username, password)
     }
 }
 

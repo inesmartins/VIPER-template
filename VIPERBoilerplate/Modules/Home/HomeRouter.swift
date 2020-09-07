@@ -17,12 +17,12 @@ protocol DDGSearchRouterToHomeRouterDelegate: AnyObject {}
 
 final class HomeRouter {
 
-    private weak var appViewController: AppViewControllerType?
-    private weak var navigationController: UINavigationController?
+    private let appViewController: AppViewControllerType?
+    private var navigationController: UINavigationController?
 
-    private weak var store: StoreServiceType?
-    private weak var homeService: HomeServiceType?
-    private weak var delegate: HomeRouterToAppRouterDelegate?
+    private let store: StoreServiceType?
+    private let homeService: HomeServiceType?
+    private let delegate: HomeRouterToAppRouterDelegate?
 
     init(appViewController: AppViewControllerType,
          store: StoreServiceType,

@@ -3,7 +3,7 @@ import UIKit
 import Device
 import ToastSwiftFramework
 
-protocol DDGSearchViewControllerType {
+protocol DDGSearchViewControllerType: AnyObject {
     var delegate: DDGSearchViewToPresenterType { get }
     func showResult(_ searchResult: SearchResult)
     func showNoResultsFound()

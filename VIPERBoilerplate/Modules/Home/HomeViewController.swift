@@ -13,11 +13,42 @@ final class HomeViewController: UIViewController {
 
     // MARK: - UI components
 
-    private lazy var buttonsContainer = UIView(frame: .zero)
-    private lazy var deviceInfoButton = UIButton(frame: .zero)
-    private lazy var countryListButton = UIButton(frame: .zero)
+    private lazy var buttonsContainer: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
 
-    // MARK: - UIViewController Lifecycle
+    private lazy var deviceInfoButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self,
+                         action: #selector(self.handleDeviceInfoButtonClick),
+                         for: .touchUpInside)
+        button.setTitle("Search on DuckDuckGo", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.cornerRadius = 7
+        button.layer.borderWidth = 2
+        return button
+    }()
+
+    private lazy var countryListButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self,
+                         action: #selector(self.handleCountryListButtonClick),
+                         for: .touchUpInside)
+        button.setTitle("See Country List", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.cornerRadius = 7
+        button.layer.borderWidth = 2
+        return button
+    }()
+
+    // MARK: - Lifecycle Methods
 
     init(_ delegate: HomeViewToPresenterDelegate) {
         self.delegate = delegate
@@ -39,8 +70,8 @@ extension HomeViewController: HomeViewControllerType {}
 private extension HomeViewController {
 
     func setupView() {
+        self.view.backgroundColor = .white
         self.addSubviews()
-        self.setupUIComponents()
         self.addConstraints()
     }
 
@@ -48,35 +79,6 @@ private extension HomeViewController {
         self.view.addSubview(self.buttonsContainer)
         self.buttonsContainer.addSubview(self.deviceInfoButton)
         self.buttonsContainer.addSubview(self.countryListButton)
-    }
-
-    func setupUIComponents() {
-
-        self.view.backgroundColor = .white
-
-        self.buttonsContainer.translatesAutoresizingMaskIntoConstraints = false
-        self.buttonsContainer.backgroundColor = .white
-
-        self.deviceInfoButton.translatesAutoresizingMaskIntoConstraints = false
-        self.deviceInfoButton.addTarget(self,
-                                        action: #selector(self.handleDeviceInfoButtonClick),
-                                        for: .touchUpInside)
-        self.deviceInfoButton.setTitle("Search on DuckDuckGo", for: .normal)
-        self.deviceInfoButton.setTitleColor(.black, for: .normal)
-        self.deviceInfoButton.layer.borderColor = UIColor.black.cgColor
-        self.deviceInfoButton.layer.cornerRadius = 7
-        self.deviceInfoButton.layer.borderWidth = 2
-
-        self.countryListButton.translatesAutoresizingMaskIntoConstraints = false
-        self.countryListButton.addTarget(self,
-                                         action: #selector(self.handleCountryListButtonClick),
-                                         for: .touchUpInside)
-        self.countryListButton.setTitle("See Country List", for: .normal)
-        self.countryListButton.setTitleColor(.black, for: .normal)
-        self.countryListButton.layer.borderColor = UIColor.black.cgColor
-        self.countryListButton.layer.cornerRadius = 7
-        self.countryListButton.layer.borderWidth = 2
-
     }
 
     func addConstraints() {

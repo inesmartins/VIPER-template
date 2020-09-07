@@ -5,7 +5,7 @@ protocol AppRouterType: AnyObject {
     func startApplication()
 }
 
-protocol AuthenticationRouterToAppRouterDelegate: AnyObject {
+protocol AuthRouterToAppRouterDelegate: AnyObject {
     func routeToHome()
 }
 
@@ -37,7 +37,7 @@ extension AppRouter: AppRouterType {
     }
 }
 
-extension AppRouter: AuthenticationRouterToAppRouterDelegate {
+extension AppRouter: AuthRouterToAppRouterDelegate {
 
     func routeToHome() {
         self.homeRouter = HomeRouter(appViewController: self.appViewController,
