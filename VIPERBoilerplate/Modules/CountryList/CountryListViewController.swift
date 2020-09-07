@@ -1,7 +1,7 @@
 import UIKit
 import ToastSwiftFramework
 
-protocol CountryListViewControllerType {
+protocol CountryListViewControllerType: AnyObject {
     var delegate: CountryListViewToPresenterDelegate { get }
     func updateCountryList(_ countries: [Country])
     func showSaveResult(_ result: Bool)

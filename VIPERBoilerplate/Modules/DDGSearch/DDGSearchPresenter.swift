@@ -6,7 +6,7 @@ protocol DDGSearchViewToPresenterType: AnyObject {
 
 final class DDGSearchPresenter {
 
-    private weak var interactorDelegate: DDGSearchPresenterToInteractorDelegate?
+    private var interactorDelegate: DDGSearchPresenterToInteractorDelegate?
     private weak var view: DDGSearchViewControllerType?
 
     init(_ interactorDelegate: DDGSearchPresenterToInteractorDelegate) {

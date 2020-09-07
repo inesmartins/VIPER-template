@@ -19,13 +19,13 @@ protocol CountryListInteractorToPresenterDelegate: AnyObject {
 
 final class CountryListPresenter {
 
-    private var interactor: CountryListPresenterToInteractorDelegate?
-    private var view: CountryListViewControllerType?
+    private var interactorDelegate: CountryListPresenterToInteractorDelegate?
+    private weak var view: CountryListViewControllerType?
     private var selectedCountry: Country?
     private var selectedStore = Store.allCases[0]
 
-    init(_ interactor: CountryListPresenterToInteractorDelegate) {
-        self.interactor = interactor
+    init(_ interactorDelegate: CountryListPresenterToInteractorDelegate) {
+        self.interactorDelegate = interactorDelegate
     }
 }
 
@@ -35,7 +35,7 @@ extension CountryListPresenter: CountryListViewToPresenterDelegate {
 
     func viewWasLoaded(on view: CountryListViewControllerType) {
         self.view = view
-        if let countries = self.interactor?.loadCountryList() {
+        if let countries = self.interactorDelegate?.loadCountryList() {
             self.view?.updateCountryList(countries)
         }
     }
@@ -50,12 +50,12 @@ extension CountryListPresenter: CountryListViewToPresenterDelegate {
 
     func didClickSaveCountry() {
         if let selectedCountry = self.selectedCountry {
-            self.interactor?.storeCountry(inStore: self.selectedStore, selectedCountry)
+            self.interactorDelegate?.storeCountry(inStore: self.selectedStore, selectedCountry)
         }
     }
 
     func didClickLoadSavedCountry() {
-        self.interactor?.loadStoredCountry(from: self.selectedStore)
+        self.interactorDelegate?.loadStoredCountry(from: self.selectedStore)
     }
 
 }

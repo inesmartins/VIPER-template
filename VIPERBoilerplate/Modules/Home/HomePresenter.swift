@@ -9,7 +9,7 @@ protocol HomeViewToPresenterDelegate: AnyObject {
 
 final class HomePresenter {
 
-    private weak var interactorDelegate: HomePresenterToInteractorDelegate?
+    private var interactorDelegate: HomePresenterToInteractorDelegate?
     private weak var routerDelegate: HomePresenterToRouterDelegate?
 
     init(interactorDelegate: HomePresenterToInteractorDelegate, routerDelegate: HomePresenterToRouterDelegate) {

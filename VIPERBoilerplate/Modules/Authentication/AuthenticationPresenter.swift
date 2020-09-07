@@ -13,7 +13,7 @@ protocol AuthenticationInteractorToPresenterDelegate: AnyObject {
 
 final class AuthenticationPresenter {
 
-    private weak var interactorDelegate: AuthenticationPresenterToInteractorDelegate?
+    private var interactorDelegate: AuthenticationPresenterToInteractorDelegate?
     private weak var routerDelegate: AuthenticationPresenterToRouterDelegate?
     private weak var view: AuthenticationViewControllerType?
 
