@@ -1,4 +1,0 @@
-framework module Device {
-  header "Device-Swift.h"
-  requires objc
-}
