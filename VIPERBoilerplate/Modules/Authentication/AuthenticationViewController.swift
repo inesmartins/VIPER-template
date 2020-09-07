@@ -19,12 +19,12 @@ final class AuthenticationViewController: KeyboardAwareViewController {
     private lazy var titleLabelContainer: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Sign in"
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 22.0)
@@ -57,7 +57,7 @@ final class AuthenticationViewController: KeyboardAwareViewController {
         textField.isSecureTextEntry = true
         return textField
     }()
-    
+
     private lazy var loginButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
