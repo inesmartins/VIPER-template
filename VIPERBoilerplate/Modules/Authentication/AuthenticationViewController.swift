@@ -21,7 +21,6 @@ final class AuthenticationViewController: KeyboardAwareViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
     private lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,13 +29,11 @@ final class AuthenticationViewController: KeyboardAwareViewController {
         label.font = UIFont.systemFont(ofSize: 22.0)
         return label
     }()
-
     private lazy var formContainer: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
     private lazy var usernameTextField: UITextField = {
         let textField = UITextField(frame: .zero)
         textField.delegate = self
@@ -46,7 +43,6 @@ final class AuthenticationViewController: KeyboardAwareViewController {
         textField.autocapitalizationType = .none
         return textField
     }()
-
     private lazy var passwordTextField: UITextField = {
         let textField = UITextField(frame: .zero)
         textField.delegate = self
@@ -57,7 +53,6 @@ final class AuthenticationViewController: KeyboardAwareViewController {
         textField.isSecureTextEntry = true
         return textField
     }()
-
     private lazy var loginButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false

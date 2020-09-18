@@ -4,7 +4,7 @@ import CoreData
 final class CoreDataStorage {
 
     // MARK: - CoreData Entities
-    
+
     private lazy var context: NSManagedObjectContext = {
         let container = NSPersistentContainer(name: "VIPERBoilerplate")
         container.loadPersistentStores(completionHandler: { (_, error) in

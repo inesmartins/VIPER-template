@@ -22,7 +22,7 @@ final class HomeRouter {
 
     private let store: StoreServiceType?
     private let homeService: HomeServiceType?
-    private let delegate: HomeRouterToAppRouterDelegate?
+    private var delegate: HomeRouterToAppRouterDelegate?
 
     init(appViewController: AppViewControllerType,
          store: StoreServiceType,

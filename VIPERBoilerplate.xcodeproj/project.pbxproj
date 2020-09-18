@@ -29,7 +29,6 @@
 		4D01B9772503877300197F7D /* AuthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9762503877300197F7D /* AuthenticationPresenter.swift */; };
 		4D01B9792503877E00197F7D /* AuthnticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9782503877E00197F7D /* AuthnticationInteractor.swift */; };
 		4D01B97E2503A82D00197F7D /* APIService+AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B97D2503A82D00197F7D /* APIService+AuthService.swift */; };
-		4D01B9802503AC6A00197F7D /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B97F2503AC6A00197F7D /* UINavigationController+Extension.swift */; };
 		4D01B9822503AFD800197F7D /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01B9812503AFD800197F7D /* HomeInteractor.swift */; };
 		4D26CB7825067AF400103C87 /* SearchResultRelatedTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26CB7725067AF400103C87 /* SearchResultRelatedTopic.swift */; };
 		4D26CB7A25067CDF00103C87 /* SearchResultRelatedTopicIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26CB7925067CDF00103C87 /* SearchResultRelatedTopicIcon.swift */; };
@@ -118,7 +117,6 @@
 		4D01B9762503877300197F7D /* AuthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPresenter.swift; sourceTree = "<group>"; };
 		4D01B9782503877E00197F7D /* AuthnticationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthnticationInteractor.swift; sourceTree = "<group>"; };
 		4D01B97D2503A82D00197F7D /* APIService+AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIService+AuthService.swift"; sourceTree = "<group>"; };
-		4D01B97F2503AC6A00197F7D /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		4D01B9812503AFD800197F7D /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		4D26CB7725067AF400103C87 /* SearchResultRelatedTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRelatedTopic.swift; sourceTree = "<group>"; };
 		4D26CB7925067CDF00103C87 /* SearchResultRelatedTopicIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRelatedTopicIcon.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				4D01B94725011ED600197F7D /* Data+Extension.swift */,
-				4D01B97F2503AC6A00197F7D /* UINavigationController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -411,8 +408,8 @@
 				4DCA1EB325002C3700067E94 /* Sources */,
 				4DCA1EB425002C3700067E94 /* Frameworks */,
 				4DCA1EB525002C3700067E94 /* Resources */,
-				4D01B94D2502497400197F7D /* ShellScript */,
-				4D01B9702502B22F00197F7D /* ShellScript */,
+				4D01B94D2502497400197F7D /* Swiflint Code Analysis */,
+				4D01B9702502B22F00197F7D /* Carthage Copy Dependencies */,
 				4D6B111B2506D22700BCA7A1 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -530,7 +527,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4D01B94D2502497400197F7D /* ShellScript */ = {
+		4D01B94D2502497400197F7D /* Swiflint Code Analysis */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -539,6 +536,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Swiflint Code Analysis";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -547,7 +545,7 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		4D01B9702502B22F00197F7D /* ShellScript */ = {
+		4D01B9702502B22F00197F7D /* Carthage Copy Dependencies */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -556,6 +554,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Carthage Copy Dependencies";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -598,7 +597,6 @@
 				4D01B9452500FF6800197F7D /* UserDefaultsStorage.swift in Sources */,
 				4D01B93A2500F67B00197F7D /* Store.swift in Sources */,
 				4D01B93F2500F91E00197F7D /* CoreDataStorage.swift in Sources */,
-				4D01B9802503AC6A00197F7D /* UINavigationController+Extension.swift in Sources */,
 				4D8F3B8F250541D70034719E /* SearchResult.swift in Sources */,
 				4D01B94C2501863D00197F7D /* AppKey.swift in Sources */,
 				4D8F3B802504E86C0034719E /* CountryListTableViewCell.swift in Sources */,

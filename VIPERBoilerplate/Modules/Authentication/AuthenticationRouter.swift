@@ -12,7 +12,7 @@ protocol AuthenticationPresenterToRouterDelegate: AnyObject {
 final class AuthenticationRouter {
 
     private let appViewController: AppViewControllerType?
-    private let routerDelegate: AuthRouterToAppRouterDelegate?
+    private var routerDelegate: AuthRouterToAppRouterDelegate?
     private let authService: AuthServiceType?
 
     init(appViewController: AppViewControllerType,
